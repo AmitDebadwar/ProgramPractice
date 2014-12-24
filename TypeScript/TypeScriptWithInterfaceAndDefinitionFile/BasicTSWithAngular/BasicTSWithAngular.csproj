@@ -18,6 +18,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="app.css" />
+    <Content Include="DefinitionFiles\IMainCtrl.d.ts.ts" />
     <Content Include="DefinitionFiles\jquery.d.ts" />
     <Content Include="index.html" />
     <Content Include="DefinitionFiles\angular.d.ts" />

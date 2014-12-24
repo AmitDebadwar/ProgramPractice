@@ -9,47 +9,11 @@
     <script src="app/app.js"></script>
 </head>
 <body ng-app="Main" ng-controller="MainCtrl">
-    <h1>Student Application</h1>
-
-    <table>
-        <tr>
-            <th>Roll</th>
-            <td>
-                <input type="text" ng-model="studentRoll" /></td>
-        </tr>
-        <tr>
-            <th>Name</th>
-            <td>
-                <input type="text" ng-model="studentName" /></td>
-        </tr>
-        <tr>
-            <th></th>
-            <td>
-                <input type="button" value="Add Student" ng-click="AddStudent()" /></td>
-        </tr>
-    </table>
-
-    <br />
+    <p>Click on button and text box will be populated with model</p>
+    
+    <input type="text" ng-model="idNumber" /><input type="button" value="Add Student" ng-click="addStudent()"/>
     <br />
     <br />
      
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Roll
-                </th>
-                <th>Name</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="std in allStudent">
-                <td>{{std.studentRoll}}</td>
-                <td>{{std.studentName}}</td>
-                <td><a href="#">Edit</a>  <a href="#">Delete</a></td>
-            </tr>
-        </tbody>
-    </table>
-
 </body>
 </html>

@@ -3,3 +3,8 @@ D:\MyCode\project\Manasa\ManasaGitRepo\trunk\TypeScript\BasicTSWithAngular\Basic
 D:\MyCode\project\Manasa\ManasaGitRepo\trunk\TypeScript\BasicTSWithAngular\BasicTSWithAngular\obj\Release\BasicTSWithAngular.dll
 D:\MyCode\project\Manasa\ManasaGitRepo\trunk\TypeScript\BasicTSWithAngular\BasicTSWithAngular\obj\Release\BasicTSWithAngular.pdb
 D:\MyCode\project\Manasa\ManasaGitRepo\trunk\TypeScript\BasicTSWithAngular\BasicTSWithAngular\obj\Release\BasicTSWithAngular.csprojResolveAssemblyReference.cache
+D:\MyCode\project\Manasa\ManasaGitRepo\trunk\TypeScript\TypeScriptWithInterfaceAndDefinitionFile\BasicTSWithAngular\obj\Release\BasicTSWithAngular.csprojResolveAssemblyReference.cache
+D:\MyCode\project\Manasa\ManasaGitRepo\trunk\TypeScript\TypeScriptWithInterfaceAndDefinitionFile\BasicTSWithAngular\obj\Release\BasicTSWithAngular.dll
+D:\MyCode\project\Manasa\ManasaGitRepo\trunk\TypeScript\TypeScriptWithInterfaceAndDefinitionFile\BasicTSWithAngular\obj\Release\BasicTSWithAngular.pdb
+D:\MyCode\project\Manasa\ManasaGitRepo\trunk\TypeScript\TypeScriptWithInterfaceAndDefinitionFile\BasicTSWithAngular\bin\BasicTSWithAngular.dll
+D:\MyCode\project\Manasa\ManasaGitRepo\trunk\TypeScript\TypeScriptWithInterfaceAndDefinitionFile\BasicTSWithAngular\bin\BasicTSWithAngular.pdb

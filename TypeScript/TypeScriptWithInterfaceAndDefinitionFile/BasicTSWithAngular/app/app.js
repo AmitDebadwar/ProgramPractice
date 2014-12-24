@@ -6,29 +6,17 @@ var MainCtrl = (function () {
         this.init();
     }
     MainCtrl.prototype.init = function () {
-        var self = this;
-        self.$scope.allStudent = [];
-
-        this.$scope.AddStudent = function () {
-            if (self.$scope.studentRoll && self.$scope.studentName) {
-                var std = new Student();
-                std.studentRoll = self.$scope.studentRoll;
-                std.studentName = self.$scope.studentName;
-
-                self.$scope.allStudent.push(std);
-            } else {
-                alert('Please enter student to add');
-            }
+        var _this = this;
+        this.$scope.addStudent = function () {
+            alert('public add student is called');
+            _this.setValue();
         };
     };
-    MainCtrl.$inject = ['$scope'];
-    return MainCtrl;
-})();
 
-var Student = (function () {
-    function Student() {
-    }
-    return Student;
+    MainCtrl.prototype.setValue = function () {
+        this.$scope.idNumber = 786;
+    };
+    return MainCtrl;
 })();
 
 mod.controller("MainCtrl", MainCtrl);
