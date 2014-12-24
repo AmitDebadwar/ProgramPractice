@@ -1,0 +1,5 @@
+D:\MyCode\project\Manasa\ManasaGitRepo\trunk\TypeScript\BasicTSWithAngular\BasicTSWithAngular\bin\BasicTSWithAngular.dll
+D:\MyCode\project\Manasa\ManasaGitRepo\trunk\TypeScript\BasicTSWithAngular\BasicTSWithAngular\bin\BasicTSWithAngular.pdb
+D:\MyCode\project\Manasa\ManasaGitRepo\trunk\TypeScript\BasicTSWithAngular\BasicTSWithAngular\obj\Debug\BasicTSWithAngular.csprojResolveAssemblyReference.cache
+D:\MyCode\project\Manasa\ManasaGitRepo\trunk\TypeScript\BasicTSWithAngular\BasicTSWithAngular\obj\Debug\BasicTSWithAngular.dll
+D:\MyCode\project\Manasa\ManasaGitRepo\trunk\TypeScript\BasicTSWithAngular\BasicTSWithAngular\obj\Debug\BasicTSWithAngular.pdb
