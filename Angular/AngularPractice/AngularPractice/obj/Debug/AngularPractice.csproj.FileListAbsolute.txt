@@ -1,0 +1,5 @@
+D:\MyCode\project\Manasa\ManasaGitRepo\trunk\Angular\AngularPractice\AngularPractice\bin\AngularPractice.dll
+D:\MyCode\project\Manasa\ManasaGitRepo\trunk\Angular\AngularPractice\AngularPractice\bin\AngularPractice.pdb
+D:\MyCode\project\Manasa\ManasaGitRepo\trunk\Angular\AngularPractice\AngularPractice\obj\Debug\AngularPractice.csprojResolveAssemblyReference.cache
+D:\MyCode\project\Manasa\ManasaGitRepo\trunk\Angular\AngularPractice\AngularPractice\obj\Debug\AngularPractice.dll
+D:\MyCode\project\Manasa\ManasaGitRepo\trunk\Angular\AngularPractice\AngularPractice\obj\Debug\AngularPractice.pdb
