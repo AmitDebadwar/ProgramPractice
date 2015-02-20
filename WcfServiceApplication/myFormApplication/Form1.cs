@@ -11,6 +11,7 @@ using System.IO;
 using System.Web.Helpers;
 using System.Web.Script.Serialization;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 
 namespace myFormApplication
@@ -28,17 +29,17 @@ namespace myFormApplication
         {
             WebRequest req2 = WebRequest.Create(@"http://pneitsh54453d:1120/Service1.svc/GetAll/2");
             req2.Method = "POST";
-            req2.ContentLength = 0; 
+            req2.ContentLength = 0;
             req2.ContentType = @"application/json; charset=utf-8";
 
             HttpWebResponse response = (HttpWebResponse)req2.GetResponse();
-           
+
             using (StreamReader sr = new StreamReader(response.GetResponseStream()))
             {
                 string jsonResponse = string.Empty;
                 jsonResponse = sr.ReadToEnd();
                 Console.WriteLine(jsonResponse);
-                var decodedJson=Json.Decode(jsonResponse);
+                var decodedJson = Json.Decode(jsonResponse);
                 var obj = _serialize.Deserialize<Product[]>(decodedJson);
             }
 
@@ -71,7 +72,7 @@ namespace myFormApplication
 
         private void button3_Click(object sender, EventArgs e)
         {
-  
+
             WebRequest req2 = WebRequest.Create(@"http://glosbe.com/gapi/translate?from=eng&dest=mar&format=json&phrase=god&pretty=true");
             req2.Method = "POST";
             req2.ContentLength = 0;
@@ -86,11 +87,36 @@ namespace myFormApplication
                 //object[] obj = _serialize.Deserialize<object[]>(decodedJson);
 
 
-                string jsonString = "{\"dateStamp\":\"2010/01/01\", \"Message\": \"hello\" }";
+                string jsonString = "{'name':'amit', 'Message': 'hello' }";
                 dynamic myObject = JsonConvert.DeserializeObject<dynamic>(jsonString);
-                  
-                DateTime dateStamp = Convert.ToDateTime(myObject.dateStamp);
-                string Message = myObject.Message;
+
+
+
+                JavaScriptSerializer j = new JavaScriptSerializer();
+                object a = j.Deserialize(jsonString, typeof(object));
+
+                var dummyObject = new { name = "", Message = "" };
+                var mdk = JsonConvert.DeserializeAnonymousType(jsonString, dummyObject);
+////////////////////////////////////////////////////////////////////////////////////////////
+                var dummy = new
+                {
+                    dest = "",
+                    result = "",
+                    tuc = new[] {
+                    a=new phrase()
+                    
+                    }
+
+                };
+
+                var mdk1 = JsonConvert.DeserializeAnonymousType(jsonResponse, dummy);
+                var m = mdk1.tuc;
+
+              
+
+
+
+               
             }
 
         }
@@ -98,8 +124,16 @@ namespace myFormApplication
         private void button4_Click(object sender, EventArgs e)
         {
             CookieContainer container = new CookieContainer();
-            container.Add(new Cookie("First", "xxx") {  Domain="Abc" });
+            container.Add(new Cookie("First", "xxx") { Domain = "Abc" });
             //container.Add(new Cookie("Second", "yyy") { });
+
+            var c = new Cookie("s", "p")
+            {
+                Domain = "test",
+                Expires = DateTime.Now.AddSeconds(65)
+
+            };
+
 
             var con = container;
         }
@@ -114,4 +148,10 @@ namespace myFormApplication
         public string ProductID { get; set; }
         public string ProductName { get; set; }
     }
+
+    public class phrase
+    {
+        public string text { get; set; }
+    }
+
 }

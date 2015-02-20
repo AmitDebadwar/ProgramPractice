@@ -22,3 +22,4 @@ C:\Amit\OutSide\programPractice\WcfServiceApplication\myFormApplication\bin\Debu
 C:\Amit\OutSide\programPractice\WcfServiceApplication\myFormApplication\bin\Debug\System.Web.WebPages.xml
 C:\Amit\OutSide\programPractice\WcfServiceApplication\myFormApplication\bin\Debug\System.Web.WebPages.Deployment.xml
 C:\Amit\OutSide\programPractice\WcfServiceApplication\myFormApplication\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Amit\OutSide\programPractice\WcfServiceApplication\myFormApplication\obj\x86\Debug\myFormApplication.csprojResolveAssemblyReference.cache
