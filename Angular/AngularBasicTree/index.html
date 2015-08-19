@@ -1,0 +1,57 @@
+<html>
+
+<head>
+    <title>Bracket 1</title>
+    <script language='javascript' type='text/javascript' src="script/angular.js"></script>
+    <script language='javascript' type='text/javascript' src="script/angular-ui-tree.js"></script>
+    
+    
+    <script type="text/javascript" src="app/app.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link href="style/angular-ui-tree.min.css" rel="stylesheet" ></link>
+    <link href="style/demo.css" rel="stylesheet" ></link>
+    
+
+
+
+</head>
+
+<body ng-app='Mod' ng-controller='Ctrl'>
+    SaiRahem {{msg}}
+    <h2 style="color:green; margine-left:300px;">intelliTrack Analytics</h2>
+    <br/>
+    
+    
+    <div ui-tree id="tree-root">
+      <ol ui-tree-nodes ng-model="data">
+        <li ng-repeat="node in data" ui-tree-node ng-include="'nodes_renderer.html'"></li>
+      </ol>
+    </div>
+     
+    
+    <script type="text/ng-template" id="nodes_renderer.html">
+  <div ui-tree-handle class="tree-node tree-node-content">
+    <a class="btn btn-success btn-xs" ng-if="node.nodes && node.nodes.length > 0" data-nodrag ng-click="toggle(this)"><span
+        class="glyphicon"
+        ng-class="{
+          'glyphicon-chevron-right': collapsed,
+          'glyphicon-chevron-down': !collapsed
+        }"></span></a>
+    {{node.title}}
+    <a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="remove(this)"><span
+        class="glyphicon glyphicon-remove"></span></a>
+    <a class="pull-right btn btn-primary btn-xs" data-nodrag ng-click="newSubItem(this)" style="margin-right: 8px;"><span
+        class="glyphicon glyphicon-plus"></span></a>
+  </div>
+  <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
+    <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_renderer.html'">
+    </li>
+  </ol>
+</script>
+    
+</body>
+
+
+</html>
