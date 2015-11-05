@@ -1,0 +1,18 @@
+<html>
+<head>
+    <title>Basic Angular Activation</title>
+    <script type="text/javascript" src="scripts/angular.js"></script>
+    <script type="text/javascript" src="app/controller/MainCtrl.js"></script>
+    <script type="text/javascript" src="scripts/angular-ui-router.js"></script>
+</head>
+<body ng-app="Mod" ng-controller="MainCtrl" style="border:2px solid red;padding:50px;">
+     <h1>Welcome !</h1>
+     <br><a ui-sref="settings">Settings</a>
+    <section ui-view></section>
+    <br>
+    <br>
+    <br>
+
+{{msg}}
+</body>
+</html>
