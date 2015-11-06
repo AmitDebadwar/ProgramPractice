@@ -1,0 +1,12 @@
+{
+  "LOGIN":"Log in",
+  "PROJECT_NAME":"Project Name",
+  "WELCOME_TEXT":"Hello Synechron !",
+  "SCRIPT_INFO":"This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.",
+  "LBL_EMAIL_ADDRESS":"EMAIL ADDRESS",
+  "PLC_EMAIL":"EMAIL",
+  "LBL_PASSWORD":"Password",
+  "PLC_PASSWORD":"Password",
+  "LBL_SELECT_LANG":"Select Language",
+  "LBL_FORGOT_PASSWORD":"forgot password"
+}

@@ -1,0 +1,94 @@
+<html>
+<link>
+<title>Basic Angular Activation</title>
+
+<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="style/style.css"/>
+
+</head>
+<body ng-app="Mod" ng-controller="MainCtrl">
+
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">{{'PROJECT_NAME' | translate}}</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+
+        </div>
+        <!--/.navbar-collapse -->
+    </div>
+</nav>
+
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <span class="col-lg-6"><h1>{{'WELCOME_TEXT'| translate}}</h1></span>
+        </div>
+        <p>{{'SCRIPT_INFO'| translate}}</p>
+
+        <!--<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>-->
+
+    </div>
+
+
+</div>
+
+<section ui-view></section>
+<hr>
+<div class="container">
+    <div class="row">
+        <footer>
+            <p>Synechron</p>
+        </footer>
+    </div>
+</div>
+<!-- /container -->
+
+
+<!--Scripts-->
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+<script type="text/javascript" src="node_modules/angular-ui-router/build/angular-ui-router.min.js"></script>
+
+<script type="text/javascript" src="https://www.google.com/recaptcha/api.js"></script>
+<script type="text/javascript" src="https://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
+
+
+<script type="text/javascript" src="node_modules/angular-translate/dist/angular-translate.min.js"></script>
+<script type="text/javascript" src="node_modules/angular-translate/dist/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
+<script type="text/javascript" src="node_modules/angular-dynamic-locale/dist/tmhDynamicLocale.js"></script>
+<script type="text/javascript" src="node_modules/angular-translate/dist/angular-translate-storage-local/angular-translate-storage-local.min.js"></script>
+<script type="text/javascript" src="node_modules/angular-cookies/angular-cookies.min.js"></script>
+<script type="text/javascript" src="node_modules/angular-translate/dist/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
+
+
+
+
+
+
+<!--Controllers-->
+    <script type="text/javascript" src="app/controller/MainCtrl.js"></script>
+    <script type="text/javascript" src="app/config/angularConfig.js"></script>
+    <script type="text/javascript" src="app/controller/loginCtrl.js"></script>
+<!--/Controllers-->
+
+
+ <!--/Scripts-->
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "LOGIN":"Iniciar sesión",
+  "PROJECT_NAME":"Nombre del proyecto",
+  "WELCOME_TEXT":"Hola Synechron !",
+  "SCRIPT_INFO":"Esta es una plantilla para una comercialización simple o sitio web informativo . Incluye una gran llamada llamado jumbotron y tres piezas de soporte de contenido. Úselo como punto de partida para crear algo más único.",
+  "LBL_EMAIL_ADDRESS":"DIRECCIÓN DE CORREO ELECTRÓNICO",
+  "PLC_EMAIL":"CORREO ELECTRÓNICO",
+  "LBL_PASSWORD":"Clave",
+  "PLC_PASSWORD":"Clave",
+  "LBL_SELECT_LANG":"Seleccione idioma",
+  "LBL_FORGOT_PASSWORD":"Se te olvidó tu contraseña"
+}

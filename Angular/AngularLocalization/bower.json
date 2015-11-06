@@ -1,0 +1,29 @@
+{
+  "name": "AngularJS Localization",
+  "version": "0.0.1",
+  "description": "--",
+  "main": "index.html",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "localization"
+  ],
+  "authors": [
+    "Amit Debadwar"
+  ],
+  "license": "none",
+  "homepage": "amit.debadwar@synechron.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular.js"
+
+
+  }
+}
