@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>VividCortex reCaptcha Directive Example</title>
+
+    <!-- Bootstrap is NOT required, it's just here to make the demo look better -->
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <!-- Include AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.js"></script>
+
+    <!-- Include the JS ReCaptcha API -->
+    <script src="https://www.google.com/recaptcha/api.js?render=explicit&onload=vcRecaptchaApiLoaded&fallback=false"
+            async defer></script>
+
+    <!-- define your app and make it depend on vcRecaptcha module -->
+    <script>
+        var app = angular.module('testApp', []);
+
+        app.controller('testCtrl', function ($scope) {
+
+        });
+
+
+        app.directive('pasteDirective', function () {
+            return {
+                scope: {
+                    WirelessNumber: "="
+                },
+
+                link: function (scope, element, attr, ctrl) {
+
+                    element.on('paste', function (e) {
+                        var pastedData;
+
+                           //for IE
+                        if (window.clipboardData && window.clipboardData.getData("Text"))
+                            pastedData = formatNumber(window.clipboardData.getData("Text"));
+
+                        //for firefox
+                        if (e && e.originalEvent && e.originalEvent.clipboardData && e.originalEvent.clipboardData.getData('text'))
+                            pastedData = formatNumber(e.originalEvent.clipboardData.getData('text'));
+
+                        scope.$apply(function () {
+                            scope.$parent.WirelessNumber = formatNumber(pastedData);
+                        });
+                         e.preventDefault();
+                    });
+
+                    var formatNumber = function (str) {
+                        return str.replace(/[^0-9]/g, "");
+                    }
+                }
+            };
+        });
+    </script>
+
+</head>
+<body>
+<div class="container" ng-app="testApp" ng-controller="testCtrl">
+    <input type="text" paste-directive ng-model="WirelessNumber"></input> {{WirelessNumber}}
+</div>
+</body>
+</html>

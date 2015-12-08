@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>VividCortex reCaptcha Directive Example</title>
+
+    <!-- Bootstrap is NOT required, it's just here to make the demo look better -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+    <!-- Include AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.js"></script>
+
+    <!-- Include the JS ReCaptcha API -->
+    <script src="https://www.google.com/recaptcha/api.js?render=explicit&onload=vcRecaptchaApiLoaded&fallback=true" async
+            defer></script>
+    <script>
+        var app = angular.module('testApp', []);
+
+        app.controller('testCtrl', function ($scope) {
+            console.log("this is your app's controller");
+
+            $scope.model = {
+                key: '6LdClBITAAAAAKrJVCeiHo1Ma8O0fawtjdrS0UoF'
+            };
+
+            $scope.gMyRender = function () {
+
+
+                jQuery('#cont').append('<div id="myCaptcha"></div>');
+
+              var gCaptchaId=  grecaptcha.render('myCaptcha', {
+                    'sitekey': '6LdClBITAAAAAKrJVCeiHo1Ma8O0fawtjdrS0UoF',
+                    'callback': function (response) {
+                        console.log(response);
+                    },
+                  'expired-callback': function(){
+                      alert('captcha expired');
+                  }
+
+              });
+
+                console.log(gCaptchaId);
+            }
+
+
+            $("#g-recaptcha-response").bind('paste', function (e){
+                alert('pasting');
+            });
+
+
+            $scope.myDelete = function () {
+                if (jQuery('#myCaptcha'))
+                    jQuery('#myCaptcha').remove();
+            };
+
+
+            $scope.submit = function () {
+                var valid;
+
+                /**
+                 * SERVER SIDE VALIDATION
+                 *
+                 * You need to implement your server side validation here.
+                 * Send the reCaptcha response to the server and use some of the server side APIs to validate it
+                 * See https://developers.google.com/recaptcha/docs/verify
+                 */
+                console.log('sending the captcha response to the server', $scope.response);
+
+                if (valid) {
+                    console.log('Success');
+                } else {
+
+                    console.log('Failed validation');
+        }
+
+
+            };
+        });
+    </script>
+
+</head>
+<body>
+<div class="container" ng-app="testApp" ng-controller="testCtrl">
+
+    <h1>VividCortex reCaptcha Directive Example</h1>
+
+    <p>
+        This the <b>recommended</b> way of using the reCaptcha directive.
+        Instead of using ng-model to get the challenge and response, you use a service.
+        This way it's safer because we don't depend on a timeout hack that we are currently using in the directive.
+    </p>
+
+    <!-- Call a method in the scope of your controller to handle data submit -->
+    <form ng-submit="submit()">
+        <div id="cont">
+            <div id="myCaptcha"></div>
+        </div>
+
+
+        <button class="btn" ng-click="gMyRender()">GMyRender</button>
+        <button class="btn" ng-click="myDelete()">Delete</button>
+
+    </form>
+
+</div>
+</body>
+</html>
