@@ -10,7 +10,7 @@
         var app = angular.module('testApp', []);
 
         app.controller('testCtrl', function ($scope) {
-            console.log("this is your app's controller");
+            console.log("Your 1PageApp is up !!!");
         });
 
 
@@ -19,71 +19,69 @@
                 restrict: 'A',
                 link: function (scope, element, attrs, ctrl) {
 
-                    element.on('keypress keydown paste ', function (e) {
-                        if (e.type == 'keydown')
-                            return keyDownHandler(e);
-
-
+                    element.on('keydown', function (e) {
+                        if (e.type === 'keydown')
+                            return keydownHandler(e);
                     });
 
-                    function keyDownHandler(e) {
-                        console.log("KeyDown");
-                        console.log(e);
+                    function keydownHandler(e) {
 
                         var keypressed = e.which || e.keyCode;
 
+                        /*
+                         * This line should be called first
+                         * to allow characters in element
+                         * */
+                        return attrs.allowChars.indexOf(e.key)== -1 ? false:true;
 
-                        if (!e.shiftKey && !e.altKey && !e.ctrlKey) {
+
+                        //copy paste cut
+                        if (e.ctrlKey) {
+                            if (keypressed === 67) {
+                                return true;
+                            }
+                            else if (keypressed === 86) {
+                                return true;
+                            }
+                            else if (keypressed === 88) {
+                                return true;
+                            }
+
+                        }
+
+                        else if (!e.shiftKey && !e.altKey && !e.ctrlKey) {
 
                             if ((keypressed >= 48 && keypressed <= 57) // digits
                                     || keypressed === 8 // backspace
+                                    || keypressed === 9 // tab
                                     || keypressed === 27 // escape
                                     || keypressed === 46 // delete
                                     || (keypressed >= 35 && keypressed <= 40)
-                                    || (keypressed >= 96 && keypressed <= 105)){ // end, home, arrows    // TODO: shift, ctrl, alt, caps-lock, etc
+                                    || (keypressed >= 96 && keypressed <= 105)) {
 
                                 return true;
                             }
                         }
-                        else if(e.ctrlKey) {
-                            if (keypressed==67) //copy
-                                return true;
-                            if (keypressed==86) //paste
-                                return true;
-                            if (keypressed==90) //cut
-                                return true;
-                        }
-                        else if(e.shiftKey){
-                            if (keypressed==36) //home
-                                return true;
 
+                        else if (e.shiftKey && (keypressed == 36 || keypressed == 35 || keypressed == 37 || keypressed == 39)) {
+                            return true;
                         }
 
                         else {
                             return false;
                         }
-
                         e.preventDefault();
                     }
-
-                    function keyPressHandler(e) {
-                        console.log('KeyPress');
-                        console.log(e);
-                        e.preventDefault();
-                    }
-
-
-                }}
+                }
+            }
         });
-
-
     </script>
 
 </head>
 <body>
 <div class="container" ng-app="testApp" ng-controller="testCtrl">
 
-    <input type="text" smb-phone style="border:2px solid orange;" ng-model="WirelessNumber"/>
+    <input type="text" smb-phone style="border:2px solid orange;" ng-model="WirelessNumber" allow-chars="-,;"/>
 </div>
 </body>
 </html>
