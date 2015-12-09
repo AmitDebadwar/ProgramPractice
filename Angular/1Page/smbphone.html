@@ -22,7 +22,7 @@
                     WirelessNumber: '=?'
                 },
                 link: function (scope, element, attrs,ctrl) {
-                    element.on('keyup paste keypress', function (e, element,attrs) {
+                    element.on('keyup paste keypress', function (e) {
 
                         if (e.type == 'keypress')
                             return keyPressHandler(e);
@@ -64,11 +64,11 @@
                     //basic methods
 
                     var containsSpecitalChar = function (testString) {
-                        return !/[@\(\)~`!_#$%\^&*+=\-\[\]\\';,/{}|\\":.<>\?\!�]/ig.test(testString);
+                        return !/[@\(\)~`!_#$%\^&*+=\-\[\]\\';,]/ig.test(testString);
                     };
 
                     var replaceAllSpecialChar=function(testString){
-                        return testString.replace(/[@\(\)~`!_#$%\^&*+=\-\[\]\\';,/{}|\\":.<>\?\!�]/ig,"");
+                        return testString.replace(/[@\(\)~`!_#$%\^&*+=\-\[\]\\';,]/ig,"");
                     };
 
                     var containsAlphabet=function(testString){

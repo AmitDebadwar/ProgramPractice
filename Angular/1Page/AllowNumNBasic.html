@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>VividCortex reCaptcha Directive Example</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.js"></script>
+
+    <script>
+        var app = angular.module('testApp', []);
+
+        app.controller('testCtrl', function ($scope) {
+            console.log("this is your app's controller");
+        });
+
+
+        angular.module('testApp').directive('smbPhone', function () {
+            return {
+                restrict: 'A',
+                link: function (scope, element, attrs, ctrl) {
+
+                    element.on('keypress keydown paste ', function (e) {
+                        if (e.type == 'keydown')
+                            return keyDownHandler(e);
+
+
+                    });
+
+                    function keyDownHandler(e) {
+                        console.log("KeyDown");
+                        console.log(e);
+
+                        var keypressed = e.which || e.keyCode;
+
+
+                        if (!e.shiftKey && !e.altKey && !e.ctrlKey) {
+
+                            if ((keypressed >= 48 && keypressed <= 57) // digits
+                                    || keypressed === 8 // backspace
+                                    || keypressed === 27 // escape
+                                    || keypressed === 46 // delete
+                                    || (keypressed >= 35 && keypressed <= 40)
+                                    || (keypressed >= 96 && keypressed <= 105)){ // end, home, arrows    // TODO: shift, ctrl, alt, caps-lock, etc
+
+                                return true;
+                            }
+                        }
+                        else if(e.ctrlKey) {
+                            if (keypressed==67) //copy
+                                return true;
+                            if (keypressed==86) //paste
+                                return true;
+                            if (keypressed==90) //cut
+                                return true;
+                        }
+                        else if(e.shiftKey){
+                            if (keypressed==36) //home
+                                return true;
+
+                        }
+
+                        else {
+                            return false;
+                        }
+
+                        e.preventDefault();
+                    }
+
+                    function keyPressHandler(e) {
+                        console.log('KeyPress');
+                        console.log(e);
+                        e.preventDefault();
+                    }
+
+
+                }}
+        });
+
+
+    </script>
+
+</head>
+<body>
+<div class="container" ng-app="testApp" ng-controller="testCtrl">
+
+    <input type="text" smb-phone style="border:2px solid orange;" ng-model="WirelessNumber"/>
+</div>
+</body>
+</html>
