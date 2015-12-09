@@ -11,56 +11,71 @@
 
         app.controller('testCtrl', function ($scope) {
             console.log("this is your app's controller");
-
-
-        });
+         });
 
 
         angular.module('testApp').directive('smbPhone', function ($timeout) {
             return {
                 restrict: "A",
                 replace: false,
-                scope:{
-                    WirelessNumber:'='
+                scope: {
+                    WirelessNumber: '=?'
                 },
-                link: function (scope, element, attrs) {
-                    element.on('keypress paste', function (e, element) {
+                link: function (scope, element, attrs,ctrl) {
+                    element.on('keyup paste keypress', function (e, element,attrs) {
 
-                        console.log(e);
-//                        if (e.type == 'keypress')
-//                            return keyPressHandler(e);
-                           if (e.type=='paste')
+                        if (e.type == 'keypress')
+                            return keyPressHandler(e);
+
+                        //if (e.type == 'keyup')
+                            //keyupHandler(e);
+
+                        if (e.type == 'paste')
                             pasteHandler(e);
 
                     });
 
-
+                    //Handlers
                     function pasteHandler(e) {
 
+                        // common browser -> e.originalEvent.clipboardData
+                        // uncommon browser -> window.clipboardData
+                        var clipboardData = e.clipboardData || e.originalEvent.clipboardData || window.clipboardData;
+                        var pastedData = clipboardData.getData('text');
+                        var transformedInput=replaceAllSpecialChar(pastedData);
 
-
-                        scope.$apply(function(){
-                            scope.$parent.WirelessNumber= $(element).val().replace(/[^a-z\d\s]+/gi, "");
-
+                        scope.$apply(function() {
+                             scope.$parent.WirelessNumber =transformedInput;
                         });
 
+                        e.preventDefault();
+
                     }
 
+                    function keyupHandler(e) {
+
+
+                    }
 
                     function keyPressHandler(e) {
-                        var key = [e.keyCode || e.which];
-                        var str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz~`._!@#$%^&*()+=-[]\';,/{}|\":<>?";
-                        var chrCode = String.fromCharCode(e.charCode);
-
-                        if (str.indexOf(chrCode) !== -1) {
-                            return false;
-                        }
-
+                         return containsSpecitalChar(e.key);
                     }
+
+                    //basic methods
+
+                    var containsSpecitalChar = function (testString) {
+                        return !/[~`!_#$%\^&*+=\-\[\]\\';,/{}|\\":.<>\?\!¥]/ig.test(testString);
+                    };
+
+                    var replaceAllSpecialChar=function(testString){
+                        return testString.replace(/[~`!_#$%\^&*+=\-\[\]\\';,/{}|\\":.<>\?\!¥]/ig,"");
+                    };
 
                 }
             };
         });
+
+
     </script>
 
 </head>
