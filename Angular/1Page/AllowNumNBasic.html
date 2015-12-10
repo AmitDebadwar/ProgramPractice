@@ -24,6 +24,7 @@
                             return keydownHandler(e);
                     });
 
+
                     function keydownHandler(e) {
 
                         var keypressed = e.which || e.keyCode;
@@ -32,18 +33,28 @@
                          * This line should be called first
                          * to allow characters in element
                          * */
-                        return attrs.allowChars.indexOf(e.key)== -1 ? false:true;
-
+                        //return attrs.allowChars.indexOf(e.key)== -1 ? false:true;
 
                         //copy paste cut
                         if (e.ctrlKey) {
                             if (keypressed === 67) {
                                 return true;
                             }
+
                             else if (keypressed === 86) {
+                                var pasetedData;
+
+                                setTimeout(function () {
+                                    pasetedData = makeOnlyNumber(e.target.value);
+                                    e.target.value = pasetedData;
+                                }, 100);
+
                                 return true;
                             }
                             else if (keypressed === 88) {
+                                return true;
+                            }
+                            else if (keypressed === 65) {
                                 return true;
                             }
 
@@ -63,7 +74,7 @@
                             }
                         }
 
-                        else if (e.shiftKey && (keypressed == 36 || keypressed == 35 || keypressed == 37 || keypressed == 39)) {
+                        else if (e.shiftKey && (keypressed >= 35 && keypressed <= 40)) {
                             return true;
                         }
 
@@ -72,8 +83,20 @@
                         }
                         e.preventDefault();
                     }
+
+                    element.on('paste', function (e) {
+
+                        console.log('pasting');
+                        setTimeout(function () {
+                            e.target.value = makeOnlyNumber($(element).val());
+                        }, 100);
+                    });
+
+                    var makeOnlyNumber = function (str) {
+                        return str.replace(/[^0-9]/g, "");
+                    }
                 }
-            }
+            };
         });
     </script>
 
@@ -81,7 +104,8 @@
 <body>
 <div class="container" ng-app="testApp" ng-controller="testCtrl">
 
-    <input type="text" smb-phone style="border:2px solid orange;" ng-model="WirelessNumber" allow-chars="-,;"/>
+    <input type="text" smb-phone style="border:2px solid orange;" ng-model="WirelessNumber" allow-chars=""
+           id="WirelessNumber"/>
 </div>
 </body>
 </html>
