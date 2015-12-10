@@ -11,7 +11,7 @@
 
         app.controller('testCtrl', function ($scope) {
             console.log("this is your app's controller");
-         });
+        });
 
 
         angular.module('testApp').directive('smbPhone', function ($timeout) {
@@ -21,17 +21,18 @@
                 scope: {
                     WirelessNumber: '=?'
                 },
-                link: function (scope, element, attrs,ctrl) {
-                    element.on('keyup paste keypress', function (e) {
+                link: function (scope, element, attrs, ctrl) {
+                    element.on('keydown paste', function (e) {
 
                         if (e.type == 'keypress')
                             return keyPressHandler(e);
 
-                        //if (e.type == 'keyup')
-                            //keyupHandler(e);
-
-                        if (e.type == 'paste')
+                        else if (e.type == 'paste')
                             pasteHandler(e);
+
+                        else if (e.type == 'mousedown')
+                            mousedownHandler(e);
+
 
                     });
 
@@ -42,23 +43,28 @@
                         // uncommon browser -> window.clipboardData
                         var clipboardData = e.clipboardData || e.originalEvent.clipboardData || window.clipboardData;
                         var pastedData = clipboardData.getData('text');
-                        var transformedInput=replaceAllSpecialChar(pastedData);
+                        var transformedInput = replaceAllSpecialChar(pastedData);
 
-                        scope.$apply(function() {
-                             scope.$parent.WirelessNumber =transformedInput;
+                        scope.$apply(function () {
+                            scope.$parent.WirelessNumber = transformedInput;
                         });
 
                         e.preventDefault();
 
                     }
 
-                    function keyupHandler(e) {
+                    function mousedownHandler(e) {
+                        console.log('mouse down');
+                        console.log(e);
+                    }
 
+                    function pasteHandler(e) {
 
+                        console.log('in paste handler');
                     }
 
                     function keyPressHandler(e) {
-                         return (containsSpecitalChar(e.key) && containsAlphabet(e.key));
+                        return (containsSpecitalChar(e.key) && containsAlphabet(e.key));
                     }
 
                     //basic methods
@@ -67,14 +73,33 @@
                         return !/[@\(\)~`!_#$%\^&*+=\-\[\]\\';,]/ig.test(testString);
                     };
 
-                    var replaceAllSpecialChar=function(testString){
-                        return testString.replace(/[@\(\)~`!_#$%\^&*+=\-\[\]\\';,]/ig,"");
+                    var replaceAllSpecialChar = function (testString) {
+                        return testString.replace(/[@\(\)~`!_#$%\^&*+=\-\[\]\\';,]/ig, "");
                     };
 
-                    var containsAlphabet=function(testString){
+                    var containsAlphabet = function (testString) {
                         console.log(!/[a-zA-Z]/ig.test(testString));
                         return !/[a-zA-Z]/ig.test(testString);
                     };
+
+
+                    element.mousedown(function(event) {
+                        console.log('in mouse down');
+                        switch (event.which) {
+                            case 1:
+                                alert('Left Mouse button pressed.');
+                                break;
+                            case 2:
+                                alert('Middle Mouse button pressed.');
+                                break;
+                            case 3:
+                                alert('Right Mouse button pressed.');
+                                break;
+                            default:
+                                alert('You have a strange Mouse!');
+                        }
+                    });
+
 
 
                 }
