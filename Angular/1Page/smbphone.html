@@ -11,6 +11,17 @@
 
         app.controller('testCtrl', function ($scope) {
             console.log("this is your app's controller");
+
+
+
+            $scope.test=function(){
+               // alert($('.recaptcha-checkbox-checkmark').length);
+
+                alert($("textarea[id*='g-recaptcha-response']").val());
+
+
+            };
+
         });
 
 
@@ -114,6 +125,7 @@
 <div class="container" ng-app="testApp" ng-controller="testCtrl">
 
     <input type="text" smb-phone style="border:2px solid orange;" ng-model="WirelessNumber"/>
+    <textarea name="g-recaptcha-response" id="g-recaptcha-response_786"></textarea><input type="button" ng-click="test()"/>
 </div>
 </body>
 </html>

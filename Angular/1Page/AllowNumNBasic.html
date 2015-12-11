@@ -11,6 +11,11 @@
 
         app.controller('testCtrl', function ($scope) {
             console.log("Your 1PageApp is up !!!");
+
+            $scope.test=function(){
+                alert($('.recaptcha-checkbox-checkmark').length);
+            };
+
         });
 
 
@@ -106,6 +111,9 @@
 
     <input type="text" smb-phone style="border:2px solid orange;" ng-model="WirelessNumber" allow-chars=""
            id="WirelessNumber"/>
+
+
+    <div class="recaptcha-checkbox-checkmark"></div>
 </div>
 </body>
 </html>
