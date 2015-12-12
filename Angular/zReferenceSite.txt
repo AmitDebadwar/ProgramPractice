@@ -1,0 +1,2 @@
+1) Angular js Directive (nice site)
+https://gist.github.com/CMCDragonkai/6282750
