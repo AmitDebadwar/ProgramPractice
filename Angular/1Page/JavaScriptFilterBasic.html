@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>VividCortex reCaptcha Directive Example</title>
+
+    <!-- Bootstrap is NOT required, it's just here to make the demo look better -->
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <!-- Include AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.js"></script>
+    <!-- define your app and make it depend on vcRecaptcha module -->
+    <script>
+        var app = angular.module('testApp', []);
+
+        var app = angular.module('testApp').filter('smbMDNFormat', function () {
+
+            return function (value) {
+
+                var part1 = value.slice(0, 3);
+                var part2 = value.slice(3, 6);
+                var part3 = value.slice(6, 10);
+                //return value;
+                return part1 + "-" + part2 + "-" + part3;
+            };
+        });
+
+
+        app.controller('testCtrl', function ($scope, $timeout) {
+
+            var activeMdns = ["1111111111", "2222222222", "3333333333"];
+            var completedMDNs = ["4444444444", "5555555555"];
+
+            var subscribers = [
+                {"mobileNumber": "1111111111", "firstName": "Amit", "lastName": "Debadwar"},
+                {"mobileNumber": "2222222222", "firstName": "surya", "lastName": "Navuru"},
+                {"mobileNumber": "3333333333", "firstName": "ankush", "lastName": "kobragade"},
+                {"mobileNumber": "4444444444", "firstName": "sruthi", "lastName": "vijayan"},
+                {"mobileNumber": "5555555555", "firstName": "Disha", "lastName": "Deviaya"},
+                {"mobileNumber": "8888888888", "firstName": "just", "lastName": "Dial"},
+                {"mobileNumber": "9999999999", "firstName": "ola", "lastName": "cabs"}
+            ];
+
+
+            $scope.interSectMe = function () {
+
+
+                function intersection(source, target, claimStatus) {
+                    return source.filter(function (item) {
+                        item.claimStatus = claimStatus;
+                        return target.indexOf(item.mobileNumber) > -1
+                    });
+                }
+
+                var active = intersection(subscribers, activeMdns, 'Active');
+                console.log(active);
+
+                var completed = intersection(subscribers, completedMDNs, 'Completed');
+                console.log(completed);
+
+                var subAll = active.concat(completed);
+                //console.log(subAll);
+
+
+                var noStatusLines = subscribers.filter(function (obj) {
+
+                    return !subAll.some(function (obj2) {
+                        // obj2.claimStatus = "";
+                        return obj.mobileNumber == obj2.mobileNumber;
+                    });
+                });
+
+                $scope.lines = subAll.concat(noStatusLines);
+
+                //console.log($scope.lines);
+
+            };
+
+            $scope.interSectMe();
+        });
+
+    </script>
+
+</head>
+<body>
+<div class="container" ng-app="testApp" ng-controller="testCtrl">
+
+    <h1>Dashboard page SMB</h1>
+
+    <div id="cont">
+        <!--<input type="button" ng-click="interSectMe()"/>-->
+    </div>
+    <br>
+    <br>
+    <br>
+    <input type="text" ng-model="searchLines" style="width:260px;"/>
+    <br>
+    <br>
+    <table cellpadding="15" cellspacing="15" width="300">
+        <thead></thead>
+        <tbody>
+        <tr ng-repeat="line in lines | filter: searchLines">
+            <td>
+                <a href="#"> {{line.firstName}} {{line.lastName}}</a>
+            </td>
+            <td>
+                <a href="#"> {{line.mobileNumber | smbMDNFormat}}</a>
+            </td>
+
+            <td>
+                <a href="#"> {{line.claimStatus}}</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+</div>
+</body>
+</html>
