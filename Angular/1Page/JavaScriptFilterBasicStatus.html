@@ -12,11 +12,54 @@
     <script>
         var app = angular.module('testApp', []);
 
-        var app = angular.module('testApp').filter('smbMDNFormat', function () {
+        app = angular.module('testApp').filter('smbMDNFormat', function () {
             return function (value) {
                 return value.slice(0, 3) + "-" + value.slice(3, 6) + "-" + value.slice(6, 10);
             };
         });
+
+        app.directive('placeholder', function ($timeout) {
+            var i = document.createElement('input');
+            if ('placeholder' in i) {
+                return {}
+            }
+            return {
+                link: function (scope, elm, attrs) {
+                    if (attrs.type === 'password') {
+                        return;
+                    }
+                    $timeout(function () {
+                        elm.val(attrs.placeholder);
+                        elm.bind('focus', function () {
+                            if (elm.val() == attrs.placeholder) {
+                                elm.val('');
+                            }
+                        }).bind('blur', function () {
+                            if (elm.val() == '') {
+                                elm.val(attrs.placeholder);
+                            }
+                        });
+
+                        elm.bind('change',function(){
+                            console.log('change');
+                            elm.val();
+                            if (elm.val() == '') {
+                                elm.val(attrs.placeholder).trigger('input');
+                            }
+                            scope.$apply(function(){
+                                scope.linePlaceHolder="ram";
+                                console.log(attrs.placeholder);
+                            });
+
+                            scope.$apply();
+                        });
+
+
+                    });
+                }
+            }
+        });
+
 
         app.controller('testCtrl', function ($scope, $timeout) {
 
@@ -77,7 +120,7 @@
 
                 $scope.clearLines = function () {
                     $scope.searchLines = "";
-                    if (!$scope.searchLines)
+                    if ($scope.searchLines)
                         $scope.linePlaceHolder = "Search by Name/MDN/Claim status";
                 };
 
