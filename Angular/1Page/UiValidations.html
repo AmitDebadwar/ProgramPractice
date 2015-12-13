@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>VividCortex reCaptcha Directive Example</title>
+
+
+    <!--<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">-->
+    <script src="lib/JqueryJS.js"></script>
+    <script src="lib/angularJS.js"></script>
+
+    <script>
+        var app = angular.module('testApp', []);
+
+        app.controller('testCtrl', function ($scope) {
+
+        });
+
+
+        app.directive('uiValidation', function ($filter) {
+            return {
+                restrict: 'A',
+                link: function (scope, element, attr, ctrl) {
+
+                    //Initialization
+                    var valObj = scope.$eval(attr.validations);
+                    var errorElement = angular.element($(element).next());
+                    errorElement.addClass('err_hid');
+
+
+                    //Basic events
+                    element.on('blur', function (e) {
+                        uiValidationHandler(e);
+                    });
+
+                    element.on('keydown', function (e) {
+
+                        uiValidationHandler(e);
+                    });
+                    element.on('keyup', function (e) {
+                        var keypressed = e.which || e.keyCode;
+
+                        if (keypressed === 8) {
+                            hideError();
+                        }
+
+                        return uiValidationHandler(e);
+                    });
+
+                    element.on('focus', function (e) {
+                        hideError();
+
+                    });
+
+                    element.on('keypress', function (e) {
+                        errorElement.removeClass('err');
+                        errorElement.addClass('err_hid');
+                    });
+
+
+                    function uiValidationHandler(e) {
+                        angular.forEach(valObj, function (value, key) {
+
+                            // 1 minlength
+                            if (value.hasOwnProperty("minLength")) {
+                                if (e.type === value.when) {
+                                    if ($(element).val().length < value.minLength)
+                                        vadlidatorsFactory.minLength(value.minLength, value.message);
+                                }
+                            }
+
+                            // 2 required
+                            if (value.hasOwnProperty("required")) {
+                                if (e.type === value.when) {
+                                    if ($(element).val().length == 0 || $(element).val() === "")
+                                        vadlidatorsFactory.requiredFieldValidator(value.message);
+                                }
+                            }
+
+                            //change
+                            if (value.hasOwnProperty("spaceNotAllowed")) {
+                                if (e.type === value.when) {
+                                    if ($(element).val().indexOf(" ") > -1)
+                                        vadlidatorsFactory.spaceNotAllowed(value.message);
+                                }
+                            }
+                        });
+                    };
+
+
+                    //Helper functions
+                    var showError = function () {
+                        errorElement.removeClass('err_hid');
+                        errorElement.addClass('err');
+                    }
+
+                    var hideError = function () {
+                        errorElement.removeClass('err');
+                        errorElement.addClass('err_hid');
+                    };
+
+
+                    var vadlidatorsFactory = {
+                        requiredFieldValidator: function (msg) {
+                            showError();
+                            errorElement.text(msg);
+                        },
+                        minLength: function (length, msg) {
+                            showError();
+                            errorElement.text(msg + length);
+                        },
+                        spaceNotAllowed: function (msg) {
+                            showError();
+                            errorElement.text(msg);
+                        }
+                    };
+
+                    var priorities = {
+                            required: 1,
+                            minLength: 2
+
+                    };
+
+
+                }//link function
+            }
+        });
+
+    </script>
+    <style>
+
+        td {
+            padding: 10px;
+        }
+
+        th {
+            vertical-align: text-bottom;
+            padding: 10px;
+        }
+
+        select {
+            width: 275px;
+            height: 23px;
+        }
+
+        label {
+            padding: 0px 5px 0px 5px;
+            margin-right: 15px;
+        }
+
+        input[type="checkbox"] {
+
+        }
+
+        input[type="text"] {
+            width: 275px;
+        }
+
+        .button-enabled {
+            padding: 0px;
+            margin: 20px 80px 80px 20px;
+            width: 170px;
+            height: 45px;
+            background-color: orangered;
+            border: none;
+            box-shadow: orange;
+            border-radius: 10%;
+        }
+
+        .button-disabled {
+            background-color: aliceblue;
+            padding: 0px;
+            margin: 20px 80px 80px 20px;
+            width: 170px;
+            height: 45px;
+            border: none;
+            box-shadow: orange;
+            border-radius: 10%;
+        }
+
+        span.err {
+            color: red;
+            font-size: 12px;
+            display: block;
+            margin: 4px;
+        }
+
+        span.err_hid {
+            visibility: hidden;
+        }
+
+        table {
+            padding: 10px;
+            border-spacing: 10px;
+        }
+
+
+    </style>
+
+</head>
+<body>
+<div class="container" ng-app="testApp" ng-controller="testCtrl">
+
+    <h1>Ui Validation Directive</h1>
+
+    <form novalidate="">
+        <table border="0">
+            <tbody>
+            <tr>
+                <th>Enter Full Name:</th>
+                <td>
+                    <input type="text" placeholder="e.g. APJ Abdul Kalam Sir" ui-validation
+                           validations="{{[
+
+                        {'spaceNotAllowed':'true','message':'No spaces are allowd','when':'keyup'},
+                        {'required':'true','message':'Strictly select above field','when':'blur'},
+                        {'minLength':'5','message':'Should be above 7 chars.','when':'blur'}
+                         ]}}"
+                            ></input>
+                    <span></span>
+                </td>
+            </tr>
+
+            <tr>
+                <th>Email ID:</th>
+                <td><input type="text" placeholder="e.g. abc@gmail.com"
+                           ui-validation
+                           validations="{{[
+                        {'required':'true','message':'Strictly select above field','when':'blur'}
+                        ]}}"></input>
+                    <span></span>
+                </td>
+
+            </tr>
+
+            <tr>
+                <th>Gender:</th>
+                <td><input type="radio" name="gender" value="M" id="Male"></input><label for="Male">Male</label>
+                    <input type="radio" name="gender" value="F" id="Female"></input><label for="Female">Female</label>
+                </td>
+
+            </tr>
+            <tr>
+                <th>Select Country:</th>
+                <td><select>
+                    <option></option>
+                    <option>India</option>
+                    <option>USA</option>
+                </select></td>
+            </tr>
+
+            <tr>
+                <th>Hobbies:</th>
+                <td>
+                    <input type="checkbox" name="hobbies" id="Reading"></input><label for="Reading">Reading</label>
+                    <input type="checkbox" name="hobbies" id="Cricket"></input><label for="Cricket">Cricket</label>
+                    <input type="checkbox" name="hobbies" id="Singing"></input><label for="Singing">Singing</label>
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>
+                    <input type="button" value="Submit" ng-disabled="true" class="button-disabled"> </input>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+    </form>
+
+</div>
+</body>
+</html>
