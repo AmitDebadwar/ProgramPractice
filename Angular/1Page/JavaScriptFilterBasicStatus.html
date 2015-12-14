@@ -8,9 +8,12 @@
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <!-- Include AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.js"></script>
+    <script src="lib/angularFilter.js"></script>
+
+
     <!-- define your app and make it depend on vcRecaptcha module -->
     <script>
-        var app = angular.module('testApp', []);
+        var app = angular.module('testApp', ['a8m.search-field','a8m.unique']);
 
         app = angular.module('testApp').filter('smbMDNFormat', function () {
             return function (value) {
@@ -64,18 +67,19 @@
         app.controller('testCtrl', function ($scope, $timeout) {
 
             var activeMdns =["1111111111", "2222222222", "3333333333"];
-            var completedMDNs = ["4444444444", "5555555555"];
+            var completedMDNs = ["1111111111","4444444444", "5555555555"];
 
             var subscribers = [
-                {"mobileNumber": "1111111111", "firstName": "Amit", "lastName": "Debadwar"},
-                {"mobileNumber": "2222222222", "firstName": "surya", "lastName": "Navuru"},
-                {"mobileNumber": "3333333333", "firstName": "ankush", "lastName": "kobragade"},
+                {"mobileNumber": "1111111111", "firstName": "Amit", "lastName": "Debadwar","status":"Active claims"},
+                {"mobileNumber": "2222222222", "firstName": "surya", "lastName": "Navuru","status":"Active claims"},
+                {"mobileNumber": "3333333333", "firstName": "ankush", "lastName": "kobragade","status":"Active claims"},
 
-                {"mobileNumber": "4444444444", "firstName": "sruthi", "lastName": "vijayan"},
-                {"mobileNumber": "5555555555", "firstName": "Disha", "lastName": "Deviaya"},
+                {"mobileNumber": "1111111111", "firstName": "Amit", "lastName": "Debadwar","status":"Complete claims"},
+                {"mobileNumber": "4444444444", "firstName": "sruthi", "lastName": "vijayan","status":"Complete claims"},
+                {"mobileNumber": "5555555555", "firstName": "Disha", "lastName": "Deviaya","status":"Complete claims"},
 
-                {"mobileNumber": "8888888888", "firstName": "just", "lastName": "Dial"},
-                {"mobileNumber": "9999999999", "firstName": "ola", "lastName": "cabs"}
+                {"mobileNumber": "8888888888", "firstName": "just", "lastName": "Dial","status":""},
+                {"mobileNumber": "9999999999", "firstName": "ola", "lastName": "cabs","status":""}
             ];
 
             $scope.pageLoad = function () {
@@ -156,7 +160,7 @@
     <table cellpadding="15" cellspacing="15" width="300">
         <thead></thead>
         <tbody>
-        <tr ng-repeat="line in lines | filter: searchLines">
+        <tr ng-repeat="line in lines | filter:searchLines |unique:'mobileNumber'">
             <td>
                 <a href="#"> {{line.firstName}} {{line.lastName}}</a>
             </td>
