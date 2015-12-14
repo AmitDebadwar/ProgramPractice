@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>VividCortex reCaptcha Directive Example</title>
+
+    <!--<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">-->
+    <script src="lib/JqueryJS.js"></script>
+    <script src="lib/angularJS.js"></script>
+    <script src="lib/angularFilter.js"></script>
+
+
+    <!-- define your app and make it depend on vcRecaptcha module -->
+    <script>
+        var app = angular.module('testApp', ['a8m.search-field', 'a8m.unique']);
+
+        app.filter('intersect', function () {
+
+
+            return function (source, target, status) {
+
+                return source.filter(function (n) {
+                    n.status = status;
+                    return target.indexOf(n.mobileNumber) > -1
+                });
+            };
+        });
+
+
+        app.controller('testCtrl', function ($scope, $timeout, $filter) {
+
+            var activeMdns = ["1111111111", "2222222222", "3333333333"];
+            var completedMDNs = ["4444444444", "5555555555", "1111111111"];
+
+            var subscribers = [
+                {"mobileNumber": "1111111111", "firstName": "Amit", "lastName": "Debadwar"},
+                {"mobileNumber": "2222222222", "firstName": "surya", "lastName": "Navuru"},
+                {"mobileNumber": "3333333333", "firstName": "ankush", "lastName": "kobragade"},
+                {"mobileNumber": "4444444444", "firstName": "sruthi", "lastName": "vijayan"},
+                {"mobileNumber": "5555555555", "firstName": "Disha", "lastName": "Deviaya"},
+                {"mobileNumber": "8888888888", "firstName": "just", "lastName": "Dial"},
+                {"mobileNumber": "9999999999", "firstName": "ola", "lastName": "cabs"}
+            ];
+
+
+
+            $scope.result = function () {
+
+
+                var one = [];
+                var two = [];
+
+                angular.copy(subscribers, one);
+                angular.copy(subscribers, two);
+
+                var s = $filter('intersect')(one, activeMdns, 'Active claims');
+                console.log(s);
+                console.log('###################################################################################');
+                var p = $filter('intersect')(two, completedMDNs, '');
+
+                console.log(p);
+
+            };
+
+
+        });
+
+    </script>
+
+</head>
+<body>
+<div class="container" ng-app="testApp" ng-controller="testCtrl">
+    <h1>JavaScript Filter</h1>
+
+    <input type="button" value="Result" ng-click="result()"></input>
+
+</div>
+</body>
+</html>
