@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>VividCortex reCaptcha Directive Example</title>
+    <link href="style/bootstrap.css" rel="stylesheet">
+    <script src="lib/jquery.js"></script>
+    <script src="lib/angular.js"></script>
+    <script src="lib/angular-route.js"></script>
+    <script src="lib/bootstrap.js"></script>
+    <script src="lib/ui-bootstrap-tpls-0.14.3.js"></script>
+
+
+    <script>
+        var app = angular.module('testApp', ['ui.bootstrap', 'ngRoute']);
+
+        angular.module('testApp').controller('testCtrl', function ($scope, $window) {
+
+
+        });
+
+        angular.module('testApp').directive('smbPhone', function () {
+            return{
+                restrict: 'A',
+                link: function ($scope, element, attributes, ctrl) {
+                    var keyDown = false, ctrl = 17, vKey = 86, Vkey = 118;
+
+                    $(document).keydown(function (e) {
+                        if (e.keyCode == ctrl) keyDown = true;
+                    }).keyup(function (e) {
+                        if (e.keyCode == ctrl) keyDown = false;
+                    });
+
+
+                    $(element).on('keypress', function (e) {
+                        if (!e) var e = window.event;
+                        if (e.keyCode > 0 && e.which == 0) return true;
+                        if (e.keyCode)    code = e.keyCode;
+                        else if (e.which) code = e.which;
+                        var character = String.fromCharCode(code);
+                        if (character == '\b' || character == ' ' || character == '\t') return true;
+                        if (keyDown && (code == vKey || code == Vkey)) return (character);
+                        else return (/[0-9]$/.test(character));
+                    }).on('focusout', function (e) {
+                        var $this = $(this);
+                        $this.val($this.val().replace(/[^0-9]/g, ''));
+                    }).on('paste', function (e) {
+                        var $this = $(this);
+                        setTimeout(function () {
+                            $this.val($this.val().replace(/[^0-9]/g, ''));
+                        }, 5);
+                    });
+                }
+            }
+        });
+
+    </script>
+
+
+    <style>
+
+    </style>
+
+</head>
+<body>
+<div ng-app="testApp" ng-controller="testCtrl">
+<input type="text" smb-phone></input>
+
+</div>
+</body>
+</html>
