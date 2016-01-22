@@ -1,0 +1,17 @@
+{
+  "name": "DTS",
+  "version": "0.0.1",
+  "authors": [
+    "AmitDebadwar <amit.debadwar@gmail.com>"
+  ],
+  "description": "Defect Tracking System",
+  "keywords": [
+    "DTS"
+  ],
+  "license": "Global",
+  "homepage": "www.synechron.com",
+  "dependencies": {
+    "angular": "~1.4.8",
+    "bootstrap": "~3.3.6"
+  }
+}
