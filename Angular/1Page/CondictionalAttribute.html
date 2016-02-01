@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>VividCortex reCaptcha Directive Example</title>
+    <link href="style/bootstrap.css" rel="stylesheet">
+    <script src="lib/jquery.js"></script>
+    <script src="lib/angular.js"></script>
+    <script src="lib/angular-route.js"></script>
+    <script src="lib/bootstrap.js"></script>
+    <script src="lib/ui-bootstrap-tpls-0.14.3.js"></script>
+
+
+    <script>
+        var app = angular.module('testApp', ['ui.bootstrap', 'ngRoute']);
+
+        angular.module('testApp').controller('testCtrl', function ($scope,$window) {
+
+
+            $scope.setVal=function(){
+                $scope.isSetAttr=true;
+            };
+        });
+
+    </script>
+
+
+    <style>
+
+    </style>
+
+</head>
+<body>
+<div ng-app="testApp" ng-controller="testCtrl">
+
+    <a href="#" ng-attr-title="{{isSetAttr && 'sai' || 'ram'}}">Amit</a>
+    <br>
+    <br>
+    <input type="button" value="Add" ng-model="isSetAttr" ng-click="setVal()"/>
+
+</div>
+</body>
+</html>
