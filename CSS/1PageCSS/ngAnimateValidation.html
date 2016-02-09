@@ -35,22 +35,48 @@
 
     <style>
 
-        .animate-show.ng-hide-add, .animate-show.ng-hide-remove {
-            transition: all linear 0.7s;
-        }
+        /* Only this much is required from css and html.
+         .animate-show {
+             opacity: 1;
+         }
 
-        .animate-show.ng-hide {
-            line-height: 0;
-            opacity: 0;
-            padding: 10 5px 0px 10px;
-        }
+         .animate-show.ng-hide-add, .animate-show.ng-hide-remove {
+             transition: all linear 0.7s;
+         }
 
-    </style>
+         .animate-show.ng-hide {
+             line-height: 0;
+             opacity: 0;
+
+         }
+
+
+
+<div>
+  <b>Enter name</b><br><input type="text"/>
+  <div class=" animate-show" ng-show="checked" style="color:red;">
+  Please enter only numbers.
+  </div>
+</div>
+
+ */
+
+
+         .animate-show.ng-hide-add, .animate-show.ng-hide-remove {
+             transition: all linear 0.7s;
+         }
+
+         .animate-show.ng-hide {
+             line-height: 0;
+             opacity: 0;
+             padding: 10 5px 0px 10px;
+         }
+
+     </style>
 
 </head>
 <body>
 <div ng-app="testApp" ng-controller="testCtrl">
-
 
 
     <input type="text" style="display: block;"/>
@@ -61,14 +87,15 @@
     <br>
 
 
-
-<input type="button" value="Show" ng-click="show()"/>
+    <input type="button" value="Show" ng-click="show()"/>
     <input type="button" value="Hide" ng-click="hide()"/>
-<div>
-    <img src="images/mdk.gif" width="100" height="100">
-    <h1 style="display: inline; color:red;"><i>AccTrack</i></h1><br>
-    <small class="subHeading">eases accouting !</small>
-</div>
+
+    <div>
+        <img src="images/mdk.gif" width="100" height="100">
+
+        <h1 style="display: inline; color:red;"><i>AccTrack</i></h1><br>
+        <small class="subHeading">eases accouting !</small>
+    </div>
 </div>
 </body>
 </html>
