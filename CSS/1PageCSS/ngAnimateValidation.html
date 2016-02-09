@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CSS Example</title>
+    <link href="lib/node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+
+    <script src="lib/jquery.js"></script>
+    <script src="lib/angular.js"></script>
+    <script src="lib/angular-route.js"></script>
+    <script src="lib/bootstrap.js"></script>
+    <script src="lib/ui-bootstrap-tpls-0.14.3.js"></script>
+    <script src="lib/angular-animate.js"></script>
+
+
+    <script>
+        var app = angular.module('testApp', ['ui.bootstrap', 'ngRoute', 'ngAnimate']);
+
+        angular.module('testApp').controller('testCtrl', function ($scope) {
+
+            $scope.myValue = false;
+
+            $scope.show = function () {
+                $scope.isValid = true;
+            }
+
+
+            $scope.hide = function () {
+                $scope.isValid = false;
+            }
+
+        });
+
+    </script>
+
+
+    <style>
+
+        .animate-show.ng-hide-add, .animate-show.ng-hide-remove {
+            transition: all linear 0.7s;
+        }
+
+        .animate-show.ng-hide {
+            line-height: 0;
+            opacity: 0;
+            padding: 10 5px 0px 10px;
+        }
+
+    </style>
+
+</head>
+<body>
+<div ng-app="testApp" ng-controller="testCtrl">
+
+
+
+    <input type="text" style="display: block;"/>
+    <span style="color:red" ng-show="isValid" class="animate-show">Please enter correct fname</span>
+
+    <br>
+    <br>
+    <br>
+
+
+
+<input type="button" value="Show" ng-click="show()"/>
+    <input type="button" value="Hide" ng-click="hide()"/>
+<div>
+    <img src="images/mdk.gif" width="100" height="100">
+    <h1 style="display: inline; color:red;"><i>AccTrack</i></h1><br>
+    <small class="subHeading">eases accouting !</small>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CSSExample</title>
+    <link href="lib/node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+
+
+
+
+    <script src="lib/jquery.js"></script>
+    <script src="lib/angular.js"></script>
+    <script src="lib/angular-route.js"></script>
+    <script src="lib/bootstrap.js"></script>
+    <script src="lib/ui-bootstrap-tpls-0.14.3.js"></script>
+
+
+    <script>
+        var app = angular.module('testApp', ['ui.bootstrap', 'ngRoute']);
+
+        angular.module('testApp').controller('testCtrl', function ($scope, $window) {
+
+
+        });
+
+    </script>
+
+
+    <style>
+
+        .backup {
+            background: url("images/valid.jpg") no-repeat;
+        }
+
+        .validTextBox:focus  {
+            outline: none;
+        }
+
+        .inValidTextBox:focus  {
+            outline: none;
+        }
+
+        .validTextBox {
+
+            background: url("images/valid.jpg") no-repeat;
+            padding: 5px 20px 5px 5px;
+            height: 20px;
+            width: 100px;
+            background-position: right;
+            border: none;
+
+        }
+
+        .inValidTextBox {
+
+            background: url("images/invalid.jpg") no-repeat;
+            padding: 5px 20px 5px 5px;
+            height: 20px;
+            width: auto;
+            background-position: right;
+            border: none;
+
+        }
+
+        .fakeTextBox {
+            border: 2px solid #CCCCCC;
+            padding: 3px 3px 5px 3px;
+            margin: 10px;
+        }
+
+
+    </style>
+
+</head>
+<body>
+<div ng-app="testApp" ng-controller="testCtrl">
+
+<span class="fakeTextBox">
+    <input type="text" class="validTextBox" value="amit"/>
+</span>
+
+<span class="fakeTextBox">
+    <input type="text" class="inValidTextBox" value="amit"/>
+</span>
+
+
+
+</div>
+</body>
+</html>
