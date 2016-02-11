@@ -1,0 +1,18 @@
+F:\amit\a online shopping\program\my own n tier amit\BAL\bin\Debug\BAL.dll
+F:\amit\a online shopping\program\my own n tier amit\BAL\bin\Debug\BAL.pdb
+F:\amit\a online shopping\program\my own n tier amit\BAL\obj\Debug\ResolveAssemblyReference.cache
+F:\amit\a online shopping\program\my own n tier amit\BAL\obj\Debug\BAL.dll
+F:\amit\a online shopping\program\my own n tier amit\BAL\obj\Debug\BAL.pdb
+F:\amit\a online shopping\program\my own n tier amit\BAL\bin\Debug\Entity.dll
+F:\amit\a online shopping\program\my own n tier amit\BAL\bin\Debug\Entity.pdb
+F:\amit\a online shopping\program\my own n tier amit\BAL\bin\Debug\DAL.dll
+F:\amit\a online shopping\program\my own n tier amit\BAL\bin\Debug\DAL.pdb
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\BAL\bin\Debug\BAL.dll
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\BAL\bin\Debug\BAL.pdb
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\BAL\bin\Debug\DAL.dll
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\BAL\bin\Debug\Entity.dll
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\BAL\bin\Debug\DAL.pdb
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\BAL\bin\Debug\Entity.pdb
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\BAL\obj\Debug\BAL.csprojResolveAssemblyReference.cache
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\BAL\obj\Debug\BAL.dll
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\BAL\obj\Debug\BAL.pdb

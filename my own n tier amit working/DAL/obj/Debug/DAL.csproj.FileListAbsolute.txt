@@ -1,0 +1,14 @@
+F:\amit\a online shopping\program\my own n tier amit\DAL\bin\Debug\DAL.dll
+F:\amit\a online shopping\program\my own n tier amit\DAL\bin\Debug\DAL.pdb
+F:\amit\a online shopping\program\my own n tier amit\DAL\obj\Debug\ResolveAssemblyReference.cache
+F:\amit\a online shopping\program\my own n tier amit\DAL\obj\Debug\DAL.pdb
+F:\amit\a online shopping\program\my own n tier amit\DAL\obj\Debug\DAL.dll
+F:\amit\a online shopping\program\my own n tier amit\DAL\bin\Debug\Entity.dll
+F:\amit\a online shopping\program\my own n tier amit\DAL\bin\Debug\Entity.pdb
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\DAL\bin\Debug\DAL.dll
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\DAL\bin\Debug\DAL.pdb
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\DAL\bin\Debug\Entity.dll
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\DAL\bin\Debug\Entity.pdb
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\DAL\obj\Debug\DAL.dll
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\DAL\obj\Debug\DAL.pdb

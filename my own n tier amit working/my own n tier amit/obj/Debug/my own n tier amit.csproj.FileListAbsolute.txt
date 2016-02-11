@@ -1,0 +1,57 @@
+F:\amit\a online shopping\program\my own n tier amit\my own n tier amit\bin\my own n tier amit.dll
+F:\amit\a online shopping\program\my own n tier amit\my own n tier amit\bin\my own n tier amit.pdb
+F:\amit\a online shopping\program\my own n tier amit\my own n tier amit\bin\AjaxControlToolkit.dll
+F:\amit\a online shopping\program\my own n tier amit\my own n tier amit\bin\AjaxControlToolkit.pdb
+F:\amit\a online shopping\program\my own n tier amit\my own n tier amit\bin\ar\AjaxControlToolkit.resources.dll
+F:\amit\a online shopping\program\my own n tier amit\my own n tier amit\bin\cs\AjaxControlToolkit.resources.dll
+F:\amit\a online shopping\program\my own n tier amit\my own n tier amit\bin\de\AjaxControlToolkit.resources.dll
+F:\amit\a online shopping\program\my own n tier amit\my own n tier amit\bin\es\AjaxControlToolkit.resources.dll
+F:\amit\a online shopping\program\my own n tier amit\my own n tier amit\bin\fr\AjaxControlToolkit.resources.dll
+F:\amit\a online shopping\program\my own n tier amit\my own n tier amit\bin\he\AjaxControlToolkit.resources.dll
+F:\amit\a online shopping\program\my own n tier amit\my own n tier amit\bin\hi\AjaxControlToolkit.resources.dll
+F:\amit\a online shopping\program\my own n tier amit\my own n tier amit\bin\it\AjaxControlToolkit.resources.dll
+F:\amit\a online shopping\program\my own n tier amit\my own n tier amit\bin\ja\AjaxControlToolkit.resources.dll
+F:\amit\a online shopping\program\my own n tier amit\my own n tier amit\bin\ko\AjaxControlToolkit.resources.dll
+F:\amit\a online shopping\program\my own n tier amit\my own n tier amit\bin\nl\AjaxControlToolkit.resources.dll
+F:\amit\a online shopping\program\my own n tier amit\my own n tier amit\bin\pt\AjaxControlToolkit.resources.dll
+F:\amit\a online shopping\program\my own n tier amit\my own n tier amit\bin\ru\AjaxControlToolkit.resources.dll
+F:\amit\a online shopping\program\my own n tier amit\my own n tier amit\bin\tr-TR\AjaxControlToolkit.resources.dll
+F:\amit\a online shopping\program\my own n tier amit\my own n tier amit\bin\zh-CHS\AjaxControlToolkit.resources.dll
+F:\amit\a online shopping\program\my own n tier amit\my own n tier amit\bin\zh-CHT\AjaxControlToolkit.resources.dll
+F:\amit\a online shopping\program\my own n tier amit\my own n tier amit\obj\Debug\ResolveAssemblyReference.cache
+F:\amit\a online shopping\program\my own n tier amit\my own n tier amit\obj\Debug\my own n tier amit.dll
+F:\amit\a online shopping\program\my own n tier amit\my own n tier amit\obj\Debug\my own n tier amit.pdb
+F:\amit\a online shopping\program\my own n tier amit\my own n tier amit\bin\BAL.dll
+F:\amit\a online shopping\program\my own n tier amit\my own n tier amit\bin\Entity.dll
+F:\amit\a online shopping\program\my own n tier amit\my own n tier amit\bin\DAL.dll
+F:\amit\a online shopping\program\my own n tier amit\my own n tier amit\bin\BAL.pdb
+F:\amit\a online shopping\program\my own n tier amit\my own n tier amit\bin\Entity.pdb
+F:\amit\a online shopping\program\my own n tier amit\my own n tier amit\bin\DAL.pdb
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\my own n tier amit\bin\my own n tier amit.dll
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\my own n tier amit\bin\my own n tier amit.pdb
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\my own n tier amit\bin\BAL.dll
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\my own n tier amit\bin\Entity.dll
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\my own n tier amit\bin\DAL.dll
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\my own n tier amit\bin\BAL.pdb
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\my own n tier amit\bin\Entity.pdb
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\my own n tier amit\bin\AjaxControlToolkit.pdb
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\my own n tier amit\bin\DAL.pdb
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\my own n tier amit\bin\ar\AjaxControlToolkit.resources.dll
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\my own n tier amit\bin\cs\AjaxControlToolkit.resources.dll
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\my own n tier amit\bin\de\AjaxControlToolkit.resources.dll
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\my own n tier amit\bin\es\AjaxControlToolkit.resources.dll
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\my own n tier amit\bin\fr\AjaxControlToolkit.resources.dll
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\my own n tier amit\bin\he\AjaxControlToolkit.resources.dll
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\my own n tier amit\bin\hi\AjaxControlToolkit.resources.dll
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\my own n tier amit\bin\it\AjaxControlToolkit.resources.dll
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\my own n tier amit\bin\ja\AjaxControlToolkit.resources.dll
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\my own n tier amit\bin\ko\AjaxControlToolkit.resources.dll
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\my own n tier amit\bin\nl\AjaxControlToolkit.resources.dll
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\my own n tier amit\bin\pt\AjaxControlToolkit.resources.dll
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\my own n tier amit\bin\ru\AjaxControlToolkit.resources.dll
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\my own n tier amit\bin\tr-TR\AjaxControlToolkit.resources.dll
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\my own n tier amit\bin\zh-CHS\AjaxControlToolkit.resources.dll
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\my own n tier amit\bin\zh-CHT\AjaxControlToolkit.resources.dll
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\my own n tier amit\obj\Debug\my own n tier amit.csprojResolveAssemblyReference.cache
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\my own n tier amit\obj\Debug\my own n tier amit.dll
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\my own n tier amit\obj\Debug\my own n tier amit.pdb

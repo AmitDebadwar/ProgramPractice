@@ -1,0 +1,8 @@
+F:\amit\a online shopping\program\my own n tier amit\Entity\bin\Debug\Entity.dll
+F:\amit\a online shopping\program\my own n tier amit\Entity\bin\Debug\Entity.pdb
+F:\amit\a online shopping\program\my own n tier amit\Entity\obj\Debug\ResolveAssemblyReference.cache
+F:\amit\a online shopping\program\my own n tier amit\Entity\obj\Debug\Entity.pdb
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\Entity\bin\Debug\Entity.dll
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\Entity\bin\Debug\Entity.pdb
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\Entity\obj\Debug\Entity.pdb
+C:\Amit\Amit\OutSide\trunk\my own n tier amit\Entity\obj\Debug\Entity.csprojResolveAssemblyReference.cache
