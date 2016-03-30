@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>VividCortex reCaptcha Directive Example</title>
+    <link href="style/bootstrap.css" rel="stylesheet">
+    <script src="lib/jquery.js"></script>
+    <script src="lib/angular.js"></script>
+    <script src="lib/angular-route.js"></script>
+    <script src="lib/bootstrap.js"></script>
+    <script src="lib/ui-bootstrap-tpls-0.14.3.js"></script>
+    <script src="lib/node_modules/angular-animate/angular-animate.js"></script>
+
+    <script>
+        var app = angular.module('testApp', ['ui.bootstrap', 'ngRoute']);
+
+        angular.module('testApp').controller('testCtrl', function ($scope, $window) {
+
+
+        });
+
+
+        $(function () {
+
+            $.fn.extend({
+                popoverClosable: function (options) {
+                    var defaults = {
+                        template:
+                                '<div class="popover">\
+                <div class="arrow"></div>\
+                <div class="popover-header">\
+                <button type="button" class="close" data-dismiss="popover" aria-hidden="true">&times;</button>\
+                <h3 class="popover-title"></h3>\
+                </div>\
+                <div class="popover-content"></div>\
+                </div>'
+                    };
+                    options = $.extend({}, defaults, options);
+                    var $popover_togglers = this;
+                    $popover_togglers.popover(options);
+
+
+                    $popover_togglers.on('click', function (e) {
+                        e.preventDefault();
+                        $popover_togglers.not(this).popover('hide');
+                    });
+                    $('html').on('click', '[data-dismiss="popover"]', function (e) {
+                        //$popover_togglers.popover('hide');
+                        console.log($(this).parent().parent());
+                    });
+                }
+            });
+
+
+
+            $('[data-toggle="popover"]').popoverClosable();
+        });
+
+
+    </script>
+
+
+    <style>
+
+    </style>
+
+</head>
+<body>
+<div ng-app="testApp" ng-controller="testCtrl">
+
+    <button id="myBtn1" type="button" class="btn btn-default" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on bottom">Popover on bottom</button>
+
+    <button id="myBtn2" type="button" class="btn btn-default" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on bottom">Popover on bottom</button>
+</div>
+</body>
+</html>
