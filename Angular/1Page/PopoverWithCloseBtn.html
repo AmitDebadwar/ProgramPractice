@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>VividCortex reCaptcha Directive Example</title>
+    <link href="style/bootstrap.css" rel="stylesheet">
+    <script src="lib/jquery.js"></script>
+    <script src="lib/angular.js"></script>
+    <script src="lib/angular-route.js"></script>
+    <script src="lib/bootstrap.js"></script>
+    <script src="lib/ui-bootstrap-tpls-0.14.3.js"></script>
+    <script src="lib/node_modules/angular-animate/angular-animate.js"></script>
+
+    <script>
+        var app = angular.module('testApp', ['ui.bootstrap', 'ngRoute']);
+
+        angular.module('testApp').controller('testCtrl', function ($scope, $window) {
+
+
+        });
+
+        app.directive('cust', function ($compile) {
+
+            var html = '<div class="popover">\
+        <div class="arrow"></div>\
+        <div class="popover-header">\
+        <button type="button" ng-click="close()" class="close" data-dismiss="popover" aria-hidden="true">&times;</button>\
+        <h3 class="popover-title"></h3>\
+        </div>\
+        <div class="popover-content"></div>\
+        </div>';
+
+
+
+
+            return {
+
+                restrict: 'AE',
+                link: function (scope, el, attrs) {
+
+
+                    var
+                            defaults = {
+
+                                template: $compile(html)(scope),
+
+                                trigger: 'manual',
+                                html: true,
+                                placement: 'bottom'
+                            };
+
+
+
+
+                    $(el).popover(defaults);
+
+                    $(el).click(function (e) {
+                        var id = "#" + attrs.id;
+
+                        $(id).popover('toggle');
+
+                    });
+
+                    scope.close=function(){
+                        var id = "#" + attrs.id;
+
+                        $(this).popover('toggle');
+                    };
+
+
+
+
+
+//                    var id = "#" + attrs.id;
+//
+//                    $('html').on('click', '[data-dismiss="popover"]', function (e) {
+//
+//
+//                        $(id).popover('toggle');
+//
+//                    });
+
+
+
+                }
+            };
+        });
+
+        $(function () {
+            // $('#first').popover()
+        });
+
+    </script>
+
+
+    <style>
+
+    </style>
+
+</head>
+<body>
+<div ng-app="testApp" ng-controller="testCtrl">
+
+    <button type="button" class="btn btn-default" data-toggle="popover" data-placement="right" cust id="btn"
+            data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+            title="Very long popover header for bootstrap popover that opens on left...">Popover on left
+    </button>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+
+    <button type="button" class="btn btn-default" data-toggle="newp" data-placement="right" cust id="sai"
+            data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+            title="Very long popover header for bootstrap popover that opens on left...">Popover on left
+    </button>
+
+</div>
+</body>
+</html>
