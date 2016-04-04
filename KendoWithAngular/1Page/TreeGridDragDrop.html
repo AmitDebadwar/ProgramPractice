@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>VividCortex reCaptcha Directive Example</title>
+    <link href="style/bootstrap.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.common.core.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.default.min.css" rel="stylesheet">
+
+    <script src="lib/jquery.js"></script>
+    <script src="lib/angular.js"></script>
+    <script src="kendo/js/kendo.all.min.js"></script>
+    <script src="lib/angular-route.js"></script>
+    <script src="lib/bootstrap.js"></script>
+    <script src="lib/ui-bootstrap-tpls-0.14.3.js"></script>
+    <script src="lib/node_modules/angular-animate/angular-animate.js"></script>
+
+    <script>
+        var app = angular.module('testApp', ['ui.bootstrap', 'ngRoute', 'kendo.directives']);
+
+        angular.module('testApp').controller('testCtrl', function ($scope, $window) {
+
+            var treeData = [
+                {
+                    id: 1, name: 'Sai',
+                    items: [
+                        {id: 11, name: 'Bramha'},
+                        {id: 12, name: 'Vishnu'},
+                        {id: 13, name: 'Mahesh'}
+                    ]
+                },
+                {
+                    id: 2, name: 'Suresh',
+                    items: [
+                        {id: 21, name: 'Jaya'},
+                        {id: 22, name: 'Pooja'},
+                        {id: 23, name: 'Shreya',
+                            items: [
+                                {id: 31, name: 'Shreya one'},
+                                {id: 32, name: 'Shreya two'}
+                            ]
+                        }
+                    ]
+                }
+            ];
+
+            $("#homeTree").kendoTreeView({
+                dataSource: treeData,
+                dataTextField: "name",
+                dragAndDrop: true
+            });
+
+
+            $('#homeTree').kendoDropTarget({
+                drop: function (e) {
+console.log('in drop');
+                    if (e.draggable.element.hasClass('k-grid')) {
+
+                        //grid to tree drag
+
+                        var gridDataSource = $('.k-grid').data("kendoGrid").dataSource;
+                        var gridItem = gridDataSource.getByUid(draggableElement.data("uid"));
+                        var gridItemId = gridItem.mo_id;
+                        console.log("Grid Item Details");
+                        console.log(gridItemId);
+
+                        //console.log(gridItem.mo_id);
+                        //console.log(gridItem.mo_name);
+                    }
+
+
+                }
+            });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            var gridData = [
+                {id: 71, name: 'S'},
+                {id: 72, name: 'T'},
+                {id: 73, name: 'U'},
+                {id: 74, name: 'V'},
+                {id: 75, name: 'W'},
+                {id: 76, name: 'X'},
+                {id: 77, name: 'Y'},
+                {id: 78, name: 'Z'}
+            ];
+
+            $("#homeGrid").kendoGrid({
+                dataSource: {
+                    data: gridData,
+                    schema: {
+                        fields: {
+                            id: {type: 'number'},
+                            name: {type: 'string'}
+                        }
+                    }
+                },
+                sortable: true,
+                filterable: true,
+                columns: [
+                    { field: "id", title: "Family Id",width:'100px;'},
+                    { field: "name", title: "Name of the person",width:'150px;'}
+                ],
+                selectable: "multiple",
+                dragAndDrop: true
+
+
+            });
+
+            var selectedClass = 'k-state-selected';
+            $(document).on('click','#grid tbody tr',function(e) {
+                if (e.ctrlKey || e.metaKey) {
+                    $(this).toggleClass(selectedClass);
+                } else {
+                    $(this).addClass(selectedClass).siblings().removeClass(selectedClass);
+                }
+            });
+
+
+            $("#homeGrid").kendoDraggable({
+                filter: "tbody tr",
+                group: "gridGroup",
+
+                hint: function (item) {
+                    var helper = $('<div class="k-grid k-widget drag-helper"/>');
+                    if (!item.hasClass(selectedClass)) {
+                        item.addClass(selectedClass).siblings().removeClass(selectedClass);
+                    }
+                    var elements = item.parent().children('.'+selectedClass).clone();
+                    item.data('multidrag', elements).siblings('.'+selectedClass).remove();
+                    //console.log(elements);
+
+
+
+//                    var dataItem =elements[0].outerHTML.closest("tr");
+//                    var propId = $("#Grid").data("kendoGrid").tbody.find("tr[data-uid='" + dataItem.uid + "']").first("td").text();
+//console.log(dataItem);
+
+//                    $(elements).each(function(){
+//                        var s = $(this).clone().wrap('<td>').parent().html();
+//                        console.log(s);
+//                    });
+
+
+                    var strGrpAssoc = elements[0].outerHTML;
+                    //console.log(strGrpAssoc);
+                    var xmlGrpAssoc = loadXMLString(strGrpAssoc.toLowerCase());
+
+                    console.log(xmlGrpAssoc);
+                    function loadXMLString(txt) {
+                        if (window.DOMParser) {
+                            parser = new DOMParser();
+                            xmlDoc = parser.parseFromString(txt, "text/xml");
+                        }
+                        else // code for IE
+                        {
+                            xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+                            xmlDoc.async = false;
+                            xmlDoc.loadXML(txt);
+                        }
+                        return xmlDoc;
+                    }
+                    return helper.append(elements);
+                },
+                dragstart: function(e) {
+
+                },
+                dragend: function(e) {
+                  console.log(e);
+                }
+            });
+
+
+        });
+
+    </script>
+
+
+    <style>
+        .drag-helper {
+            opacity: 0.4;
+            z-index:1000;
+            top: 7px;
+        }
+
+        .k-dirty-cell {
+            color: blue;
+        }
+    </style>
+
+</head>
+<body>
+<div ng-app="testApp" ng-controller="testCtrl">
+    <div class="container">
+         <div class="row">
+             <div class="col-md-4">
+                 <h1>SaiRahem</h1>
+             </div>
+
+         </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div id="homeTree"></div>
+            </div>
+
+            <div class="col-md-4">
+                <div id="homeGrid"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

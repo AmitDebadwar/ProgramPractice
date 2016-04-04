@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>VividCortex reCaptcha Directive Example</title>
+    <link href="style/bootstrap.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.common.core.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.default.min.css" rel="stylesheet">
+
+    <script src="lib/jquery.js"></script>
+    <script src="lib/angular.js"></script>
+    <script src="kendo/js/kendo.all.min.js"></script>
+    <script src="lib/angular-route.js"></script>
+    <script src="lib/bootstrap.js"></script>
+    <script src="lib/ui-bootstrap-tpls-0.14.3.js"></script>
+    <script src="lib/node_modules/angular-animate/angular-animate.js"></script>
+
+    <script>
+        var app = angular.module('testApp', ['ui.bootstrap', 'ngRoute', 'kendo.directives']);
+
+        angular.module('testApp').controller('testCtrl', function ($scope) {
+
+            $scope.controllerFunction = function (fn) {
+                $scope.openModel = fn;
+            }
+
+
+            $scope.ops=function(){
+                $scope.openModel({
+                    modal: true,
+                    title: 'Details Form',
+                    width: 1080,
+                    visible: false,
+                    draggable: false,
+                    pinned: true,
+                    resizable: false,
+                    formPath:'MCAL/Catalog/first.html'
+                 });
+            }
+
+       });
+
+        app.directive("modalTemplate", function () {
+            return {
+                link: function (scope, element, attrs, ctrl) {
+
+
+                    scope.openKendoModel = function (config) {
+
+
+                        scope.catalogModalWindow.setOptions(config);
+
+                        scope.catalogModalWindow.refresh({
+                            url: config.modalTitle
+                        });
+                        scope.catalogModalWindow.refresh({url:config.formPath});
+                        scope.catalogModalWindow.center();
+                        scope.catalogModalWindow.open();
+                    }
+
+                    scope.callOpenModel({fn: scope.openKendoModel});
+
+
+
+                },
+                scope: { callOpenModel: '&' },
+                templateUrl: 'MCAL/Catalog/modal-template.html',
+                restrict: 'A'
+            }
+
+
+        });
+
+    </script>
+
+
+    <style>
+
+    </style>
+
+</head>
+<body>
+<div ng-app="testApp" ng-controller="testCtrl">
+
+    <div modal-template call-open-model="controllerFunction(fn)"></div>
+
+
+    <input type="button" ng-click="openModel({
+                            modal: true,
+                            title: 'Details Form',
+                            width: 1080,
+                            visible: false,
+                            draggable: false,
+                            pinned: true,
+                            resizable: false,
+                            formPath:'MCAL/Catalog/first.html'
+
+
+                        })" value="Details form"/>
+
+    <br><br><br><br>
+
+    <div modal-template call-open-model="controllerFunction(fn)"></div>
+
+
+    <input type="button" ng-click="openModel({
+                            modal: true,
+                            title: 'Heirarchy Level Form',
+                            width: 1080,
+                            visible: false,
+                            draggable: false,
+                            pinned: true,
+                            resizable: false,
+                            formPath:'MCAL/Catalog/sec.html'
+
+
+                        })" value="CH form"/>
+
+<input type="button" value="third" ng-click="ops()"/>
+</div>
+</body>
+</html>
