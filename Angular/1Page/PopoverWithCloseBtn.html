@@ -63,21 +63,23 @@
                     scope.close=function(){
                         var id = "#" + attrs.id;
 
-                        $(this).popover('toggle');
+//                        $(this).popover('toggle');
                     };
 
 
 
 
 
-//                    var id = "#" + attrs.id;
-//
-//                    $('html').on('click', '[data-dismiss="popover"]', function (e) {
-//
-//
-//                        $(id).popover('toggle');
-//
-//                    });
+                    var id = "#" + attrs.id;
+
+                    $('html').on('click', '[data-dismiss="popover"]', function (e) {
+
+                       $(this).parent().parent().popover('hide');
+                        //console.log(e);
+
+                       // $(id).popover('toggle');
+
+                    });
 
 
 
@@ -106,7 +108,7 @@
     </button>
     <br><br><br><br><br><br><br><br><br><br><br><br>
 
-    <button type="button" class="btn btn-default" data-toggle="newp" data-placement="right" cust id="sai"
+    <button type="button" class="btn btn-default" data-toggle="popover" data-placement="right" cust id="sai"
             data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
             title="Very long popover header for bootstrap popover that opens on left...">Popover on left
     </button>
