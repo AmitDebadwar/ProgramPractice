@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>VividCortex reCaptcha Directive Example</title>
+    <link href="style/bootstrap.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.common.core.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.common.min.css" rel="stylesheet">
+
+    <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.dataviz.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.flat.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.flat.mobile.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.dataviz.flat.min.css" rel="stylesheet">
+
+
+    <script src="lib/jquery.js"></script>
+    <script src="lib/angular.js"></script>
+    <script src="kendo/js/kendo.all.min.js"></script>
+    <script src="lib/angular-route.js"></script>
+    <script src="lib/bootstrap.js"></script>
+    <script src="lib/ui-bootstrap-tpls-0.14.3.js"></script>
+
+
+    <script>
+        var app = angular.module('testApp', ['ui.bootstrap', 'ngRoute', 'kendo.directives']);
+
+        angular.module('testApp').controller('testCtrl', function ($scope, $window) {
+
+
+            vm.driverOptions=getDropDownOptions()
+
+            vm.drpDriverChange=function(data){
+                alert('sainath');
+            }
+            function getDropDownOptions(lookup) {
+                return {
+                    dataTextField: "name",
+                    dataValueField: "id",
+                    dataSource:
+                            [{name:'Sai',id:1}]
+
+
+                };
+            };
+        });
+
+        (function () {
+
+            app.directive("moDropDown", DropDown);
+
+            DropDown.$inject = [];
+
+            function DropDown($timeout) {
+                var directive = {
+                    restrict: "AE",
+                    replace: true,
+                    template: "<select kendo-drop-down-list k-options=\"vm.dropDownOptions\" k-ng-model=\"vm.preSelectedId\" k-value-primitive=\"true\"></div>",
+                    scope: {
+                        moOptions: "=",
+                        moFunction: "&",
+                        preSelectedId: "=?"
+                    },
+                    link: linkFunc,
+                    controller: DropDownController,
+                    controllerAs: "vm",
+                    bindToController: true // because the scope is isolated
+                };
+                return directive;
+
+                function linkFunc(scope, element) {
+
+                }
+            }
+
+            DropDownController.$inject = [];
+
+            function DropDownController() {
+                var vm = this;
+
+                vm.onSelect = onSelect;
+
+                vm.dropDownOptions = getDropDownOptions();
+
+                function onSelect(e) {
+                    var dataItem = this.dataItem(e.item);
+                    vm.moFunction({ dataId: dataItem.id });
+                };
+
+                //
+                // see http://docs.telerik.com/kendo-ui/AngularJS/the-grid-widget
+                //
+                function getDropDownOptions() {
+                    return {
+                        select: vm.onSelect,
+                        dataBound: vm.onSelect,
+                        dataTextField: vm.moOptions.dataTextField,
+                        dataValueField: vm.moOptions.dataValueField,
+                        dataSource: vm.moOptions.dataSource,
+                    };
+                }
+            }
+
+        })();
+
+
+        $(document).ready(function () {
+            $("#toolbar").kendoToolBar({
+                items: [
+                    { template: "<label>Driver Set</label>",
+                        attributes: {
+                            style: 'margin-right:10px;'
+                        }
+                    },
+                    {
+                        template: "<input id='drpDriverSet' style='width: 175px;' />",
+                        overflow: "never",
+                        attributes: {
+                            style: 'margin-right:0px;'
+                        }
+                    },
+
+                    {
+                        template: "<input id='chkMappedMOs' type='checkbox'/>",
+                        overflow: "never",
+                        attributes: {
+                            style: 'margin-left:70px;margin-right:7px;'
+                        }
+                    },
+                    { template: "<span>Show mapped Measured objects</span>",
+                        attributes: {
+                            style: 'color:orange;margin-right:4px;'
+
+                        } },
+                    { type: "separator" },
+                    {type: "button", text: "Auto Assign", attributes: {style: "float:right;margin-top: .4em;background-color:#2EB3A6;"}}
+                ]
+            });
+
+            $("#drpDriverSet").kendoDropDownList({
+                optionLabel: "Master Driver Set",
+                dataTextField: "text",
+                dataValueField: "value",
+                dataSource: [
+                    { text: "Pune", value: 1 },
+                    { text: "Mumbai", value: 2 },
+                    { text: "Jalna", value: 3 },
+                    { text: "Parbhani", value: 4 },
+                    { text: "Latur", value: 5 }
+                ]
+            });
+
+            var lhsDriverSetTreeOptions = [
+                { text: "Pune", id: 1, items: [
+                    { text: "Chinchwad",
+                        items: [
+                            {text: 'Dange chowk', id: 11},
+                            {text: 'Tathawade', id: 12}
+                        ]} ,
+                    { text: "Pashan", id: 2,
+                        items: [
+                            {text: 'Someshwarwadi', id: 21},
+                            {text: 'Anandi Nagar', id: 22}
+                        ]} ,
+                    { text: "Sinhgad", id: 3, items: [
+                        {text: 'Dhayari', id: 31}
+                    ]}
+                ]},
+                {text: 'Mumbai', id: 4,
+                    items: [
+                        {text: 'Bandra', id: 41},
+                        {text: 'Navi Mumbai', id: 42}
+                    ]},
+                {text: 'Jalana', id: 5,
+                    items: [
+                        {text: 'Jafrabad', id: 51},
+                        {text: 'Tompi', id: 52}
+                    ]},
+                {text: 'Parbhani', id: 6,
+                    items: [
+                        {text: 'Shivaji Nagar', id: 61},
+                        {text: 'Shivaji Chowk', id: 62}
+                    ]},
+                {text: 'Latur', id: 7,
+                    items: [
+                        {text: 'Golai', id: 71},
+                        {text: 'Rakshak chowk', id: 72}
+                    ]}
+
+            ];
+
+            $("#lhsDriverSetTree").kendoTreeView({
+                animation: false,
+                dataSpriteCssClassField: "sprite",
+                dataSource: lhsDriverSetTreeOptions
+            });
+        });
+
+    </script>
+
+
+    <style>
+
+    </style>
+
+</head>
+<body>
+<div ng-app="testApp" ng-controller="testCtrl as vm">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>SaiRahem</h1>
+            </div>
+        </div>
+
+        `
+        <div class="row">
+            <div class="col-md-12">
+                <div class="demo-section k-content wide">
+                    <div id="toolbar"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="driverSplitter"
+                     kendo-splitter
+                     k-orientation="'horizontal'"
+                     k-rebind="orientation">
+
+                    <!--LHS side-->
+                    <div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>Measured Objects</h4>
+                         </div>
+                        <div class="col-md-4">
+                            <input type="text" placeholder="search here" style="margin-top: 9px;"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div id="lhsDriverSetTree"></div>
+                        </div>
+                    </div>
+                    </div>
+                    <!--LHS side END-->
+
+                    <!--RHS side -->
+                    <div>
+
+                    </div>
+                    <!--RHS side END-->
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--container close-->
+
+
+</div>
+</body>
+</html>
