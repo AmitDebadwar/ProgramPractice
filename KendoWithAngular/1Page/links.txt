@@ -1,0 +1,8 @@
+
+
+	1) On tab add new row in kendo grid
+	http://docs.telerik.com/kendo-ui/controls/data-management/grid/how-to/Editing/add-row-when-tabbed-out-of-last-row
+	
+	2)
+	https://www.credera.com/blog/technology-insights/microsoft-solutions/creating-a-drop-down-list-inside-a-kendo-ui-grid/
+	

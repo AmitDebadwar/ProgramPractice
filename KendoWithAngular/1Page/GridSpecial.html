@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>VividCortex reCaptcha Directive Example</title>
+    <link href="style/bootstrap.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.common.core.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.common.min.css" rel="stylesheet">
+
+    <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.dataviz.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.flat.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.flat.mobile.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.dataviz.flat.min.css" rel="stylesheet">
+
+
+    <script src="lib/jquery.js"></script>
+    <script src="lib/angular.js"></script>
+    <script src="kendo/js/kendo.all.min.js"></script>
+    <script src="lib/angular-route.js"></script>
+    <script src="lib/bootstrap.js"></script>
+    <script src="lib/ui-bootstrap-tpls-0.14.3.js"></script>
+
+
+    <script>
+        var app = angular.module('testApp', ['ui.bootstrap', 'ngRoute', 'kendo.directives']);
+
+        angular.module('testApp').controller('testCtrl', function ($scope, $window) {
+
+            $scope.activated = "Grid Special";
+
+            var data = [
+                { Id: 1, Name: "Pune", Temp: "Cool"},
+                { Id: 2, Name: "Beed", Temp: "Hot"},
+                { Id: 3, Name: "Aurangabad", Temp: "Cloudy"}
+            ];
+
+            var ratings=[
+                {Id:"1",Rating:"Good"},
+                {Id:"2",Rating:"Better"},
+                {Id:"3",Rating:"Best"}
+            ];
+
+            var dataSource = new kendo.data.DataSource({
+                //data: data,
+                transport: {
+                    read: function (e) {
+                        e.success(data);
+                    },
+                    update: function (e) {
+                        var item = e.data;
+                        alert(item.Id + " " + item.Name + " " + item.Temp);
+                        e.success();
+                    },
+                    create: function (e) {
+
+                        var item = e.data;
+                        alert(item.Id + " " + item.Name + " " + item.Temp);
+                        e.success(item);
+                    }
+                },
+                schema: {
+                    model: {
+                        id: "Id",
+                        fields: {
+                            Id: { type: "number" },
+                            Rating:{defaultValue:{Id:1,Rating:"Good"}, type:"string"},
+                            Name: { type: "string" },
+                            Temp: {type: "string"}
+
+                        }
+                    }
+                }
+            });
+
+            var grid = $("#grid").kendoGrid({
+                dataSource: dataSource,
+                scrollable: false,
+                navigatable: true,
+                editable: {
+                    createAt: "bottom"
+                },
+                toolbar: ["save", "cancel"],
+                columns: [
+                    {command:["destroy"],title:'&nbsp',className: "fa fa-map-marker"},
+                    {field:"Rating",title:"Rating", editor:ratingDropDownEditor,template: "#=Rating#"},
+
+                    "Name", "Temp"]
+            }).data("kendoGrid");
+
+            grid.addRow();
+
+
+
+            grid.tbody.on('keydown', function (e) {
+
+                if ($(e.target).closest('td').is(':last-child') && $(e.target).closest('tr').is(':last-child')) {
+
+                    var keyCode = e.keyCode || e.which;
+                    if (keyCode == 9) {
+                        e.preventDefault();
+                        grid.addRow();
+                    }
+
+                }
+
+
+            });
+
+            function ratingDropDownEditor(container, options) {
+                $('<input required data-text-field="Rating" data-value-field="Id" data-bind="value:' + options.field + '"/>')
+                        .appendTo(container)
+                        .kendoDropDownList({
+                            autoBind: false,
+                            dataSource:ratings,
+                            dataTextField:"Rating",
+                            dataValueField:"Id"
+                        });
+            }
+
+
+
+        });
+
+    </script>
+
+
+    <style>
+
+    </style>
+
+</head>
+<body>
+<div ng-app="testApp" ng-controller="testCtrl">
+    <b ng-bind="activated"></b>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-6">
+                <div id="grid"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

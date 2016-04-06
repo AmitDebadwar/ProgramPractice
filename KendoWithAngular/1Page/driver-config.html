@@ -65,9 +65,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div
-                     kendo-splitter
-                     k-orientation="'horizontal'"
-                     k-rebind="orientation">
+                        kendo-splitter
+                        k-orientation="'horizontal'"
+                        k-rebind="orientation">
 
                     <!--LHS side-->
                     <div>
@@ -91,17 +91,22 @@
                         </div>
                         <div class="row">
 
-                            <div class="col-md-4 col-md-offset-1">
-                                <div kendo-grid k-options="vm.gridOptions"></div>
+                            <div class="col-md-8 col-md-offset-1">
+                                <!--<div id="rhsGrid" kendo-grid-->
+                                     <!--k-options="vm.gridOptions"-->
+                                <div id="rhsGrid"></div>
                             </div>
+
+
                         </div>
                     </div>
-                    <!--RHS side END-->
-
                 </div>
+                <!--RHS side END-->
+
             </div>
         </div>
     </div>
+</div>
 
 </div>
 

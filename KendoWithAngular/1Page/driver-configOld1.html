@@ -26,22 +26,51 @@
 
         angular.module('testApp').controller('testCtrl', function ($scope, $window) {
 
+            var vm = this;
 
-            vm.driverOptions=getDropDownOptions()
+            $("#driverSplitter").kendoSplitter({
+                panes: [ { scrollable: true }, {scrollable: true} ]
+            });
 
-            vm.drpDriverChange=function(data){
-                alert('sainath');
-            }
-            function getDropDownOptions(lookup) {
+            $("#addBtn").kendoButton({
+                spriteCssClass: "k-icon k-plus"
+            });
+
+            vm.getAllDriverOptions = function () {
                 return {
                     dataTextField: "name",
                     dataValueField: "id",
-                    dataSource:
-                            [{name:'Sai',id:1}]
-
+                    dataSource: [
+                        {name: 'sai', id: 1},
+                        {name: 'rahem', id: 2}
+                    ]
 
                 };
             };
+
+
+
+
+            function getToolbarOptions() {
+                var items = [];
+
+                items.push({
+                    template: "<mo-drop-down mo-options=\"vm.driverOptions\" mo-function=\"vm.drpDriverChange(id)\" style=\"width: 250px;\"></mo-drop-down>",
+                     overflow: "never"
+                });
+
+                return { items: items };
+            }
+
+
+            vm.drpDriverChange = function (id) {
+                alert('driver change occured');
+            }
+
+
+            vm.lhsToolbarOptions = getToolbarOptions();
+            vm.driverOptions = vm.getAllDriverOptions();
+
         });
 
         (function () {
@@ -105,35 +134,7 @@
 
         $(document).ready(function () {
             $("#toolbar").kendoToolBar({
-                items: [
-                    { template: "<label>Driver Set</label>",
-                        attributes: {
-                            style: 'margin-right:10px;'
-                        }
-                    },
-                    {
-                        template: "<input id='drpDriverSet' style='width: 175px;' />",
-                        overflow: "never",
-                        attributes: {
-                            style: 'margin-right:0px;'
-                        }
-                    },
 
-                    {
-                        template: "<input id='chkMappedMOs' type='checkbox'/>",
-                        overflow: "never",
-                        attributes: {
-                            style: 'margin-left:70px;margin-right:7px;'
-                        }
-                    },
-                    { template: "<span>Show mapped Measured objects</span>",
-                        attributes: {
-                            style: 'color:orange;margin-right:4px;'
-
-                        } },
-                    { type: "separator" },
-                    {type: "button", text: "Auto Assign", attributes: {style: "float:right;margin-top: .4em;background-color:#2EB3A6;"}}
-                ]
             });
 
             $("#drpDriverSet").kendoDropDownList({
@@ -199,7 +200,9 @@
 
 
     <style>
-
+.k-pane{
+    overflow: scroll !important;
+}
     </style>
 
 </head>
@@ -209,7 +212,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>SaiRahem</h1>
+                <h1>Kendo UI POC</h1>
             </div>
         </div>
 
@@ -217,7 +220,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="demo-section k-content wide">
-                    <div id="toolbar"></div>
+                    <div id="lhsToolbar" kendo-tool-bar k-options="vm.lhsToolbarOptions"></div>
+                    <!--<div id="toolbar"></div>-->
                 </div>
             </div>
         </div>
@@ -230,25 +234,39 @@
 
                     <!--LHS side-->
                     <div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h4>Measured Objects</h4>
-                         </div>
-                        <div class="col-md-4">
-                            <input type="text" placeholder="search here" style="margin-top: 9px;"/>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>Measured Objects</h4>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" placeholder="search here" style="margin-top: 9px;"/>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div id="lhsDriverSetTree"></div>saibaba
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div id="lhsDriverSetTree"></div>
+                            </div>
+                            <div class="col-md-6">
+                                <!--<mo-drop-down mo-options="vm.driverOptions"-->
+                                <!--mo-function="vm.drpDriverChange(s)"></mo-drop-down>-->
+                            </div>
+
+
                         </div>
-                    </div>
                     </div>
                     <!--LHS side END-->
 
+
                     <!--RHS side -->
                     <div>
-
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>Mapped Inventory Masters</h4>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="button" class="pull-right" value="" id="addBtn"></input>
+                            </div>
+                        </div>
                     </div>
                     <!--RHS side END-->
 

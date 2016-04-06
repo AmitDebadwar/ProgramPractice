@@ -68,18 +68,12 @@ angular.module('testApp').controller('testCtrl', function ($scope, $window) {
 
     vm.toolbarOptions = getToolbarOptions();
     vm.driverOptions = getAllDrivers();
-    vm.gridOptions=getGridDetails();
+    vm.gridOptions = getGridDetails();
 
     vm.drpDriverChange = function () {
         console.log('drp of drivers value changed');
     }
 
-vm.addNew=function(){
-    alert('sai');
-    var grid = $("#grid").data("kendoGrid");
-    grid.addRow();
-    $(".k-grid-edit-row").appendTo("#grid tbody");
-}
 
     //get all driver options
     function getAllDrivers() {
@@ -145,46 +139,71 @@ vm.addNew=function(){
 
 
 
+
+
 //  get rhs grid options
-    function getGridDetails(){
+    function getGridDetails() {
 
-        var emp=[
-            {'id':'1','name':'Pune'},
-            {'id':'2','name':'Latur'},
-            {'id':'3','name':'Beed'},
-            {'id':'4','name':'Usmanabad'},
-            {'id':'5','name':'Ahmad Nagar'}
-        ];
 
-        emp.push({'id':'','name':''});
 
-        return {
-
-            editable: {
-
-                createAt: "bottom"
-            },
-            scrollable:false,
-            dataSource: {
-                data: emp,
-                schema: {
-                    model: {
-                        fields: {
-                            ProductName: { type: "string" },
-                            UnitPrice: { type: "number" },
-                            UnitsInStock: { type: "number" },
-                            Discontinued: { type: "boolean" }
-                        }
-                    }
-                },
-                pageSize: 20
-            },
-           columns:[
-               {field:'id',title:'Id'},
-               {field:'name',title:'Name',width:'150px;'}
-           ]
-        };
     }
+
+
+    var data = [
+        {'id': '1', 'name': 'Pune','temp':'cool'},
+        {'id': '2', 'name': 'Latur','temp':'hot'}
+
+    ];
+
+    var dataSource = new kendo.data.DataSource({
+        //data: data,
+        transport: {
+            read: function(e) {
+                e.success(data);
+            },
+            update: function(e) {
+                e.success();
+            },
+            create: function(e) {
+                var item = e.data;
+                item.Id = data.length + 1;
+                e.success(item);
+            }
+        },
+        schema: {
+            model: {
+
+                fields: {
+                    id: { type: "number" },
+                    name: { type: "string" },
+                    temp:{type:"string"}
+
+                }
+            }
+        }
+    });
+
+    var grid= $("#rhsGrid").kendoGrid({
+        dataSource: dataSource,
+        scrollable: false,
+        navigatable: true,
+        editable : {
+            createAt : "bottom"
+        },
+        navigatable: true,
+        toolbar:  ["save","cancel", "create"],
+        columns: [{field:"id",title:'Id'}, {field:'name',title:'Name'},'temp']
+    }).data("kendoGrid");
+
+    grid.tbody.on('keydown',function(e){
+        console.log(e.currentTarget);
+        if($(e.target).closest('td').is(':last-child') && $(e.target).closest('tr').is(':last-child')){
+            grid.addRow();
+
+        }
+    })
+
+
 
 });
 
