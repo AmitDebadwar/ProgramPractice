@@ -21,19 +21,8 @@
     <script src="lib/ui-bootstrap-tpls-0.14.3.js"></script>
     <script src="driver-config.js"></script>
 
-    <script>
-        var app = angular.module('testApp', ['ui.bootstrap', 'ngRoute', 'kendo.directives']);
-
-        angular.module('testApp').controller('testCtrl', function ($scope, $window) {
-
-            $scope.activated = "Kendo Activated";
-
-
-
-        });
-
-    </script>
-
+    <script src="drivers.main121.js"></script>
+    <script src="drivers.config121.js"></script>
 
     <style>
 
@@ -41,9 +30,9 @@
 
 </head>
 <body>
-<div ng-app="testApp" ng-controller="testCtrl">
-    <b ng-bind="activated"></b>
-    <label>Birthday: <input kendo-date-picker/></label>
+<div ng-app="mo.rules.drivers">
+
+    <div mo-driver-rules></div>
 </div>
 </body>
 </html>

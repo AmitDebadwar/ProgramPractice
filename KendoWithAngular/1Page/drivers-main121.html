@@ -1,0 +1,35 @@
+﻿<div class="container-fluid">
+    <!--<style>
+        .k-widget
+        {
+            border-style : none !important;
+        }
+    </style>-->
+    <div class="row">
+        <div id="lhsToolbar" kendo-tool-bar k-options="vm.lhsToolbarOptions"></div>
+        <div id="splitter"
+             kendo-splitter
+             k-orientation="'horizontal'"
+             k-rebind="orientation">
+            <div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <h4>Measured Objects</h4>
+                    </div>
+                    <div class="col-md-4 input-group mt-sm">
+                        <!--<input type="text" placeholder="search here" style="margin-top: 9px;" />-->
+                        <input type="text" class="form-control" ng-model="vm.lhsParams.searchTerm" custom-enter="vm.lhsSearch()" placeholder="Search">
+                        <span class="input-group-addon" ng-click="vm.lhsSearch()"><i class="fa fa-search"></i></span>
+                    </div>
+                </div>
+                <div kendo-list-view id="listView" k-options="vm.lhsListViewOptions" style="overflow: auto;"></div>
+            </div>
+            <div>
+                <div kendo-grid id="grid" k-options="vm.gridOptions"></div>
+                <!--<div class="mt-sm" id="grid"></div>-->
+
+            </div>
+        </div>
+    </div>
+</div>
+

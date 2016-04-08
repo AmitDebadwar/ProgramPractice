@@ -26,36 +26,28 @@
 
         angular.module('testApp').controller('testCtrl', function ($scope, $window) {
 
-            $scope.activated = "Grid Special";
-
             var data = [
-                { Id: 1, Name: "Pune", Temp: "Cool"},
-                { Id: 2, Name: "Beed", Temp: "Hot"},
-                { Id: 3, Name: "Aurangabad", Temp: "Cloudy"}
-            ];
-
-            var ratings=[
-                {Id:"1",Rating:"Good"},
-                {Id:"2",Rating:"Better"},
-                {Id:"3",Rating:"Best"}
+                { Id: 1, Name: "Decision 1", Position: 1 },
+                { Id: 2, Name: "Decision 2", Position: 2 },
+                { Id: 3, Name: "Decision 3", Position: 3 }
             ];
 
             var dataSource = new kendo.data.DataSource({
                 //data: data,
                 transport: {
-                    read: function (e) {
+                    read: function(e) {
                         e.success(data);
                     },
-                    update: function (e) {
-                        var item = e.data;
-                        alert(item.Id + " " + item.Name + " " + item.Temp);
+                    update: function(e) {
                         e.success();
                     },
-                    create: function (e) {
-
+                    create: function(e) {
                         var item = e.data;
-                        alert(item.Id + " " + item.Name + " " + item.Temp);
+                        item.Id = data.length + 1;
                         e.success(item);
+                    },
+                    change:function(e){
+                        alert('change');
                     }
                 },
                 schema: {
@@ -63,60 +55,43 @@
                         id: "Id",
                         fields: {
                             Id: { type: "number" },
-                            Rating:{defaultValue:{Id:1,Rating:"Good"}, type:"string"},
                             Name: { type: "string" },
-                            Temp: {type: "string"}
+                            Position: { type: "string" }
 
                         }
                     }
                 }
             });
 
-            var grid = $("#grid").kendoGrid({
+            var grid= $("#grid").kendoGrid({
                 dataSource: dataSource,
                 scrollable: false,
                 navigatable: true,
-                editable: {
-                    createAt: "bottom"
+                editable : {
+                    createAt : "bottom"
                 },
-                toolbar: ["save", "cancel"],
-                columns: [
-                    {command:["destroy"],title:'&nbsp',className: "fa fa-map-marker"},
-                    {field:"Rating",title:"Rating", editor:ratingDropDownEditor,template: "#=Rating#"},
-
-                    "Name", "Temp"]
+                navigatable: true,
+                toolbar:  ["save","cancel", "create"],
+                columns: ["Id", "Name", "Position"]
             }).data("kendoGrid");
 
-            grid.addRow();
 
 
+            grid.tbody.on('keydown',function(e){
+                if($(e.target).closest('td').is(':last-child') && $(e.target).closest('tr').is(':last-child')){
 
-            grid.tbody.on('keydown', function (e) {
 
-                if ($(e.target).closest('td').is(':last-child') && $(e.target).closest('tr').is(':last-child')) {
+                    var grid = $("#grid").data("kendoGrid"),
+                            model = grid.dataItem($(e.target).closest("tr"));
+
+                    model.set("Position",$(e.target).closest('td').context.value);
 
                     var keyCode = e.keyCode || e.which;
                     if (keyCode == 9) {
-                        e.preventDefault();
                         grid.addRow();
                     }
-
                 }
-
-
             });
-
-            function ratingDropDownEditor(container, options) {
-                $('<input required data-text-field="Rating" data-value-field="Id" data-bind="value:' + options.field + '"/>')
-                        .appendTo(container)
-                        .kendoDropDownList({
-                            autoBind: false,
-                            dataSource:ratings,
-                            dataTextField:"Rating",
-                            dataValueField:"Id"
-                        });
-            }
-
 
 
         });
@@ -124,9 +99,7 @@
     </script>
 
 
-    <style>
 
-    </style>
 
 </head>
 <body>
