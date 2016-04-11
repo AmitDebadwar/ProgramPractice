@@ -281,7 +281,7 @@
                         template: "#=name#"
                         //template: "#if(costCentreType != null && costCentreType.name != null) {# #=costCentreType.name# #}#"
                     },
-                    { field: "weighting", title: "Weighting", width: 180 },
+                    { field: "weighting", title: "Weighting", width: 180}
                 ],
 
                 //filterable: true,
@@ -404,7 +404,7 @@
 
 
 
-        //var grid = $("#grid").kendoGrid(vm.gridOptions).data("kendoGrid");
+        var grid = $("#grid").kendoGrid(vm.gridOptions).data("kendoGrid");
 
         //var grid = $(".k-grid").kendoGrid().data("kendoGrid");
         //$(".k-grid").find("tbody").on('keydown', function (e) {
@@ -413,20 +413,20 @@
         //    }
         //});
 
-        //grid.tbody.on('keydown', function (e) {
+        grid.tbody.on('keydown', function (e) {
 
-        //    if ($(e.target).closest('td').is(':last-child') && $(e.target).closest('tr').is(':last-child')) {
+            if ($(e.target).closest('td').is(':last-child') && $(e.target).closest('tr').is(':last-child')) {
 
-        //        var keyCode = e.keyCode || e.which;
-        //        if (keyCode == 9) {
-        //            e.preventDefault();
-        //            grid.addRow();
-        //        }
+                var keyCode = e.keyCode || e.which;
+                if (keyCode == 9) {
+                    e.preventDefault();
+                    grid.addRow();
+                }
 
-        //    }
+            }
 
 
-        //});
+        });
 
 
     }

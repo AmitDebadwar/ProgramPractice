@@ -6,3 +6,5 @@
 	2)
 	https://www.credera.com/blog/technology-insights/microsoft-solutions/creating-a-drop-down-list-inside-a-kendo-ui-grid/
 	
+	3) Go to next cell on enter grid view
+	http://jsfiddle.net/karthickj25/2NrLR/1/

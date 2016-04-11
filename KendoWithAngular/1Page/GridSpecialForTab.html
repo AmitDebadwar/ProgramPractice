@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>VividCortex reCaptcha Directive Example</title>
+    <link href="style/bootstrap.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.common.core.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.common.min.css" rel="stylesheet">
+
+    <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.dataviz.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.flat.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.flat.mobile.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.dataviz.flat.min.css" rel="stylesheet">
+
+
+    <script src="lib/jquery.js"></script>
+    <script src="lib/angular.js"></script>
+    <script src="kendo/js/kendo.all.min.js"></script>
+    <script src="lib/angular-route.js"></script>
+    <script src="lib/bootstrap.js"></script>
+    <script src="lib/ui-bootstrap-tpls-0.14.3.js"></script>
+    <script src="driver-config.js"></script>
+
+    <script>
+        var app = angular.module('testApp', ['ui.bootstrap', 'ngRoute', 'kendo.directives']);
+
+        angular.module('testApp').controller('testCtrl', function ($scope, $window) {
+
+            var data = [
+                { Id: 1, Name: "Amit", Position: 1, ContractDate: new Date('1996/12/12'), Level: '2'},
+                { Id: 2, Name: "Sai", Position: 2, ContractDate: new Date('2012/5/4'), Level: '1'},
+                { Id: 3, Name: "Subodh", Position: 3, ContractDate: new Date('1998/12/30'), Level: '1'},
+                { Id: 4, Name: "Romit", Position: 4, ContractDate: new Date('1998/12/30'), Level: '2'}
+            ];
+
+            var dataSource = new kendo.data.DataSource({
+                //data: data,
+                transport: {
+                    read: function(e) {
+                        e.success(data);
+                    },
+                    update: function(e) {
+                        e.success();
+                    },
+                    create: function(e) {
+                        var item = e.data;
+                        item.Id = data.length + 1;
+                        e.success(item);
+                    }
+                },
+                schema: {
+                    model: {
+                        id: "Id",
+                        fields: {
+                            Id: { type: "number"},
+                            Name: { type: "string" },
+                            Position: { type: "number" },
+                            ContractDate :{ type: "date"},
+                            Level:{type:"string"}
+                        }
+                    }
+                }
+            });
+
+
+
+
+            var grid = $("#grid").kendoGrid({
+                dataSource: dataSource,
+
+                scrollable: false,
+                navigatable: true,
+                editable: {
+                    createAt: "bottom"
+                },
+               beforeEdit:function(e){
+                 console.log('BE');
+                   consoel.log(e);
+               }
+
+                navigatable: true,
+                toolbar: ["save", "cancel", "create"],
+                columns: [
+                    "Id",
+                    "Name",
+                    "Position",
+                    {field: "Level", title: "Designation", editor: createDropDown("1")},
+                    {field: "ContractDate", format: "{0:d, MMM yyyy}"}
+
+
+                ]
+            }).data("kendoGrid");
+
+            grid.tbody.on('keydown', function (e) {
+                if ($(e.target).closest('td').is(':last-child') && $(e.target).closest('tr').is(':last-child')) {
+                    grid.addRow();
+                }
+            });
+
+
+            function createDropDown(level) {
+                return function (container, options) {
+
+                    $('<input required data-text-field="name" data-value-field="id" data-bind="value:' + options.field + '"/>')
+                            .appendTo(container)
+                            .kendoDropDownList({
+                                optionLabel: "select",
+                                dataSource: {
+                                    transport: {
+                                        read: function (e) {
+
+                                            e.success([
+                                                {'id': '1', 'name': 'Low'},
+                                                {'id': '2', 'name': 'High'}
+                                            ]);
+
+                                        }
+                                    }
+                                },
+                                change: function () {
+                                    var dataItem = this.dataItem();
+                                    $(".k-grid").data("kendoGrid").dataItem(this.element.closest("tr")).set("name", dataItem.name);
+                                }
+
+                            });
+                }
+            }
+
+
+        });
+
+    </script>
+
+
+    <style>
+
+    </style>
+
+</head>
+<body>
+<div ng-app="testApp" ng-controller="testCtrl">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-5">
+                <div id="grid"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
