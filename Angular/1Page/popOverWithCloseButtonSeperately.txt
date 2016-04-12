@@ -1,0 +1,45 @@
+ "surPopover": ["$compile", function ($compile) {
+
+                //var html = '<div class="popover"><div class="arrow"></div><div class="popover-header"><button type="button" ng-click="close()" class="close" data-dismiss="popover" aria-hidden="true">&times;</button><h3 class="popover-title"></h3></div><div class="popover-content"></div></div>';
+                return {
+                    restrict: 'AE',
+                    scope: {
+                        surPopoverTemplate: '@'
+                    },
+                    link: function (scope, el, attrs) {
+
+                        var defaults = {
+                            template: $compile(scope.surPopoverTemplate)(scope),
+                            trigger: 'manual',
+                            html: true,
+                            placement: 'top',
+                            content: attrs.popoverContents
+                        };
+
+                        $(el).popover(defaults);
+
+                        $(el).click(function (e) {
+                            var id = "#" + attrs.id;
+                            $(id).popover('show');
+
+                        });
+
+                        scope.close = function () {
+                            var id = "#" + attrs.id;
+                            $(el).popover('hide');
+                        };
+
+                        /**
+                         * Below code may required at the time of
+                         * mobile device testing. If it is of no use in device, this code can be deleted.
+                         * */
+
+                        /**
+                         var id = "#" + attrs.id;
+                         $('html').on('click', '[data-dismiss="popover"]', function (e) {
+                                $(this).parent().parent().popover('hide');
+                            });
+                         */
+                    }
+                };
+            }]
