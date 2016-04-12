@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>VividCortex reCaptcha Directive Example</title>
+    <link href="style/bootstrap.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.common.core.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.common.min.css" rel="stylesheet">
+
+    <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.dataviz.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.flat.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.flat.mobile.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.dataviz.flat.min.css" rel="stylesheet">
+
+
+    <script src="lib/jquery.js"></script>
+    <script src="lib/angular.js"></script>
+    <script src="kendo/js/kendo.all.min.js"></script>
+    <script src="lib/angular-route.js"></script>
+    <script src="lib/bootstrap.js"></script>
+    <script src="lib/ui-bootstrap-tpls-0.14.3.js"></script>
+
+
+    <script>
+        var app = angular.module('testApp', ['ui.bootstrap', 'ngRoute', 'kendo.directives']);
+
+        angular.module('testApp').controller('testCtrl', function ($scope, $compile) {
+
+            $scope.drpOptions=[
+                {id:'1',dis:'Mgr'},
+                {id:'2',dis:'Emp'}
+            ];
+
+            var gridOptions=[
+                {id:1,name:'Amit C',dis:'Mgr'},
+                {id:2,name:'Sruthi',dis:'Emp'},
+                {id:3,name:'Disha',dis:'Emp'}
+            ]
+
+
+            var gridDS=new kendo.data.DataSource({
+                data:gridOptions,
+                schema: {
+                    model: {
+                        id: "id",
+                        fields: {
+                            id: { editable: false, nullable: true },
+                            name: { editable: true },
+                            dis:{editor: $scope.drpEditor,editable:true}
+
+                    }
+                }
+            }
+
+        });
+
+
+
+
+
+
+
+
+            $scope.drpEditor=function(container, options) {
+                var editor = $('<input kendo-drop-down-list required k-data-text-field="\'dis\'" k-data-value-field="\'id\'" k-data-source="drpOptions" data-bind="value:' + options.field + '"/>')
+                        .appendTo(container);
+                $compile(editor)($scope);
+                editor.css("visibility", "visible");
+            }
+
+
+            $scope.mainGridOptions = {
+                navigatable: true,
+                editable: true,
+                dataSource: gridDS,
+
+                dataBound: function () {
+                    this.expandRow(this.tbody.find("tr.k-master-row").first());
+                },
+                columns: [
+                    {field:'id',title:'Emp Id'},
+                    {field:'name',title:'Emp Name'},
+                    {field:'dis',title:'Emp Dis'}
+                ],
+                edit: function (e) {
+//                    //e.sender.closeCell(e.container);
+                    //  e.container.find("td#aria_active_cell.k-edit-cell").closeCell;
+
+                    var columnIndex = this.cellIndex(e.container);
+                    var fieldName = this.thead.find("th").eq(columnIndex).data("field");
+
+                    //console.log(columnIndex);
+                    // console.log(fieldName);
+
+//                    $(e.container).attr('name', 'sai');
+//                    $(e.container).attr('readonly', 'readonly');
+//                    $(e.container).prop("disabled", true);
+                    // console.log(e.container);
+                    //e.sender.closeCell(e.container);
+
+                    // console.log($(this));
+                    //$(this).attr('name','sai')
+
+                    //$(this).attr('readonly', 'readonly');
+                    //e.container.find();
+
+                }
+            };
+
+
+        });
+
+    </script>
+
+
+    <style>
+
+    </style>
+
+</head>
+<body>
+<div ng-app="testApp" ng-controller="testCtrl" class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div kendo-grid k-options="mainGridOptions"></div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
