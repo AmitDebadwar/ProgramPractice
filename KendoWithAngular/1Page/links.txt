@@ -8,3 +8,9 @@
 	
 	3) Go to next cell on enter grid view
 	http://jsfiddle.net/karthickj25/2NrLR/1/
+	
+	4) kendo-dropdownlist-in-grid-shows-value-after selection
+	http://stackoverflow.com/questions/21785535/kendo-dropdownlist-in-grid-shows-value-after-selection
+	
+	5) kendo grid having drop down with angular js
+	http://stackoverflow.com/questions/30197226/kendo-ui-grid-dropdown-and-angular
