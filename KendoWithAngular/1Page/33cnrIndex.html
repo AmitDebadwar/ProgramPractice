@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>VividCortex reCaptcha Directive Example</title>
+    <link href="style/bootstrap.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.common.core.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.common.min.css" rel="stylesheet">
+
+    <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.dataviz.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.flat.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.flat.mobile.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.dataviz.flat.min.css" rel="stylesheet">
+
+
+    <script src="lib/jquery.js"></script>
+    <script src="lib/angular.js"></script>
+    <script src="kendo/js/kendo.all.min.js"></script>
+    <script src="lib/angular-route.js"></script>
+    <script src="lib/bootstrap.js"></script>
+    <script src="lib/ui-bootstrap-tpls-0.14.3.js"></script>
+
+
+    <script src="33cnr.config.js"></script>
+
+    <style>
+        @media (min-width: 992px) {
+            .cnr-md-2 {
+                width: 12.666667%;
+                display: inline-block;
+            }
+
+            .has-error input[type="text"]:hover {
+                border: 1px solid #A94442;
+            }
+
+            .Green {
+                background-color: green !important;
+            }
+
+            .Red {
+                background-color: red !important;
+            }
+        }
+
+        .grid7 .col-md-1 {
+            width: 13.285714285714%;
+        }
+
+        .grid7 .col-md-2 {
+            width: 27.571428571429%;
+        }
+
+        .grid7 .col-md-3 {
+            width: 41.857142857143%;
+        }
+
+        .grid7 .col-md-4 {
+            width: 56.142857142857%;
+        }
+
+        .grid7 .col-md-5 {
+            width: 70.428571428571%;
+        }
+
+        .grid7 .col-md-6 {
+            width: 84.714285714286%;
+        }
+
+        .grid7 .col-md-7 {
+            width: 100%;
+        }
+
+        .box {
+            border: 1px solid darkslategray;
+            padding: 5px 5px 5px 5px;
+            margin: 3px;
+        }
+    </style>
+
+</head>
+<body>
+<div ng-app="createNewRun">
+
+    <div dir-create-new-run></div>
+
+</div>
+</body>
+</html>

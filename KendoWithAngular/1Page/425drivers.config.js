@@ -1,6 +1,8 @@
 (function () {
 
 
+    angular.module("mo.rules.drivers", ["kendo.directives"
+    ]);
 
     angular.module("mo.rules.drivers").directive("moDropDown", DropDown);
 
@@ -81,15 +83,6 @@
         function linkFunc(scope, element) {
             var splitter = $("#splitter").data("kendoSplitter");
 
-
-
-            function resize() {
-                resizeService.resizeElement(splitter.wrapper);
-                resizeService.resizeElement(element.find("#listView"), 180);
-                resizeService.resizeElement(element.find("#grid"), 140);
-                splitter.resize();
-            }
-
             var grid = $(".k-grid").data("kendoGrid");
 
             grid.tbody.on('keydown', function (e) {
@@ -106,12 +99,6 @@
                 }
 
             });
-
-
-
-
-
-
         }
     }
 
@@ -119,9 +106,6 @@
 
     function DriverRulesController($scope) {
         var vm = this;
-
-
-
 
         var vm = this;
         vm.lhsToolbarOptions = getToolbarOptions();
@@ -183,8 +167,6 @@
             $("#grid").data("kendoGrid").dataSource.read();
         }
 
-
-
         function getToolbarOptions() {
             var items = [];
 
@@ -211,7 +193,9 @@
                 {'id':'2','name':'Shariq'},
                 {'id':'3','name':'Rohit'},
                 {'id':'4','name':'Rohan'},
-                {'id':'5','name':'Mohsin'}
+                {'id':'5','name':'Mohsin'},
+                {'id':'6','name':'Left TOP Drop'}
+
             ];
 
             return {
@@ -227,7 +211,8 @@
                 {'id':'2','name':'Shariq'},
                 {'id':'3','name':'Rohit'},
                 {'id':'4','name':'Rohan'},
-                {'id':'5','name':'Mohsin'}
+                {'id':'5','name':'Mohsin'},
+                {'id':'6','name':'List View'}
             ];
 
 
@@ -259,7 +244,13 @@
                             transport: {
                                 read: function (e) {
 
-                                        e.success([{id:'1',name:'amit'}]);
+                                        e.success([
+                                            {id:'1',name:'Synechron'},
+                                            {id:'2',name:'Microsoft'},
+                                            {id:'3',name:'Apple'}
+
+
+                                        ]);
 
                                 }
                             }
@@ -279,7 +270,7 @@
                 columns: [
                     { command: [{ name: "destroy", template: "<div class='k-grid-delete'><span class='fa fa-minus-square-o'></span></div>" }], width: 50 },
                     {
-                        field: "imId", title: "Inventory Masters", width: 180, editor: createDropDown("inventoryMasters"),
+                        field: "imId", title: "Inventory Masters", width: 180, editor: createDropDown("inventoryMasters"),editable:true,
                         template: "#=name#"
                         //template: "#if(costCentreType != null && costCentreType.name != null) {# #=costCentreType.name# #}#"
                     },
@@ -307,10 +298,8 @@
                         //http://www.telerik.com/forums/foreign-key-column-disabled-in-edit-mode-but-editable-in-add-mode
                         if (e.container.find("input[data-text-field=\"name\"]").length > 0) {
                             e.preventDefault();
-
-
-
                             e.sender.closeCell(e.container);
+
                         }
                     }
                     if (e.model.isNew() == true) {
@@ -346,9 +335,9 @@
                                 name: { nullable: true },
                                 weighting: { nullable: false, defaultValue : 1, validation: { required: { message: "Weighting is required" } } },
                                 oldRecord: {
-                                    defaultValue: 1,
-                                },
-                            },
+                                    defaultValue: 1
+                                }
+                            }
                         },
                         parse: function (response) {
                             $.each(response, function (idx, item) {
@@ -362,7 +351,11 @@
                     transport: {
                         read: function (e) {
 
-                                e.success([{id:'1',name:'Amit',moId:'786',imId:'7864',weighting:'7869'}]);
+                                e.success([
+                                    {id:'1',name:'Synechron',moId:'786',imId:'7864',weighting:'7869'},
+                                    {id:'2',name:'Microsoft',moId:'786',imId:'7864',weighting:'7869'},
+                                    {id:'3',name:'Apple',moId:'786',imId:'7864',weighting:'7869'},
+                                ]);
 
                         },
                         create: function (e) {
