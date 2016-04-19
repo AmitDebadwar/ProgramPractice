@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>VividCortex reCaptcha Directive Example</title>
+    <link href="style/bootstrap.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.common.core.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.common.min.css" rel="stylesheet">
+
+    <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.dataviz.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.flat.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.flat.mobile.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.dataviz.flat.min.css" rel="stylesheet">
+
+
+    <script src="lib/jquery.js"></script>
+    <script src="lib/angular.js"></script>
+    <script src="kendo/js/kendo.all.min.js"></script>
+    <script src="lib/angular-route.js"></script>
+    <script src="lib/bootstrap.js"></script>
+    <script src="lib/ui-bootstrap-tpls-0.14.3.js"></script>
+
+
+    <script>
+        var app = angular.module('testApp', ['ui.bootstrap', 'ngRoute', 'kendo.directives']);
+
+        angular.module('testApp').controller('testCtrl', function ($scope, $window) {
+
+            $scope.activated = "Kendo Charts";
+
+            $scope.marks=[
+                { field: 'nuclear', name: 'Nuclear electricity' }
+            ];
+
+            $scope.opt={
+                title:{text:'Yearwise marksheet chart'},
+
+                series: $scope.marks,
+                seriesDefaults: {
+                    type: "column",
+                    stack: false
+                },
+                categoryAxis: {
+                    categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
+
+
+                }
+            }
+        });
+
+    </script>
+
+
+    <style>
+
+    </style>
+
+</head>
+<body>
+<div ng-app="testApp" ng-controller="testCtrl">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-5">
+                <h2 ng-bind="activated"></h2>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-5">
+                <b> 1) Bar chart</b>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <div kendo-chart="marksBarChart" k-options="opt"
+
+                     style="height: 400px;" ></div>
+            </div>
+
+            <!--k-series-hover="onSeriesHover"-->
+            </div>
+        </div>
+
+
+    </div> <!-- main div-->
+
+</div>
+</body>
+</html>

@@ -28,47 +28,14 @@
 
             $scope.activated = "Chart Bar Poc";
 
-            $scope.mcalDS =
-                    [
-                        {
-                            "name": "CC1",
-                            "TC": "100",
-                            "AC": "30",
-                            "UC": "70"
-
-                        },
-                        {
-                            "name": "COMP",
-                            "TC": "100",
-                            "AC": "45",
-                            "UC": "55"
-                        },
-                        {
-                            "name": "APP1",
-                            "TC": "100",
-                            "AC": "75",
-                            "UC": "25"
-                        },
-                        {
-                            "name": "Direct",
-                            "TC": "100",
-                            "AC": "40",
-                            "UC": "60"
-                        },
-                        {
-                            "name": "Other",
-                            "TC": "100",
-                            "AC": "90",
-                            "UC": "10"
-                        }
-                    ];
-
-
-            //$scope.mcalDS.read();
-
             $scope.markChartOptions = {
                 dataSource: {
-                    data: $scope.mcalDS
+                  transport:{
+                      read:{
+                             url:'stubData/chartBar.json',
+                             dataType:'json'
+                      }
+                  }
                 },
                 title: {
                     align: "left",
@@ -82,23 +49,29 @@
                         background: "transparent"
                     }
                 },
-                series: [
-                    {
-                        field: "AC",
-                        field:"UC",
-
-
-                    }
-                ],
+                series:  [{
+                    field: "Math",
+                    name: "Mathematics",
+                    color:'green'
+                }, {
+                    field: "Phy",
+                    name: "Physics"
+                }, {
+                    field: "Che",
+                    name: "Chemistry"
+                }],
                 valueAxis: {
-                    max: 28,
+                    title:{text:'Marks obtained'},
+                    min:0,
+                    max:100,
+                    majorUnit: 20,
                     majorGridLines: {
                         visible: true
                     },
                     visible: true
                 },
                 categoryAxis: {
-                    categories:['total','allocated','unallocated'],
+                    categories:['2001','2002','2003','2004','2005'],
 
                     majorGridLines: {
                         visible: true
@@ -106,10 +79,14 @@
                     line: {
                         visible: true
                     }
+                },
+                tooltip: {
+                    visible: true,
+                    template: "#= series.name #: #= value #"
                 }
             };
 
-//            $scope.mcalDS.read();
+
 
         });
 
@@ -134,8 +111,7 @@
             <div class="col-md-6">
                 <div kendo-chart="marksChart"
                      k-options="markChartOptions"
-                        >
-
+                      style="height: 550px;">
                 </div>
 
             </div>

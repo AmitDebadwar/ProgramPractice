@@ -1,0 +1,43 @@
+[
+    {
+        "year": 2000,
+        "subject": "ph",
+        "mark": 25,
+        "visibleInLegend": true
+
+
+    },
+    {
+        "year": 2000,
+        "subject": "math",
+        "mark": 50,
+        "visibleInLegend": true
+    },
+    {
+        "year": 2000,
+        "subject": "Che",
+        "mark": 25,
+        "visibleInLegend": true
+    },
+
+
+    {
+        "year": 2001,
+        "subject": "ph",
+        "mark": 40,
+        "visibleInLegend": false
+
+    },
+    {
+        "year": 2001,
+        "subject": "math",
+        "mark": 30,
+        "visibleInLegend": false
+    },
+    {
+        "year": 2001,
+        "subject": "che",
+        "mark": 30,
+        "visibleInLegend": false
+    }
+]
