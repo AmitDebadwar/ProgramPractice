@@ -76,6 +76,118 @@
 
         }
 
+        function getGridOptions() {
+            return {
+                columns: [
+                    { command: [{ name: "destroy", template: "<div><span class=\"k-grid-delete fa fa-minus-square-o\"></span></div>" }], width: "50px" },
+                    { field: "runStatusDescription", title: "Status", width: "180px" },
+                    { field: "id", title: "Run Id", width: "180px" },
+                    { field: "name", title: "Run Name", width: "180px" },
+                    { field: "description", title: "Run Description", width: "180px" },
+                    { field: "finFileSetName", title: "Financial Set", width: "180px" },
+                    { field: "invFileSetName", title: "Inventory Set", width: "180px" },
+                    { field: "ledgerName", title: "Ledger", width: "180px" },
+                    { field: "runPeriod", title: "Period", width: "180px" },
+                    { field: "catName", title: "Catalogue", width: "180px" },
+                    { field: "moDriverSetName", title: "Driver Set", width: "180px" },
+                    { field: "finRuleSetName", title: "Allocation Rules Set", width: "180px" },
+                    { field: "modifiedBy", title: "Created By", width: "180px" },
+                    { field: "modifiedDate", title: "Created Date", width: "180px" },
+                ],
+                autoBind: true,
+                sortable: true,
+                editable: true,
+                scrollable : true,
+                selectable: true,
+                resizable: true,
+                navigatable: true,
+                editable: {
+                    createAt: "bottom"
+                },
+                edit: function (e) {
+                },
+                dataBound: function (e) {
+                },
+                toolbar: [
+                    { name: "save", template: "<a class=\"k-button k-grid-save-changes\"><span class=\"fa fa-floppy-o\"></span></a>", text: "" },
+                    { name: "cancel", template: "<div class=\"k-button k-grid-cancel-changes\"><span class=\"fa fa-ban\"></span></div>", text: "" },
+                ],
+                dataSource: {
+                    batch: true,
+                    schema: {
+                        model: {
+                            id: "id",
+                            fields: {
+                                runStatusDescription: { nullable: false, editable: false },
+                                id: { nullable: false, editable: false },
+                                name: { nullable: false, validation: { required: { message: "Name is required" } } },
+                                description: { nullable: false },
+                                finFileSetName: { nullable: false, editable: false },
+                                invFileSetName: { nullable: false, editable: false },
+                                ledgerName: { nullable: false, editable: false },
+                                runPeriod: { nullable: false, editable: false },
+                                catName: { nullable: false, editable: false },
+                                moDriverSetName: { nullable: false, editable: false },
+                                finRuleSetName: { nullable: false, editable: false },
+                                modifiedBy: { nullable: false, editable: false },
+                                modifiedDate: { nullable: false, editable: false }
+                            }
+                        }
+                    },
+                    transport: {
+                        read: function (e) {
+
+                            var res=[
+                                {'runStatusDescription':'sai','id':'786','name':'sairahem','description':'desc',
+                                'finFileSetName':'file',
+                                'invFileSetName':'inv file',
+                                'ledgerName':'ledger',
+                                'runPeriod':'run period',
+                                'catName':'category name',
+                                'moDriverSetName':'driver name',
+                                'finRuleSetName':'rules names',
+                                'modifiedBy':'Subodh G.',
+                                'modifiedDate':'13 june 2016'}
+
+
+                            ];
+
+                                e.success(res);
+
+                        },
+                        update: function (e) {
+                            runService.saveBatch(e.data.models, function (response) {
+                                vm.firstTimeRowAdded = false;
+                                e.success(response);
+                            });
+                        },
+                        destroy: function (e) {
+                            runService.delete(e.data.models, function (response) {
+                                vm.firstTimeRowAdded = false;
+                                e.success(response);
+                            });
+                        },
+
+                        parameterMap: function (options, operation) {
+                            if (operation !== "read" && options.models) {
+                                return { models: kendo.stringify(options.models) };
+                            }
+                        }
+                    }
+                }
+
+            };
+
+        }
+
+
+
+
+
+
+        vm.gridOptions = getGridOptions();
+
+
         vm.datePickerOptions={
             start: "decade",
             depth: "year"

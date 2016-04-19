@@ -26,9 +26,37 @@
 
         angular.module('testApp').controller('testCtrl', function ($scope, $window) {
 
-            $scope.activated = "Kendo Activated";
+            $scope.activated = "Kendo Chart POC";
 
+            $scope.marksSeries = [
+                {name: 'Math', data: [10, 20, 30]},
+                {name: 'Science', data: [20, 15, 20]},
+                {name: 'Chemistry', data: [25, 35, 40]}
+            ]
 
+            $scope.markChartOptions = {
+                title: {
+                    text: 'Monthly marks progress sheet'
+                 },
+                seriesDefaults: {
+                    type: "column"
+                },
+                categoryAxis: {
+                    categories: ['9th', '10th', '11th'],
+                    majorGridLines: {
+                        visible: false
+                    }
+
+                },
+                valueAxis: {
+                    axisCrossingValue: 0,
+                    majorGridLines: {
+                        visible: false
+                    }
+
+                },
+                series: $scope.marksSeries
+            };
 
         });
 
@@ -48,7 +76,15 @@
                 <h1 ng-bind="activated"></h1>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div kendo-chart="marksChart"
+                     k-options="markChartOptions"></div>
+            </div>
+        </div>
     </div>
+
 
 </div>
 </body>

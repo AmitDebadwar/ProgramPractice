@@ -26,8 +26,37 @@
 
         angular.module('testApp').controller('testCtrl', function ($scope, $window) {
 
-            $scope.activated = "Kendo Activated";
+            $scope.msg = "Avoid Pricy $watch";
 
+
+            $scope.nClick = function () {
+                $scope.modelB = "xyz";
+            };
+
+            Object.defineProperty($scope, 'modelA', {
+                get() {
+
+                    return "";
+                },
+
+                set: function (val) {
+
+
+
+                }
+            });
+
+
+            Object.defineProperty($scope, 'modelB', {
+                get() {
+
+                    return  "";
+                },
+
+                set: function (val) {
+
+                }
+            });
 
 
         });
@@ -42,13 +71,16 @@
 </head>
 <body>
 <div ng-app="testApp" ng-controller="testCtrl">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-5">
-                <h1 ng-bind="activated"></h1>
-            </div>
-        </div>
-    </div>
+    <b ng-bind="msg"></b>
+
+    <input type="checkbox" ng-model="modelA" ng-true-value="'sai'" ng-false-value="'rahem'"/>
+    <input type="checkbox" ng-model="modelB" ng-true-value="'balasa'" ng-false-value="'saraswatilakshmi'"/>
+
+    <input type="button" ng-click="nClick()"/>
+    <br>
+
+    {{modelA}}
+
 
 </div>
 </body>

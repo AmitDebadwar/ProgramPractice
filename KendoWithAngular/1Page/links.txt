@@ -14,3 +14,35 @@
 	
 	5) seven grid system
 	http://stackoverflow.com/questions/23522917/how-to-change-bootstrap-columns-width
+
+	6) Tree | with angular operations
+	http://www.telerik.com/forums/change-icon-of-existing-node-(kendoui-angularjs)
+
+	7) Tree | with template
+	http://stackoverflow.com/questions/28119717/angular-kendo-ui-treeview-issue-on-node-expansion
+
+	8) Tree | Tree 2 Tree drag drop
+	http://www.telerik.com/forums/kendo-angular-treeview-drag-and-drop-question
+	    http://dojo.telerik.com/ubarA
+	    http://dojo.telerik.com/EluY/6
+
+	9) Tree | Restrict leaf node from being dropped.
+	http://dojo.telerik.com/EluY/9
+
+	10) Tree | Tree 2 any drag drop
+	https://github.com/kendo-labs/angular-kendo/issues/251
+	    http://embed.plnkr.co/Ourtv4uQH2ThJOQlEFt1/
+
+	11) Tree | angular js operation
+	    http://dojo.telerik.com/EvuSA
+
+
+    12) Tree | get datasource in $scope
+    http://plnkr.co/edit/969C4pPN7AeuWWiLs5l9?p=preview
+
+    13) Tree | Expand node that matches id angular
+    http://jsfiddle.net/jsonsee/D35Q6/
+
+
+    14) Tree | Find data item by text
+    http://stackoverflow.com/questions/12303235/kendoui-filter-treeview

@@ -42,136 +42,92 @@
         </div>
     </div>
 
-    <!--<div class="row">-->
-        <!--<div class="col-md-4">-->
-            <!--<div class="row">-->
-                <!--<div class="col-md-3">-->
-<!--1-->
-                <!--</div>-->
-                <!--<div class="col-md-3">-->
-<!--2-->
-                <!--</div>-->
 
-                <!--<div class="col-md-3">-->
-<!--3-->
-                <!--</div>-->
+    <div class="row" id="drpList">
+        <div class="col-md-1 box">
+            <small>FININCIAL SET</small>
 
-            <!--</div>-->
-        <!--</div>-->
-
-
-        <!--<div class="col-md-4">-->
-            <!--<div class="row">-->
-                <!--<div class="col-md-3">-->
-<!--4-->
-                <!--</div>-->
-                <!--<div class="col-md-3">-->
-<!--5-->
-                <!--</div>-->
-
-                <!--<div class="col-md-3">-->
-<!--6-->
-                <!--</div>-->
-
-            <!--</div>-->
-
-        <!--</div>-->
-
-
-        <!--<div class="col-md-4">-->
-            <!--<div class="row">-->
-                <!--<div class="col-md-3">-->
-<!--7-->
-                <!--</div>-->
-                <!--<div class="col-md-3">-->
-<!--8-->
-                <!--</div>-->
-
-                <!--<div class="col-md-3">-->
-<!--9-->
-                <!--</div>-->
-
-            <!--</div>-->
-
-        <!--</div>-->
-    <!--</div>-->
-
-
-    <div class='row grid7' style="margin-top: 40px;">
-        <div class='col-md-1 box'><span>FININCIAL SET</span>
-
-            <select kendo-drop-down-list
+            <select kendo-drop-down-list class="drpList"
                     k-data-text-field="'name'"
                     k-data-value-field="'id'"
                     k-data-source="vm.financialStateDS"
-                    ></select></div>
-        <div class='col-md-1 box'>
+                    ></select>
+        </div>
 
-            <span>INVENTORY SET</span>
+        <div class="col-md-1 box">
+            <small>INVENTORY SET</small>
 
-            <select kendo-drop-down-list
+            <select kendo-drop-down-list class="drpList"
                     k-data-text-field="'name'"
                     k-data-value-field="'id'"
                     k-data-source="vm.financialStateDS"
-                    ></select></div>
-        <div class='col-md-1 box'>
+                    ></select>
+        </div>
 
-            <span>LEGER</span>
+        <div class="col-md-1 box">
+            <small>LEGER</small>
 
-            <select kendo-drop-down-list
+            <select kendo-drop-down-list class="drpList"
                     k-data-text-field="'name'"
                     k-data-value-field="'id'"
                     k-data-source="vm.financialStateDS"
-                    ></select></div>
-        <div class='col-md-1 box'><span>REPORTING PERIOD</span>
-            <input kendo-date-picker
+                    ></select>
+        </div>
+
+        <div class="col-md-2 box">
+            <small>REPORTING PERIOD</small>
+            <input kendo-date-picker class="drpList"
                    k-options="vm.datePickerOptions"
                    k-format="'MMMM yyyy'"
-                   style="width: 100%;"/></div>
-        <div class='col-md-1 box'><span>CATALOG</span>
+                   style="width: 100%;"/>
+        </div>
 
-            <select kendo-drop-down-list
+        <div class="col-md-1 box">
+            <small>CATALOG</small>
+
+            <select kendo-drop-down-list class="drpList"
                     k-data-text-field="'name'"
                     k-data-value-field="'id'"
                     k-data-source="vm.financialStateDS"
-                    ></select></div>
-        <div class='col-md-1 box'>
-            <span>DRIVER SET</span>
+                    ></select>
+        </div>
 
-            <select kendo-drop-down-list
+        <div class="col-md-1 box">
+            <small>DRIVER SET</small>
+
+            <select kendo-drop-down-list class="drpList"
                     k-data-text-field="'name'"
                     k-data-value-field="'id'"
                     k-data-source="vm.financialStateDS"
-                    ></select></div>
-        <div class='col-md-1 box'><span>ALLOCATION RULES SET</span>
+                    ></select>
 
-            <select kendo-drop-down-list
+        </div>
+
+        <div class="col-md-2 box">
+
+            <small>ALLOCATION RULES SET</small>
+
+            <select kendo-drop-down-list class="drpList"
                     k-data-text-field="'name'"
                     k-data-value-field="'id'"
                     k-data-source="vm.financialStateDS"
-                    ></select></div>
-    </div>
+                    ></select>
 
-    <!--<div class='row grid7'>-->
-        <!--<div class='col-md-1'></div>-->
-        <!--<div class='col-md-1'></div>-->
-        <!--<div class='col-md-1'></div>-->
-        <!--<div class='col-md-1'></div>-->
-        <!--<div class='col-md-1'></div>-->
-        <!--<div class='col-md-1'></div>-->
-        <!--<div class='col-md-1'><button type="button" class="btn btn-primary btn-xs pull-right">Save</button>  </div>-->
-    <!--</div>-->
-
-    <div class="row">
-        <div class="col-md-12">
-            <button type="button" class="btn btn-primary btn-xs pull-right">Save</button>
         </div>
     </div>
+
+
+    <div class="row" style="padding-top: 10px;">
+        <div class="col-md-12" style="background-color:#00d4d1;">
+            <button type="button" class="btn btn-primary btn-sm  pull-right">Save</button>
+        </div>
+    </div>
+
 
     <div class="row" style="padding-top: 10px;">
 
         <div class="col-md-12">
-            <div kendo-grid k-data-source="products"
+            <div kendo-grid style="width:100%;"
                  k-options='vm.gridOptions'>
             </div>
         </div>

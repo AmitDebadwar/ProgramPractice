@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>VividCortex reCaptcha Directive Example</title>
+    <link href="style/bootstrap.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.common.core.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.common.min.css" rel="stylesheet">
+
+    <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.dataviz.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.flat.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.flat.mobile.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.dataviz.flat.min.css" rel="stylesheet">
+
+
+    <script src="lib/jquery.js"></script>
+    <script src="lib/angular.js"></script>
+    <script src="kendo/js/kendo.all.min.js"></script>
+    <script src="lib/angular-route.js"></script>
+    <script src="lib/bootstrap.js"></script>
+    <script src="lib/ui-bootstrap-tpls-0.14.3.js"></script>
+
+
+    <script>
+        var app = angular.module('testApp', ['ui.bootstrap', 'ngRoute', 'kendo.directives']);
+
+        angular.module('testApp').controller('testCtrl', function ($scope, $window) {
+
+            $scope.activated = "Kendo Activated";
+
+            $scope.treeData = new kendo.data.HierarchicalDataSource({ data: [
+                {id:'1', text: "Ashok",type:'CH', items: [
+                    {text: 'Sandhya',type:'CH',items:[{text:'Devansh',type:'MO'},{text:'Kalyani',type:'MO'}]},
+                    {text: 'Pankaj',type:'MO'},
+                    {text:'Test',type:"CH"}
+                ]},
+                { text: "Chandrakant",type:'CH', items: [
+                    { text: "Amit",type:'MO' },
+                    { text: "Shraddha",type:'MO' }
+                ] },
+                { text: "Suresh",type:'CH' ,items: [
+                    {text: 'Pooja',type:'MO'},
+                    {text: 'Shreyas',type:'MO'}
+                ] }
+            ]});
+
+
+            $scope.treeTemplate = function (dataItem) {
+
+                return dataItem.item.type=="CH"?
+                "<span class=\"glyphicon glyphicon-menu-right\" style=\"margin-right: 3px;\" aria-hidden=\"true\"></span>"+ dataItem.item.text
+                        :"<span class=\"glyphicon glyphicon-minus\" style=\"margin-right: 3px;\" aria-hidden=\"true\"></span>"+ dataItem.item.text;
+            }
+
+
+            $scope.selectItem=function(dataItem){
+                alert('saibaba');
+                dataItem.expanded = true;
+                $scope.$apply();
+            }
+
+$scope.workingExpandById=function(){
+    var dataSource = $scope.familyTree.dataSource;
+    console.log('jai sainath');
+    console.log(dataSource);
+    var dataItem = dataSource.get(1);
+    console.log('sairahem');
+    console.log(dataItem);
+
+    var node = $scope.familyTree.findByUid(dataItem.uid);
+    $scope.familyTree.expand(node);
+};
+
+$scope.saiShow=function(){
+
+
+    console.log('########### Rahem ###################');
+
+//    var dataSource = $scope.familyTree.dataSource;
+//    var itemsai = $scope.familyTree.findByText("Ashok");
+//
+//    var dataItemsai = $scope.familyTree.dataItem(itemsai);
+//    console.log('sainath');
+//    console.log(dataItemsai.id);
+//
+//    var node = $scope.familyTree.findByUid(dataItemsai.uid);
+//    $scope.familyTree.expand(node);
+
+//
+//    var dataSource = $scope.familyTree.dataSource;
+//    console.log('jai sainath');
+//    console.log(dataSource);
+//    var dataItem = dataSource.get(1);
+//    console.log('sairahem');
+//    console.log(dataItem);
+
+    var node = $scope.familyTree.findByText('Ashok');
+    $scope.familyTree.expand(node);
+
+}
+
+//            $scope.onDrop = function(e) {
+//
+//                e.preventDefault();
+//                var copy = $scope.tree2.dataItem(e.sourceNode).toJSON()
+//                if (e.dropPosition == "over") {
+//                    var destNode = $scope.tree1.dataItem(e.destinationNode);
+//                    destNode.append(copy, e.destinationNode);
+//                    $scope.tree1.expand(e.destinationNode)
+//                };
+//            };
+
+
+        });
+
+    </script>
+
+
+    <style>
+
+    </style>
+
+</head>
+<body>
+<div ng-app="testApp" ng-controller="testCtrl">
+    <div class="container-fluid">
+        <div class="row">
+            <div clas="col-md-3">
+                <h1>Tree Icon POC</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-offset-2 col-md-4">
+
+                <div kendo-tree-view="familyTree"
+                     k-data-source="treeData"
+                     k-template="treeTemplate"
+                     k-drag-and-drop="true"
+                     k-on-drop="onDrop(kendoEvent)"
+                     k-on-change="selectItem(dataItem)"
+                     >
+
+                </div>
+
+                <input type="button" value="sainath" ng-click="saiShow()"/>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+</body>
+</html>
