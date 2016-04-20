@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+           
+        </div>
+    </section>
+}
+<h3>Index page</h3>
+
+
+<div ng-app="testMod">
+    <div ng-controller="MainCtrl">
+        <h1 ng-bind="msg"></h1><br />
+        with service: <b ng-bind="math"></b>
+    </div>
+    <br />
+    #################################################
+    <br />
+    <div ng-app="testMod" ng-controller="SecondCtrl">
+        <h1 ng-bind="msg"></h1>
+        <br />
+        with service: <b ng-bind="svr"></b>
+    </div>
+</div>
