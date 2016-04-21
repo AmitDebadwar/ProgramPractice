@@ -46,7 +46,10 @@
         @RenderSection("scripts", required: false)*@
 
    
-    <script src="~/requiredJSFiles/require.js" data-main="requiredJSFiles/mainRequireJS.js"></script>
+    <script src="~/requiredJSFiles/require.js" data-main="requiredJSFiles/main"></script>
+
+    @*<script src="~/requiredJSFiles/require.js"></script>
+    <script src="~/requiredJSFiles/main-built.js"></script>*@
 
     @RenderSection("scripts", required: false)
 </body>

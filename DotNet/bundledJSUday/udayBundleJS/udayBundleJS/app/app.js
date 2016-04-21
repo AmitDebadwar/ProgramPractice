@@ -1,1 +1,6 @@
-﻿var app = angular.module("testMod",[]);
+﻿ 
+
+define(['angular'], function (angular) {
+
+    return angular.module("testMod", []);
+});
