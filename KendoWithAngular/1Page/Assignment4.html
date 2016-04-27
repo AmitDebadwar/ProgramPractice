@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>VividCortex reCaptcha Directive Example</title>
+
+
+    <link href="style/bootstrap.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.common.core.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.common.min.css" rel="stylesheet">
+
+    <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.dataviz.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.flat.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.flat.mobile.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.dataviz.flat.min.css" rel="stylesheet">
+
+
+    <script src="lib/jquery.js"></script>
+    <script src="lib/angular.js"></script>
+    <script src="kendo/js/kendo.all.min.js"></script>
+    <script src="lib/angular-route.js"></script>
+    <script src="lib/bootstrap.js"></script>
+    <script src="lib/ui-bootstrap-tpls-0.14.3.js"></script>
+
+    <script src="Assignment4.js"></script>
+
+</head>
+<body>
+<div ng-app="TestApp" ng-controller="TestCtrl as vm">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <h1 ng-bind="vm.activated"></h1>
+            </div>
+        </div>
+
+        <div class="row">
+             <div class="col-md-2">
+                <select kendo-drop-down-list
+                        k-data-text-field="'name'"
+                        k-data-value-field="'id'"
+                        k-data-source="vm.states"
+                        ng-model="vm.selectedState"
+                        k-option-label="'Select state'"
+                        k-on-change="vm.stateChange(kendoEvent)">
+                </select>
+            </div>
+
+                <div class="col-md-2" ng-hide="vm.isDistrictHide">
+                    <select kendo-drop-down-list="districtDropdown"
+                            k-data-text-field="'name'"
+                            k-data-value-field="'id'"
+                            k-data-source="vm.districts"
+                            ng-model="vm.selectedDistrict"
+                            k-option-label="'Add new'"
+                            k-auto-bind="false" ng-disabled="!vm.selectedState">
+                    </select>
+                 </div>
+
+            <div class="col-md-offset-1 col-md-5">
+
+                <input name="files"
+                       type="file"
+                       kendo-upload
+                       k-options="vm.fileUploadConfig"
+                       k-select="onFilesSelect"
+                        />
+            </div>
+        </div>
+        <div class="row">
+
+        </div>
+
+
+
+    </div>
+    <!--container div-->
+
+
+</div>
+</body>
+</html>

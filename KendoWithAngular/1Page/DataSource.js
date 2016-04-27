@@ -43,6 +43,16 @@ $("#chart").kendoChart({
     }});
 
 
+vm.states = new kendo.data.DataSource({
+
+    transport: {
+        read:{
+            url:'stubData/Assignment4/statesDrp.json',
+            dataType:'json'
+        }
+    }
+
+});
 
 $scope.marksDataSource = new kendo.data.DataSource({
     transport: {
