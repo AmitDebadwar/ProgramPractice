@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="MDK_DB" Class="MDKDbContextDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=PNEITSH52343d;Initial Catalog=MDK_DB;Persist Security Info=True;User ID=iwebuser" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="MDK_DBConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.procColumnConfig" Method="procColumnConfig">
+    <ElementType Name="procColumnConfigResult">
+      <Column Name="ColumnName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ColumnType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.StudentTableConfigWithData" Method="StudentTableConfigWithData">
+    <ElementType Name="StudentTableConfigWithDataResult">
+      <Column Name="StudentRoll" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="StudentName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Math" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Chemistry" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Physics" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContactNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="EmailId" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

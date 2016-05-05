@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="DynamicColumnGrid.MDKServices" CodeBehind="MDKServices.svc.cs" %>

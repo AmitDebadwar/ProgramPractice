@@ -1,0 +1,5 @@
+C:\Amit\Amit\OutSide\GitHubProgramPractice\trunk\DotNet\DynamicColumnGrid\DynamicColumnGrid\obj\Debug\DynamicColumnGrid.csprojResolveAssemblyReference.cache
+C:\Amit\Amit\OutSide\GitHubProgramPractice\trunk\DotNet\DynamicColumnGrid\DynamicColumnGrid\bin\DynamicColumnGrid.dll
+C:\Amit\Amit\OutSide\GitHubProgramPractice\trunk\DotNet\DynamicColumnGrid\DynamicColumnGrid\bin\DynamicColumnGrid.pdb
+C:\Amit\Amit\OutSide\GitHubProgramPractice\trunk\DotNet\DynamicColumnGrid\DynamicColumnGrid\obj\Debug\DynamicColumnGrid.dll
+C:\Amit\Amit\OutSide\GitHubProgramPractice\trunk\DotNet\DynamicColumnGrid\DynamicColumnGrid\obj\Debug\DynamicColumnGrid.pdb
