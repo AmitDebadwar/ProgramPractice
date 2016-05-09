@@ -49,6 +49,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
@@ -133,6 +134,7 @@
   <ItemGroup>
     <Content Include="app\1Starter.html" />
     <Content Include="app\app.js" />
+    <Content Include="app\backupAppJS.js" />
     <Content Include="app\index.html" />
     <Content Include="app\lib\angular-route.js" />
     <Content Include="app\lib\angular.js" />
