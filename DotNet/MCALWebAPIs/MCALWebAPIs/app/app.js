@@ -25,13 +25,18 @@ angular.module('testApp').controller('testCtrl', function ($scope, $http, $timeo
     $scope.dsm = new kendo.data.DataSource({
         transport: {
             read: {
-                url: getStudents
+                url: getStudents,
+                dataType:'json'
             }
 
+        },
+        parameterMap:function(data,type){
+            console.log(data);
         },
         pageSize: 5,
         serverPaging: true,
         serverFiltering: true,
+         
 
         schema: {
             total: function (total) {

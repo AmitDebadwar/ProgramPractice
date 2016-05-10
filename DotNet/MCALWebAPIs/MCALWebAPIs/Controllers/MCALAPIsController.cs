@@ -12,8 +12,7 @@ namespace MCALWebAPIs.Controllers
 {
     public class MCALAPIsController : ApiController
     {
-
-         
+       
         public JsonResult getStudents()
         {
 
@@ -22,7 +21,7 @@ namespace MCALWebAPIs.Controllers
             int take = int.Parse(nvc["take"]);
             int skip = int.Parse(nvc["skip"]);
 
-            var list= new List<StudentInfo>() { 
+            var list = new List<StudentInfo>() { 
           
             new StudentInfo(){ RollNo="1", Name="Rajesh"},
             new StudentInfo(){ RollNo="2", Name="Mahesh"},
@@ -47,14 +46,15 @@ namespace MCALWebAPIs.Controllers
             var sorted = list.Skip(skip).Take(take);
 
 
-            var n= new JsonResult() { 
-             Data=sorted,
-              JsonRequestBehavior=JsonRequestBehavior.AllowGet,
-              MaxJsonLength=list.Count
+            var n = new JsonResult()
+            {
+                Data = sorted,
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet,
+                MaxJsonLength = list.Count
             };
 
 
-             
+
             return n;
 
         }
