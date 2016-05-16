@@ -2,7 +2,7 @@
 
 angular.module('testApp').controller('testCtrl', function ($scope, $http, $timeout) {
 
-    $scope.activated = "UI Grid With Server Side filtering and paging !";
+    $scope.activated = "1) Paging !";
 
     var server = "http://localhost:";
     var portNumber = "2185";
@@ -10,6 +10,7 @@ angular.module('testApp').controller('testCtrl', function ($scope, $http, $timeo
 
     var getStudents = server + portNumber + partialURI + "getStudents";
 
+    /*paging without database*/
     $scope.gridOptions = {
         columns: [
             { "title": "Roll No", "field": "RollNo" },
@@ -20,23 +21,21 @@ angular.module('testApp').controller('testCtrl', function ($scope, $http, $timeo
         pageable: true,
         sortable: true
     };
-
-
     $scope.dsm = new kendo.data.DataSource({
         transport: {
             read: {
                 url: getStudents,
-                dataType:'json'
+                dataType: 'json'
             }
 
         },
-        parameterMap:function(data,type){
+        parameterMap: function (data, type) {
             console.log(data);
         },
         pageSize: 5,
         serverPaging: true,
         serverFiltering: true,
-         
+
 
         schema: {
             total: function (total) {
@@ -46,7 +45,7 @@ angular.module('testApp').controller('testCtrl', function ($scope, $http, $timeo
 
         }
     });
-
+    /*paging without database end*/
 
 
 
