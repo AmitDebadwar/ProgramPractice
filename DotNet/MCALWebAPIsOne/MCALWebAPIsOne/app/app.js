@@ -5,10 +5,10 @@ angular.module('testApp').controller('testCtrl', function ($scope, $http, $timeo
     $scope.activated = "1) Paging !";
 
     var server = "http://localhost:";
-    var portNumber = "2185";
+    var portNumber = "1308";
     var partialURI = "/api/MCALAPIs/";
 
-    var getStudents = server + portNumber + partialURI + "filterStudent";
+    var getStudents = server + portNumber + partialURI + "getStudents";
 
     /*paging without database*/
     $scope.gridOptions = {
@@ -22,7 +22,7 @@ angular.module('testApp').controller('testCtrl', function ($scope, $http, $timeo
         sortable: true
     };
     $scope.dsm = new kendo.data.DataSource({
-        type:'odata',
+       
         transport: {
             read: {
                 url: getStudents,
