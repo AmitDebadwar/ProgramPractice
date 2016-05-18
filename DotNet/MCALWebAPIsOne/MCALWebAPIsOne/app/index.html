@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>VividCortex reCaptcha Directive Example</title>
+    <link href="style/bootstrap.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.common.core.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.common.min.css" rel="stylesheet">
+
+    <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.dataviz.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.flat.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.flat.mobile.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.dataviz.flat.min.css" rel="stylesheet">
+
+
+    <script src="lib/jquery.js"></script>
+    <script src="lib/angular.js"></script>
+    <script src="kendo/js/kendo.all.min.js"></script>
+
+    <script src="lib/angular-route.js"></script>
+    <script src="lib/bootstrap.js"></script>
+    <script src="lib/ui-bootstrap-tpls-0.14.3.js"></script>
+
+
+
+    <script src="app.js"></script>
+
+</head>
+<body>
+    <div ng-app="testApp" ng-controller="testCtrl">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3 ng-bind="activated"></h3>
+                </div>
+            </div>
+
+            <div class="row" style="min-height: 300px;">
+                <div class="col-md-12">
+                    <div kendo-grid
+                        k-column-menu="false" k-filterable="true"
+                        k-data-source="dsm" k-options="gridOptions" k-on-change="onSelectHandler(kendoEvent)">
+                    </div>
+                </div>
+                 
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>2) Filtering</h3>
+                    </div>
+                </div>
+                 <div class="row">
+                    <div class="col-md-3">
+                         
+                    </div>
+                </div>
+
+            </div>
+        </div>
+</body>
