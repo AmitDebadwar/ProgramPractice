@@ -7,19 +7,16 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
+using Kendo.Mvc.Extensions;
+using Kendo.Mvc.UI;
 
 namespace MCALWebAPIsOne.Controllers
 {
     public class MCALAPIsController : ApiController
     {
-        public JsonResult getStudents()
-        {
-
-            NameValueCollection nvc = HttpUtility.ParseQueryString(Request.RequestUri.Query);
-
-            int take = int.Parse(nvc["take"]);
-            int skip = int.Parse(nvc["skip"]);
-
+        public DataSourceResult getStudents([System.Web.Http.ModelBinding.ModelBinder(typeof(WebApiDataSourceRequestModelBinder))]DataSourceRequest request)
+        { 
+            
             var list = new List<StudentInfo>() { 
           
             new StudentInfo(){ RollNo="1", Name="Rajesh"},
@@ -41,20 +38,9 @@ namespace MCALWebAPIsOne.Controllers
             new StudentInfo(){ RollNo="15", Name="Jaya"},
             };
 
+          
 
-            var sorted = list.Skip(skip).Take(take);
-
-
-            var n = new JsonResult()
-            {
-                Data = sorted,
-                JsonRequestBehavior = JsonRequestBehavior.AllowGet,
-                MaxJsonLength = list.Count
-            };
-
-
-
-            return n;
+            return list.ToDataSourceResult(request);
 
         }
 

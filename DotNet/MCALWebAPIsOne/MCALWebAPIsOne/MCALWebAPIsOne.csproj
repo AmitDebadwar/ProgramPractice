@@ -39,6 +39,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Kendo.Mvc">
+      <HintPath>C:\Program Files (x86)\Telerik\UI for ASP.NET MVC Q2 2016\wrappers\aspnetmvc\Binaries\Mvc4\Kendo.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -134,6 +137,8 @@
     <Content Include="app\1Starter.html" />
     <Content Include="app\app.js" />
     <Content Include="app\backupAppJS.js" />
+    <Content Include="app\gridFiltering.html" />
+    <Content Include="app\gridFiltering.js" />
     <Content Include="app\index.html" />
     <Content Include="app\lib\angular-route.js" />
     <Content Include="app\lib\angular.js" />
