@@ -137,6 +137,9 @@
     <Content Include="app\1Starter.html" />
     <Content Include="app\app.js" />
     <Content Include="app\backupAppJS.js" />
+    <Content Include="app\angGridFileUpload.js" />
+    <Content Include="app\Copy %282%29 of 1Starter.html" />
+    <Content Include="app\angGridFileUpload.html" />
     <Content Include="app\gridFiltering.html" />
     <Content Include="app\gridFiltering.js" />
     <Content Include="app\index.html" />

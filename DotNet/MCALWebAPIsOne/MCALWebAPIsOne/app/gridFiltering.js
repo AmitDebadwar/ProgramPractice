@@ -2,7 +2,7 @@
 
 angular.module('testApp').controller('testCtrl', function ($scope, $http, $timeout) {
 
-    $scope.activated = "1) Server side paging";
+    $scope.activated = "Server side paging and filtering (only reading data)";
 
     var server = "http://localhost:";
     var portNumber = "1308";
@@ -21,17 +21,15 @@ angular.module('testApp').controller('testCtrl', function ($scope, $http, $timeo
         pageable: true,
         sortable: true
     };
+
+
     $scope.dsm = new kendo.data.DataSource({
         transport: {
             read: function (options) {
                 var webapi = new kendo.data.transports.webapi({ prefix: "" });
                 var params = webapi.parameterMap(options.data);
 
-
-                console.log('sai');
-                console.log(options);
-
-                $http.get(getStudents, { params: params })
+                 $http.get(getStudents, { params: params })
                     .success(function (data) {
                         options.success(data);
                     })
