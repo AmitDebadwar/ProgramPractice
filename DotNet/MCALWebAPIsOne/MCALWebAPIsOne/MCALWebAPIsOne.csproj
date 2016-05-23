@@ -138,7 +138,13 @@
     <Content Include="app\app.js" />
     <Content Include="app\backupAppJS.js" />
     <Content Include="app\angGridFileUpload.js" />
-    <Content Include="app\Copy %282%29 of 1Starter.html" />
+    <Content Include="app\images\upload.png" />
+    <Content Include="app\lib\xeditable\css\xeditable.css" />
+    <Content Include="app\lib\xeditable\css\xeditable.min.css" />
+    <Content Include="app\lib\xeditable\js\xeditable.js" />
+    <Content Include="app\lib\xeditable\js\xeditable.min.js" />
+    <Content Include="app\xEditableAngular.js" />
+    <Content Include="app\xEditableAngular.html" />
     <Content Include="app\angGridFileUpload.html" />
     <Content Include="app\gridFiltering.html" />
     <Content Include="app\gridFiltering.js" />
@@ -254,6 +260,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="uploadedIcons\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

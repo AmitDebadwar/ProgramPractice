@@ -19,17 +19,13 @@
     <script src="lib/angular-route.js"></script>
     <script src="lib/bootstrap.js"></script>
     <script src="lib/ui-bootstrap-tpls-0.14.3.js"></script>
-
+    <script src="lib/ng-file-upload.min.js"></script>
 
     <script src="angGridFileUpload.js"></script>
 
 
     <style>
-        td
-        {
-            padding:15px;
-            margin:5px;
-        }
+        
     </style>
 
 </head>
@@ -42,33 +38,74 @@
                 </div>
             </div>
             <div class="row">
-                <table border="1">
-                    <thead>
-                        <th>Name</th>
-                        <th>Age</th>
-                        <th></th>
-                    </thead>
-                    <tbody ng-repeat="contact in model.contacts">
-                        <tr ng-include="getTemplate(contact)">
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="col-md-12">
+                    <table border="1" class="table table-bordered table-hover table-condensed">
+                        <thead style="background-color:lightGray">
+                            <tr>
+                                <th>Name</th>
+                                <th>Age</th>
+                                <th>Fore Color</th>
+                                <th>Background Color</th>
+                                <th>File Upload</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody ng-repeat="contact in model.contacts">
+                            <tr ng-include="getTemplate(contact)">
+                            </tr>
+                        </tbody>
+                    </table>
 
-                <script type="text/ng-template" id="display">
-        <td>{{contact.name}}</td>
-        <td>{{contact.age}}</td>
-        <td>
-            <button ng-click="editContact(contact)">Edit</button>
+                    <script type="text/ng-template" id="display">
+        <td  style="width:15%">{{contact.firstName}}</td>
+        <td  style="width:15%">{{contact.lastName}}</td>
+        <td style="width:15%;padding:4px;"> 
+                        <div style="height:40px; width:40px; font-weight:bold; font-size:18px;" ng-style="{'color':contact.foreColor}">MCAL</div></td>
+                    
+                            <td style="width:15%;padding:5px;">
+                        <div style="height:20px; width:20px;" ng-style="{'background-color':contact.bgColor}"></div></td>
+                        </td>
+                        <td style="width:15%"></td>
+
+
+        <td style="width:25%">
+            <button ng-click="editContact(contact)" class="btn btn-sm btn-default">Edit</button>
         </td>
-                </script>
-                <script type="text/ng-template" id="edit">
-        <td><input type="text" ng-model="model.selected.name" /></td>
-        <td><input type="text" ng-model="model.selected.age" /></td>
-        <td>
-            <button ng-click="saveContact($index)">Save</button>
-            <button ng-click="reset()">Cancel</button>
+                    </script>
+                    <script type="text/ng-template" id="edit">
+        <td style="width:15%"><input id="{{$index}}" type="text" class="editableTxt"  ng-model="model.selected.firstName"/></td>
+        <td style="width:15%"><input type="text" class="editableTxt" ng-model="model.selected.lastName" /></td>
+                        <td style="width:15%">
+                           <input kendo-color-picker ng-model="model.selected.foreColor" k-buttons="true" k-preview="true" k-input="false" />
+                        </td>
+                        <td style="width:15%">
+                             <input kendo-color-picker ng-model="model.selected.bgColor" k-buttons="true" k-preview="true" k-input="false" />
+                        </td>
+                        <td style="width:15%">
+                       
+                      <span ngf-select ng-model="model.selected.icon" name="file"  
+                                    ngf-max-size="20MB">Upload Icon
+                                </span>
+                        </span>
+                        <b>{{model.selected.icon.name || 'empty'}}</b>
+                    <img src="images/upload.png" ng-click="uploadDocument(model.selected.icon,$index)" style="cursor: pointer"/>
+
+                        </td>
+        <td style="width:25%">
+            <button ng-click="saveContact($index)" class="btn btn-sm btn-primary">Save</button>
+            <button ng-click="reset()" class="btn btn-sm btn-default">Cancel</button>
         </td>
-                </script>
+                    </script>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    
+                      
+
+                </div>
+
             </div>
         </div>
 
