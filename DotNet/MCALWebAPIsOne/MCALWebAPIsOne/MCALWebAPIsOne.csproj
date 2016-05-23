@@ -127,6 +127,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MCALAPIsController.cs" />
+    <Compile Include="Controllers\MCALMVCController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -138,6 +139,8 @@
     <Content Include="app\app.js" />
     <Content Include="app\backupAppJS.js" />
     <Content Include="app\angGridFileUpload.js" />
+    <Content Include="app\formPosttoMVCCtrl.js" />
+    <Content Include="app\formPosttoMVCCtrl.html" />
     <Content Include="app\images\upload.png" />
     <Content Include="app\lib\xeditable\css\xeditable.css" />
     <Content Include="app\lib\xeditable\css\xeditable.min.css" />
@@ -215,6 +218,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="index.html" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
