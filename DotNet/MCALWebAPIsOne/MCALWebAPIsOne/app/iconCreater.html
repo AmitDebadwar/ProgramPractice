@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>VividCortex reCaptcha Directive Example</title>
+    <link href="style/bootstrap.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.common.core.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.common.min.css" rel="stylesheet">
+
+    <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.dataviz.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.flat.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.flat.mobile.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.dataviz.flat.min.css" rel="stylesheet">
+
+
+    <script src="lib/jquery.js"></script>
+    <script src="lib/angular.js"></script>
+    <script src="kendo/js/kendo.all.min.js"></script>
+    <script src="lib/angular-route.js"></script>
+    <script src="lib/bootstrap.js"></script>
+    <script src="lib/ui-bootstrap-tpls-0.14.3.js"></script>
+    <script src="lib/ng-file-upload.min.js"></script>
+
+    <script src="iconCreater.js"></script>
+
+
+    <style>
+        .k-header
+        {
+            background-color: transparent;
+            border: none;
+        }
+
+        .k-button.k-upload-button
+        {
+            background-color: gray;
+        }
+
+        .k-upload-files
+        {
+            display: none;
+        }
+
+        .ui-sortable-helper
+        {
+            cursor: move;
+        }
+    </style>
+
+</head>
+<body>
+    <div ng-app="testApp" ng-controller="testCtrl">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <h1 ng-bind="activated"></h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <form class="form-horizontal" role="form">
+
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <div class="form-group row">
+                                    <label for="inputKey" class="col-md-2 control-label">Branding Name</label>
+                                    <div class="col-md-2">
+                                        <input type="text" class="form-control" id="inputKey" ng-model="brandingName">
+                                    </div>
+                                    <label for="inputValue" class="col-md-2 control-label">Page Title</label>
+                                    <div class="col-md-2">
+                                        <input type="text" class="form-control" id="inputValue" ng-model="pageTitle">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="inputKey" class="col-md-2 control-label">Foreground Color</label>
+                                    <div class="col-md-2">
+                                        <input kendo-color-picker ng-model="foreColor" k-buttons="true" k-preview="true" k-input="false" />
+
+                                    </div>
+                                    <label for="inputValue" class="col-md-2 control-label">Background Color</label>
+                                    <div class="col-md-2">
+                                        <input kendo-color-picker ng-model="bgColor" k-buttons="true" k-preview="true" k-input="false" />
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="inputKey" class="col-md-2 control-label">Logo</label>
+                                    <div class="col-md-2">
+                                        <img ng-src="{{logoUrl}}" width="36" height="36" />
+                                        <a href="" ng-click="removeLogo()">Remove</a>
+
+
+                                        <input name="files"
+                                            k-localization="{'select': 'Change logo'}"
+                                            type="file"
+                                            kendo-upload
+                                            k-async="{ saveUrl: completeUrl, removeUrl: 'remove', autoUpload: true }"
+                                            ng-model="selectedLogo"
+                                            k-success="onSuccess" />
+
+                                    </div>
+
+
+                                </div>
+
+                                <div class="form-group row">
+                                    <input type="button" class="btn btn-primary" value="Save" />
+                                    <input type="button" class="btn btn-primary" value="Apply" />
+                                    <input type="button" class="btn btn-primary" value="Reset" />
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-6">
+                </div>
+            </div>
+
+
+
+
+
+
+        </div>
+
+    </div>
+</body>
+</html>

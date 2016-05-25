@@ -139,6 +139,12 @@
     <Content Include="app\app.js" />
     <Content Include="app\backupAppJS.js" />
     <Content Include="app\angGridFileUpload.js" />
+    <Content Include="app\iconCreater.html" />
+    <Content Include="app\iconCreater.js" />
+    <Content Include="app\images\apple.png" />
+    <Content Include="app\images\flyer.png" />
+    <Content Include="app\starter.html" />
+    <Content Include="app\starter.js" />
     <Content Include="app\formPosttoMVCCtrl.js" />
     <Content Include="app\formPosttoMVCCtrl.html" />
     <Content Include="app\images\upload.png" />
