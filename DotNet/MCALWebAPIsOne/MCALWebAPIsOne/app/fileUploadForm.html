@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>VividCortex reCaptcha Directive Example</title>
+    <link href="style/bootstrap.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.common.core.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.common.min.css" rel="stylesheet">
+
+    <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.dataviz.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.flat.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.flat.mobile.min.css" rel="stylesheet">
+    <link href="kendo/styles/kendo.dataviz.flat.min.css" rel="stylesheet">
+
+
+    <script src="lib/jquery.js"></script>
+    <script src="lib/angular.js"></script>
+    <script src="kendo/js/kendo.all.min.js"></script>
+    <script src="lib/angular-route.js"></script>
+    <script src="lib/bootstrap.js"></script>
+    <script src="lib/ui-bootstrap-tpls-0.14.3.js"></script>
+    <script src="lib/ng-file-upload.min.js"></script>
+
+    <script src="fileUploadForm.js"></script>
+
+
+    <style>
+        
+    </style>
+
+</head>
+<body>
+    <div ng-app="testApp" ng-controller="testCtrl">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <h1 ng-bind="activated"></h1>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-6">
+
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputFile">File Upload</label>
+                           
+                              <input name="files" type="file"
+                   kendo-upload
+                   k-async="{ saveUrl: 'http://localhost:1308/api/MCALAPIs/uploadIcon', removeUrl: 'http://localhost:1308/api/MCALAPIs/uploadIcon', autoUpload: true }"
+                  k-success="onSuccess" 
+                   />
+                            <p class="help-block">Example block-level help text here.</p>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
