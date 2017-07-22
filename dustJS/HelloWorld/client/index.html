@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Dust Js</title>
+  <base href="/">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!--<link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="bootstrap3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap3/dist/css/bootstrap-theme.min.css">-->
+
+
+
+
+  <!-- Polyfill(s) for older browsers -->
+  <!--<script src="core-js/client/shim.min.js"></script>-->
+  <script src="jquery/dist/jquery.js"></script>
+  <script src="dust/dist/dust-full-0.3.0.js"></script>
+</head>
+
+
+<body class="container" style="border:1px solid gray;min-height:600px;">
+  <h2>Saibaba</h2>
+
+  <div id="content-area"></div>
+
+
+
+
+
+  <script>
+    $(function () {
+      $.ajax("sai.dust", {
+        success: function (res) {
+          var compiled = dust.compile(res, "sai_tpl");
+
+          dust.loadSource(compiled);
+
+          var jsonData = {
+            name: 'Saibaba',
+            number: 786
+          }
+
+          dust.render("sai_tpl", jsonData, function (err, out) {
+            console.log('insight');
+            //console.log(out);
+            $("#content-area").html(out);
+          });
+        }
+      });
+    });
+  </script>
+
+
+
+</body>
+
+</html>
