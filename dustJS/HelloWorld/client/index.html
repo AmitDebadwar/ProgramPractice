@@ -21,18 +21,17 @@
 </head>
 
 
-<body class="container" style="border:1px solid gray;min-height:600px;">
+<body class="container">
   <h2>Saibaba</h2>
 
   <div id="content-area"></div>
-
-
-
+ 
 
 
   <script>
     $(function () {
-      $.ajax("sai.dust", {
+      var forthAssignment=function(){
+        $.ajax("sai.dust", {
         success: function (res) {
           var compiled = dust.compile(res, "sai_tpl");
 
@@ -50,6 +49,49 @@
           });
         }
       });
+      }
+
+      var sectionsInDust = function ( ) {
+        $.ajax("sections.dust",{
+          success:function(res){
+            var c=dust.compile(res,"sec_tpl");
+            dust.loadSource(c);
+
+            var jsonData={
+              name:'sainame'
+            }
+
+            dust.render('sec_tpl',jsonData,function(err,out){
+              $("#content-area").html(out);
+            });
+          }
+        });
+      }
+
+var arraySection=function(){
+
+ $.ajax("arraySection.dust",{
+   success:function(res){
+     dust.loadSource(dust.compile(res,"arraySec_tpl"));
+
+     var jsonData={
+       names:[{roll:1,name:'sai'},{roll:2,name:'amit'}]
+     }
+
+     dust.render("arraySec_tpl",jsonData,function(err,out){
+        $("#content-area").html(out);
+     });
+   }
+ });
+
+
+}
+
+
+       //sectionsInDust();
+      //forthAssignment();
+
+      arraySection();
     });
   </script>
 
