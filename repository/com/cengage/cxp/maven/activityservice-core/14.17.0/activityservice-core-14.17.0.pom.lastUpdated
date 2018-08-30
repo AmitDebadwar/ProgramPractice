@@ -1,0 +1,11 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Wed Sep 17 23:08:57 IST 2014
+http\://repo.maven.apache.org/maven2/.lastUpdated=1410930195060
+http\://repo.spring.io/libs-release/.error=
+http\://repo.maven.apache.org/maven2/.error=
+http\://repo.spring.io/libs-release/.lastUpdated=1410930193902
+http\://nexus.mindtap.corp.web/content/repositories/cxp-release/.error=Could not transfer artifact com.cengage.cxp.maven\:activityservice-core\:pom\:14.17.0 from/to cxp-release (http\://nexus.mindtap.corp.web/content/repositories/cxp-release/)\: nexus.mindtap.corp.web
+https\://repo.maven.apache.org/maven2/.lastUpdated=1410932949056
+https\://repo.maven.apache.org/maven2/.error=
+default-http\://nexus.mindtap.corp.web/content/repositories/cxp-release/.lastUpdated=1410975198329
+@default-http\://nexus.mindtap.corp.web/content/repositories/cxp-release/.lastUpdated=1410975537364

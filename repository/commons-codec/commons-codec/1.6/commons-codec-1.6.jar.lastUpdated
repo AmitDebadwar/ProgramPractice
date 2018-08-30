@@ -1,0 +1,5 @@
+#NOTE: This is an internal implementation file, its format can be changed without prior notice.
+#Wed Sep 10 10:15:12 IST 2014
+http\://repo.maven.apache.org/maven2/.lastUpdated=1410324312658
+http\://repo.spring.io/libs-release/.error=Could not transfer artifact commons-codec\:commons-codec\:jar\:1.6 from/to spring-releases (http\://repo.spring.io/libs-release)\: No response received after 60000
+default-http\://repo.spring.io/libs-release/.lastUpdated=1410324218573

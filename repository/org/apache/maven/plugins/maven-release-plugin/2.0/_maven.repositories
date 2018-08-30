@@ -1,0 +1,6 @@
+#NOTE: This is an internal implementation file, its format can be changed without prior notice.
+#Tue Sep 16 22:54:35 IST 2014
+maven-release-plugin-2.0.jar>central=
+maven-release-plugin-2.0.jar>spring-releases=
+maven-release-plugin-2.0.pom>central=
+maven-release-plugin-2.0.pom>spring-releases=

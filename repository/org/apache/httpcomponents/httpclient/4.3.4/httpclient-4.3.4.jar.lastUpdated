@@ -1,0 +1,5 @@
+#NOTE: This is an internal implementation file, its format can be changed without prior notice.
+#Wed Sep 10 10:15:12 IST 2014
+http\://repo.maven.apache.org/maven2/.lastUpdated=1410324312599
+http\://repo.spring.io/libs-release/.error=Could not transfer artifact org.apache.httpcomponents\:httpclient\:jar\:4.3.4 from/to spring-releases (http\://repo.spring.io/libs-release)\: connection timed out to http\://jcenter.bintray.com/org/apache/httpcomponents/httpclient/4.3.4/httpclient-4.3.4.jar
+default-http\://repo.spring.io/libs-release/.lastUpdated=1410324218535
