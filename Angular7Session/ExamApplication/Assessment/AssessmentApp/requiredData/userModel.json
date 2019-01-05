@@ -1,0 +1,15 @@
+{
+    "id": 1,
+    "name": "Amit Debadwar",
+    "username": "amit.debadwar",
+    "email": "amit.debadwar@xoriant.com",
+    "address": {
+      "street": "Blue Ridge Hinjewadi",
+      "city": "Pune",
+      "state": "Maharashtra",
+      "zipcode":"411057"
+    },
+  
+    "phone": "1-770-736-8031 x56442"
+    
+  }

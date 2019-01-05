@@ -1,0 +1,107 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~font-awesome/css/font-awesome.css";
+@import "./app/dynamic-menu/styles.css";
+
+html{
+    background-color: #E9EBEE;
+}
+
+
+body{
+    margin: 20px;
+    min-height: 600px;
+     
+ }
+
+
+.appHeader{
+    background-color: #4267B2;
+    color: #FFFFFF;
+    padding: 5px;
+}
+  
+.pipeResult{
+    font-size: 16px;
+}
+
+
+
+.pipeResult:hover{
+    font-size: 36px;
+    cursor: pointer;
+    color:blue;
+}
+
+.favorite-icon{
+    
+    color:#CCC;
+ }
+
+.favorite-icon:hover{
+    cursor:pointer;
+}
+.favorite-icon.selected{
+    color:goldenrod;
+}
+.favorite-icon.notSelected{
+    color: darkslategray;
+}
+
+/* Session CSS Start */
+
+h1 {
+    color: #369;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 250%;
+  }
+  h2, h3 {
+    color: #444;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+    font-size: 125%;
+    margin-bottom: 30px;
+  }
+
+  .subTopicHeading{
+    color: #5D68A2;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    margin-bottom:10px;
+    margin-top:10px;
+  }
+
+  .mb-40{
+    margin-bottom: 40px;
+  }
+
+  .row{
+    margin-top:20px;   
+  }
+
+  .command{
+    border:1px solid gray;
+    background-color:#F7F7F7;
+    border-radius: 4px;
+    padding: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 120%;
+    margin-top:30px;
+  }
+
+  .command abbr{
+    margin-left: 2%;
+  }
+ 
+  .list-group-item:hover{
+    background-color:  #C6C8CA;
+    cursor: pointer;
+  }
+
+
+  .form-control.ng-invalid.ng-dirty.ng-touched{
+      border: 1px solid red;
+  }
+  
+
+  

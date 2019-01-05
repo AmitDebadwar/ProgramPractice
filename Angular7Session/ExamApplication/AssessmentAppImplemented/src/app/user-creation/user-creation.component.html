@@ -1,0 +1,167 @@
+
+<div class="row">
+  <div class="col-md-9">
+    <h2>User Creation Form</h2>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-12">
+
+    <form>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="userFirstName">First name</label>
+          <input id="userFirstName" name="userFirstName" placeholder="enter first name" type="text" class="form-control here"
+            aria-describedby="userFirstNameHelpBlock" required="required">
+
+          <!-- validation message sample -->
+          <!-- apply appropriate condition to show/hide error message -->
+          <!-- ### your code goes here -->
+          <div>
+            <span class="text-danger">First name should not contain special characters or digits</span>
+          </div>
+        </div>
+
+        <div class="form-group col-md-4">
+          <label for="userMiddleName">Middle name</label>
+          <input id="userMiddleName" name="userMiddletName" placeholder="enter middle name" type="text" class="form-control here"
+            aria-describedby="userFirstNameHelpBlock">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="userLastName">Last name</label>
+          <input id="userLastName" name="userLastName" placeholder="enter last name" type="text" class="form-control here"
+            required="required" aria-describedby="userLastNameHelpBlock">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label>Which UI Framework have you worked on?</label>
+          <div>
+            <label class="custom-control custom-radio">
+              <input name="uiFramework" type="radio" class="custom-control-input" value="angularone" required="required">
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-description">Angular 1.X</span>
+            </label>
+            <label class="custom-control custom-radio">
+              <input name="uiFramework" type="radio" class="custom-control-input" value="extjs" required="required">
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-description">ExtJS</span>
+            </label>
+            <label class="custom-control custom-radio">
+              <input name="uiFramework" type="radio" required="required" class="custom-control-input" value="angulartwoplus">
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-description">Angular 2+</span>
+            </label>
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+          <label>Which back-end technology you are familiar with?</label>
+          <div>
+            <label class="custom-control custom-checkbox">
+              <input name="technologies" type="checkbox" class="custom-control-input" value="java" required="required"
+                aria-describedby="technologiesHelpBlock" checked="checked">
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-description">Java</span>
+            </label>
+            <label class="custom-control custom-checkbox">
+              <input name="technologies" type="checkbox" class="custom-control-input" value="net" required="required"
+                aria-describedby="technologiesHelpBlock">
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-description">c#.net</span>
+            </label>
+            <label class="custom-control custom-checkbox">
+              <input name="technologies" type="checkbox" class="custom-control-input" value="nodejs" required="required"
+                aria-describedby="technologiesHelpBlock">
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-description">nodeJs</span>
+            </label>
+            <label class="custom-control custom-checkbox">
+              <input name="technologies" type="checkbox" aria-describedby="technologiesHelpBlock" required="required"
+                class="custom-control-input" value="python">
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-description">Python</span>
+            </label>
+            <label class="custom-control custom-checkbox">
+              <input name="technologies" type="checkbox" aria-describedby="technologiesHelpBlock" required="required"
+                class="custom-control-input" value="php">
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-description">PHP</span>
+            </label>
+
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="userEmail">Email</label>
+          <input id="userEmail" name="userEmail" placeholder="enter email" type="text" class="form-control here"
+            required="required">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="userCellNumber">Cell Number</label>
+          <input id="userCellNumber" name="userCellNumber" placeholder="enter mobile number" type="text" class="form-control here"
+            aria-describedby="userCellNumberHelpBlock" required="required">
+
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="currentAddress">Current Address</label>
+          <textarea id="currentAddress" name="currentAddress" cols="40" rows="3" class="form-control" required="required"></textarea>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="permanentAddress">Permanent Address</label><span class="float-right form-text text-muted">
+
+
+            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1"
+              aria-label="...">
+
+
+            same as current address
+          </span>
+          <textarea id="permanentAddress" name="permanentAddress" cols="40" rows="3" class="form-control" required="required"></textarea>
+
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="userCiti">City</label>
+          <div>
+            <select id="userCiti" name="userCiti" class="custom-select" required="required" aria-describedby="userCitiHelpBlock">
+              <option value="pune">Pune</option>
+              <option value="nagpur">Nagpur</option>
+              <option value="Nashik">Nashik</option>
+              <option value="aurangabad">Aurangabad</option>
+            </select>
+
+          </div>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="userState">State</label>
+          <div>
+            <select id="userState" name="userState" class="custom-select" required="required">
+              <option value="mh">Maharashtra</option>
+              <option value="up">Uttarpradesh</option>
+              <option value="ts">Tamilnadu</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="zip">Zip</label>
+          <input id="zip" name="zip" placeholder="enter 6 digit zip code" type="text" class="form-control here">
+        </div>
+      </div>
+      <div class="form-group">
+         <button name="submit" type="submit" class="btn btn-primary float-right">Submit</button>
+      </div>
+      <div class="form-group text-center">
+           <!-- success message on form submission -->
+           <!-- show/hide success/error message as per the response from backend -->
+           <!-- ### your code goes here -->
+          <span class="text-success">Form submitted successfully !</span>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,93 @@
+<div class="row">
+  <div class="col 12">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#inbuiltPipes">Inbuilt Pipes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#customPipes">Custom Pipes</a>
+      </li>
+    </ul>
+
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col 12">
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div class="tab-pane container active" id="inbuiltPipes">
+        <app-aipipes></app-aipipes>
+      </div>
+      <div class="tab-pane container fade" id="customPipes">
+
+          <div class="row">
+              <div class="col-md-6">
+                <div class="card bg-light mb-3">
+                  <div class="card-header">Mobile Number Format</div>
+                  <div class="card-body">
+                    <input type="text" class="form-control" placeholder="enter 10 digit mobile number (without country code)"
+                      [(ngModel)]="mobileNumber" maxlength="10"> {{ mobileNumber | mobileNumberFormatP }}
+                  </div>
+                </div>
+              </div>
+    
+    
+    
+              <div class="col-md-6">
+                <div class="card bg-light mb-3">
+                  <div class="card-header">Mobile numbers coming from backend</div>
+                  <div class="card-body">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Firstname</th>
+                          <th>Lastname</th>
+                          <th>Mobile Number</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let user of users">
+                          <td>
+                            {{user.firstName}}
+                          </td>
+                          <td>
+                            {{user.lastName}}
+                          </td>
+    
+                          <td>
+                            {{user.mobileNumber | maskMobileNumber:'IND' }}
+                            <!-- | mobileNumberFormatP -->
+                          </td>
+                        </tr>
+    
+                      </tbody>
+                    </table>
+    
+    
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card bg-light mb-3">
+              <div class="card-header">custom pipe summary</div>
+              <div class="card-body">
+                <b>Before transformation: </b>
+                <span>{{ longText }}</span>
+                <h6 class="card-subtitle mb-2 text-muted" style="margin-top:20px;"> {{ temSummary }} </h6>
+                <p class="card-text"><b>After transformation: </b> <span class="pipeResult"> {{ longText | summary }}</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+       </div>
+
+    </div>
+  </div>
+</div>

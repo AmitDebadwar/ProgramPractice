@@ -1,0 +1,51 @@
+
+<div class="row">
+  <div class="col-md-12">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <!-- Brand -->
+
+      <a class="navbar-brand" href="#">D RegInSight</a>
+
+      <ul class="navbar-nav">
+        <!-- Links -->
+        <ng-template ngFor let-item [ngForOf]="navItems" let-i="index">
+          <li class="nav-item" [ngClass]="{'dropdown': item.child}">
+            <a class="nav-link" [ngClass]="{'dropdown-toggle': item.child}" href="{{item.url}}" [attr.data-toggle]="item.child ? 'dropdown': false">{{
+              item.title}}</a>
+            <div class="dropdown-menu">
+              <ng-template ngFor let-subItem [ngForOf]="item.child">
+
+                <span class="dropdown-item-text" *ngIf="subItem.isHeader" style="color:brown;"> <i class="fa fa-bandcamp"></i>
+                  {{ subItem.title }}</span>
+
+
+                <a class="dropdown-item" *ngIf="!subItem.isHeader" routerLink="{{ subItem.url }}"> <i class="fa fa-minus"></i>
+                  {{
+                  subItem.title }}</a>
+              </ng-template>
+            </div>
+          </li>
+        </ng-template>
+      </ul>
+    </nav>
+
+  </div>
+</div>
+<div class="container" style="margin-top:10px;">
+
+  <div class="row">
+    <div class="col-md-12">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+</div>
+
+<div class="row footer">
+  <div class="col-md-12">
+    <div style="background: gray; padding:10px; color:#FFF;text-align: center">
+      <i class="fa fa-envelope-o" aria-hidden="true"></i> amit.debadwar@xoriant.com | <i class="fa fa-mobile fa-lg"
+        aria-hidden="true"></i> 9096 174 175
+    </div>
+  </div>
+</div>

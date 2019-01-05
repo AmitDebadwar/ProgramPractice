@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button to add a new element to the array.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo"></p>
+
+<script>
+
+function myFunction() {
+
+String.prototype.insertAt=function(index, string) { 
+  return this.substr(0, index) + string + this.substr(index);
+}
+    var myString = "9096 174175";
+    myString = myString.replace(/\s/g, '');
+	var one;
+    var two;
+    
+    
+    one	=	myString.insertAt(4, " ");
+    two = one.insertAt(8, " ");
+   
+    document.getElementById("demo").innerHTML = "+91 " + two;
+}
+</script>
+
+</body>
+</html>

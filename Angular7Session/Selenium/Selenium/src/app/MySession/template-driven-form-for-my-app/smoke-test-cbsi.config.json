@@ -1,0 +1,75 @@
+{
+    "applicationName": "CBSI",
+    "applicationUrl":"http://localhost:8080/user/landing.do",
+    "testScenario":[{
+        "GOCMapping" : [
+            {
+                "action": "openApplication",
+                "url": "http://localhost:8080/user/landing.do"
+            },
+            {
+                "action":"waitForPageLoad",
+                "for" : "3min",
+                "max" : "5min"
+            },
+            {
+                "action":"type",
+                "id": "txtUserName",
+                "value": "MB54141"
+            },
+            {
+                "action":"type",
+                "id": "txtPassword",
+                "value": "MBYR78635"
+            },
+            {
+                "action":"click",
+                "id": "btnLogin"
+            },
+            {
+                "action":"waitForPageLoad",
+                "for" : "3min",
+                "max" : "5min"
+            },
+            {
+                "description":"Click ICOMP Menu Link",
+                "action":"click",
+                "id": "lnkICOMP"
+            },
+            {
+                "description":"Click GOC Mapping link",
+                "action":"click",
+                "id": "lnkGOCMapping"
+            },
+            {
+                "action":"waitForPageLoad",
+                "for" : "3min",
+                "max" : "5min"
+            },
+            {
+                "description":"Enter goc in goc field",
+                "action":"type",
+                "id": "txtSourceGOC",
+                "value": "1000394789"
+            },
+            {
+                "description":"Click on goc search",
+                "action":"click",
+                "id": "btnSearch" 
+            },
+            {
+                "description":"wait for search result to come",
+                "action":"waitForSearchResult",
+                "for" : "3min",
+                "max" : "5min"
+            }
+        ]
+
+    }
+         
+         
+
+
+
+    ]
+}

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="widt, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <title>Document</title>
+
+    <style>
+        body {
+            margin: 0px 0px;
+            background-color:#FFF;
+        }
+
+        h4 {
+            font-size: 20px;
+        }
+        .card-body{
+            background-color:#F1F3F6;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div style="background-color:#563D7C; color:#FFF; font-weight:bold; padding: 8px; margin-bottom:3%;">
+        <span style="margin-left:8%;">User Creation Form</span>
+    </div>
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="mb-6">User Personal Information</h4>
+                    </div>
+                    <div class="card-body">
+
+                        <form>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputEmail4">First Name</label>
+                                    <input type="email" class="form-control is-invalid" id="inputEmail4" placeholder="Enter first name">
+
+                                    <div class="invalid-feedback">
+                                        First name is a required field.
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputPassword4">Last Name</label>
+                                    <input type="text" class="form-control" id="inputPassword4" placeholder="Enter lastname">
+                                </div>
+
+
+
+                                <div class="form-group col-md-6">
+                                    <label for="emailid">Email</label>
+                                    <input type="emai" class="form-control" id="emailid" placeholder="Enter email id">
+                                    
+                                    <small id="passwordHelpBlock" class="form-text text-muted">
+                                        We will never share your email with anyone.
+                                    </small>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="contactNumber">Contact number</label>
+                                    <input type="text" class="form-control" id="contactNumber" placeholder="Mobile 10 digit mobile number">
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label for="inputAddress">Current Address</label>
+                                <textarea class="form-control" class="form-control" id="inputAddress" placeholder="Apartment, studio or floor"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputAddress2">Permenant Address</label>
+                                <div class="form-check form-check-inline float-right">
+                                    <label class="form-check-label" for="inlineCheckbox3"><small style="color:darkgray;"> Same as above &nbsp;</small></label>
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+
+                                </div>
+                                <textarea class="form-control" class="form-control" id="inputAddress2" placeholder="Apartment, studio or floor" readonly></textarea>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label for="inputCity">City</label>
+                                    <input type="text" class="form-control" id="inputCity">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputState">State</label>
+                                    <select id="inputState" class="form-control">
+                                        <option selected>Choose...</option>
+                                        <option>...</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputZip">Zip</label>
+                                    <input type="text" class="form-control" id="inputZip">
+                                </div>
+                            </div>
+
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="mb-6">Account Information</h4>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="userId">User Id</label>
+                                    <input type="text" class="form-control is-invalid" id="userId" placeholder="Enter user id">
+                                    <div class="invalid-feedback">
+                                        User id is already taken.
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="password">Password</label>
+                                    <input type="password" class="form-control" id="userId" placeholder="Enter password">
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="password">Confirm password</label>
+                                    <input type="password" class="form-control" id="userId" placeholder="Confirm password">
+                                </div>
+
+
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+                <div class="card" style="margin-top:8%;">
+                    <div class="card-header">
+                        <h4 class="mb-6">Payment Information</h4>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="userId">Name on card</label>
+                                    <input type="text" class="form-control" id="userId" placeholder="Enter user id">
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="cardNumber">Card number</label>
+                                    <input type="text" class="form-control" id="cardNumber" placeholder="Enter password">
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="expiryDate">Expiration</label>
+                                    <input type="text" class="form-control" id="expiryDate" placeholder="MM / YY">
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="expiryDate">CVV number</label>
+                                    <input type="password" class="form-control" id="expiryDate" placeholder="Enter cvv number">
+                                </div>
+
+
+
+                            </div>
+
+                            <button type="submit" class="btn btn-primary float-right">Submit</button>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+
+
+
+
+</body>
+
+</html>
