@@ -1,0 +1,10 @@
+<div class="card">
+  <div class="card-header">
+    <ng-content select=".heading"></ng-content> <i class="fa float-right" style="cursor: pointer;"
+      [ngClass]="{'fa-caret-down' : !isExpanded, 'fa-caret-up' : isExpanded}" (click)="isExpanded=!isExpanded"></i>
+  </div>
+  <div class="card-body" 
+     
+     [@expandCollapse] ="isExpanded ? 'expanded' : 'collapsed'" > <ng-content select=".body"></ng-content> </div>
+  <!-- <div class="card-footer">Footer</div> -->
+</div>

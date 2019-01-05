@@ -1,0 +1,71 @@
+<div [@todosAnimations]>
+    <div class="row">
+        <div class="col-md-12">
+          <h1>ToDo Animation Example</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-row">
+      
+      
+            <div class="form-group col-md-8">
+              <input type="text" class="form-control" [(ngModel)]="enteredTask" (keyup.enter)="addTask(); enteredTask=''"
+                placeholder="enter new task" required #txtTask="ngModel" name="txtTask" id="txtTask" />
+      
+      
+      
+              <div *ngIf="txtTask.invalid && (txtTask.dirty || txtTask.touched)">
+      
+                <div *ngIf="txtTask.errors.required" [@toDoAnimation] class="text-danger">
+                  *Task can not be empty.
+                </div>
+              </div>
+            </div>
+      
+      
+            <div class="form-group col-md-4">
+      
+              <input type="button" class="btn btn-small btn-primary" value="Add Task" (click)="addTask(); enteredTask=''"
+                [disabled]="txtTask.invalid && (txtTask.dirty || txtTask.touched)" />
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div style="padding: 10px; border: 1px solid gray; background-color: #2F4F4F; color:#FFF; font-weight: bold;">
+            To Do List
+          </div>
+          <ul class="list-group" id="ulToDoList">
+            <li class="list-group-item" *ngFor="let task of tasks" [@toDoAnimation] (@toDoAnimation.start)="animationStarted($event)"
+              (@toDoAnimation.done)="animationDone($event)">
+              <div class="custom-control custom-checkbox ">
+      
+                <input type="checkbox" class="custom-control-input" id="{{task.id}}" [(ngModel)]="task.isCompleted" />
+                <label class="custom-control-label" for="{{task.id}}"><span [textContent]="task.task" [ngStyle]="{'text-decoration': 
+                  task.isCompleted ? 'line-through': normal}"
+                    [style.fontStyle]="task.isCompleted ? 'italic':normal">
+                  </span></label>
+      
+              </div>
+              <i class="fa fa-trash" style="color:red;float: right;cursor: pointer;" (click)="deleteTask($event, task)"></i>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+
+      <app-custom-panel>
+          <ng-container class="heading">
+            The Heading
+          </ng-container>
+          <ng-container class="body">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </ng-container>
+        </app-custom-panel>
+
+
+</div>

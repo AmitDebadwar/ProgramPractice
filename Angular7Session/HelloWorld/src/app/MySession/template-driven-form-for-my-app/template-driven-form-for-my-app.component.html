@@ -1,0 +1,288 @@
+<div class="row">
+  <div class="col-md-12">
+    <h1>Template Driven Forms</h1>
+  </div>
+</div>
+
+<!-- [hidden]="isShowPreview" -->
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="mb-6">Personal Information</h4>
+      </div>
+      <div class="card-body">
+
+          <!-- <pre>{{contactForm.value | json}}</pre> -->
+
+        <form #contactForm="ngForm"  (ngSubmit)="submit(contactForm)" novalidate>
+          <!-- first row start -->
+          <div class="form-row">
+            <div class="col-md-4">
+ 
+              <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input ngModel 
+                #firstNameRef="ngModel" 
+                (change)="log($event, firstNameRef)" placeholder="Enter first name"
+                  name="firstName" id="firstName" type="text" class="form-control" 
+                  required minlength="8" maxlength="15"
+                  pattern="expectedString">
+
+                <div *ngIf="firstNameRef.invalid && (firstNameRef.dirty || firstNameRef.touched)">
+                  <div class="text-danger" *ngIf="firstNameRef.errors.required">*First name is
+                    a required field.</div>
+                  <div class="text-danger" *ngIf="firstNameRef.errors.minlength">*Minimum
+                    length is 8 characters </div>
+                  <div class="text-danger" *ngIf="firstNameRef.errors.maxlength">*Maxlength
+                    length is 15 characters </div>
+                  <div class="text-danger" *ngIf="firstNameRef.errors.pattern">*Pattern does not match
+                  </div>
+
+                </div>
+              </div>
+
+
+
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="middleName">Middle Name</label>
+                <input [(ngModel)]="middleName" #middleNameRef="ngModel" name="middleName" id="middleName" type="text"
+                  class="form-control">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input [(ngModel)]="lastName" ngModel #lastNameRef="ngModel" 
+                name="lastName" 
+                id="lastName" 
+                type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+
+
+          <!-- second row start -->
+          <div class="form-row">
+            <div class="col-md-6">
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="userEmail" name="userEmail" aria-describedby="emailHelp"
+                  [(ngModel)]="userEmail" placeholder="Enter email address">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="contactNumber">Cell number</label>
+                <input type="text" class="form-control" id="contactNumber" name="contactNumber" [(ngModel)]="cellNumber"
+                  aria-describedby="contactNumber" placeholder="Enter cell number">
+              </div>
+            </div>
+          </div>
+          <!-- second row complete -->
+
+          <!-- third row start -->
+          <div class="form-row">
+            <div class="col-md-6">
+
+              <div class="form-group">
+                <label for="currentAddress">Current address</label>
+                <textarea type="email" class="form-control" id="currentAddress" name="currentAddress" aria-describedby="emailHelp"
+                  [(ngModel)]="personalInfoFormModel.currentAddress" #currentAddress="ngModel" ngModel (keyup)="personalInfoFormModel.permanentAddress = personalInfoFormModel.isSameAddress ? personalInfoFormModel.currentAddress: ''"
+                  placeholder="Apartment, studio or floor" rows="4"></textarea>
+                <small id="emailHelp" class="form-text text-muted">This address will be used for postal communication</small>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="permanentAddress">Permanent address
+                </label>
+                <div class="form-check form-check-inline float-right">
+                  <label class="form-check-label" for="inlineCheckbox3"><small style="color:darkgray;">
+                      Same as current
+                      address.
+                      &nbsp;</small></label>
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox3"   [(ngModel)]="personalInfoFormModel.isSameAddress"
+                    ngModel name="nmChkPermenant" (change)="personalInfoFormModel.permanentAddress = personalInfoFormModel.isSameAddress ? personalInfoFormModel.currentAddress: ''" />
+
+                </div>
+
+
+                <textarea type="text" class="form-control" id="permanentAddress" name="permanentAddress"
+                  #permanentAddress="ngModel" ngModel [(ngModel)]="personalInfoFormModel.permanentAddress" [disabled]="personalInfoFormModel.isSameAddress"
+                  aria-describedby="permanentAddress" placeholder="Apartment, studio or floor" rows="4"></textarea>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Third row end -->
+
+          <!-- fourth row start -->
+          <div class="form-row">
+            
+              <div class="col-md-6">
+                
+                  Select Plan
+                  <ul class="list-group">
+                      <li class="list-group-item" style="border:none;">
+                        <div class="form-check form-check-inline">
+                          <input ngModel #rdPlanTypeRef="ngModel" 
+                            [value]="'F'"
+                            class="form-check-input" type="radio" name="rdPlanType" id="rdPlanType">
+                          <label class="form-check-label" for="rdPlanType">500 <i class="fa fa-inr"></i> Per month</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input 
+                          [value]="'Y'"
+                            ngModel #rdPlanType="ngModel"
+                            class="form-check-input" type="radio" name="rdPlanType" id="inlineRadio1" value="option1">
+                          <label class="form-check-label" for="inlineRadio1">4000 <i class="fa fa-inr"></i> Yearly</label>
+                        </div>
+                       </li>
+                    </ul>
+
+
+              </div>
+              <div class="col-md-3">
+  
+                <div class="form-group">
+                  <label for="citi">Select Citi</label>
+                  <select class="form-control" id="citi" ngModel #selCitiRef="ngModel"  name="selCiti" >
+                    <option value="">-- select citi --</option>
+                    <option [value]="citi.id" 
+                    *ngFor="let citi of cities">{{ citi.name }} </option>
+                    
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-3">
+  
+                <div class="form-group">
+                  <label for="state">Select State</label>
+                  <select class="form-control" id="state" name="selState" ngModel #selStateRef="ngModel">
+                    <option value="">-- select state --</option>
+                    <option [ngValue]="state" *ngFor="let state of states">{{ state.name }}</option>
+                   </select>
+                </div>
+  
+              </div>
+            </div>
+            <!-- fourth row end -->
+
+          
+
+          <button type="submit" [disabled]="contactForm.invalid" class="btn btn-primary float-right" 
+           >
+            Show Preview</button>
+
+
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- [hidden]="!isShowPreview" -->
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="mb-6">Personal Information</h4>
+      </div>
+      <div class="card-body">
+
+        <form>
+
+          <div class="form-group row">
+            <label for="pName" class="col-md-4 col-form-label">Name</label>
+            <div class="col-md-8">
+              <input type="text" readonly class="form-control-plaintext" [value]="(firstName ? firstName : '') + ' ' + (middleName ? middleName : '') + (lastName ? lastName : '')">
+            </div>
+          </div>
+
+
+          <div class="form-group row">
+            <label for="pName" class="col-md-4 col-form-label">Email Id</label>
+            <div class="col-md-8">
+              <input type="text" readonly class="form-control-plaintext" [attr.value]="userEmail">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="pName" class="col-md-4 col-form-label">Cell Number</label>
+            <div class="col-md-8">
+              <input type="text" readonly class="form-control-plaintext" [attr.value]="cellNumber">
+            </div>
+          </div>
+
+
+          <div class="form-group row">
+            <label for="pName" class="col-md-4 col-form-label">Current Address</label>
+            <div class="col-md-8">
+              <input type="text" readonly class="form-control-plaintext" [attr.value]="currentAddress">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="pName" class="col-md-4 col-form-label">Permanent Address</label>
+            <div class="col-md-8">
+              <input type="text" readonly class="form-control-plaintext" [attr.value]="permanentAddress">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <input type="button" class="btn btn-sm btn-secondary" value="Show Form" (click)="isShowPreview=false" />
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card" style="margin-top:8%;">
+      <div class="card-header">
+        <h4 class="mb-6">Payment Information</h4>
+      </div>
+      <div class="card-body">
+        <form>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="userId">Name on card</label>
+              <input type="text" class="form-control" id="userId" placeholder="Enter user id">
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="cardNumber">Card number</label>
+              <input type="text" class="form-control" id="cardNumber" placeholder="Enter password">
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="expiryDate">Expiration</label>
+              <input type="text" class="form-control" id="validThru" placeholder="MM / YY">
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="expiryDate">CVV number</label>
+              <input type="password" class="form-control" id="cvv" placeholder="Enter cvv number">
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary float-right">Submit</button>
+        </form>
+
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,182 @@
+<div class="row">
+    <div class="col-md-12">
+         <h1>Data Binding</h1>         
+       
+    </div>
+  </div>
+  
+
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#databinding">Interpolation</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#eventBinding">Event Binding</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#inbuiltdirectives">Inbuilt Directives</a>
+      </li>
+
+      <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#assignment1">Assignment 1</a>
+        </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      
+      <div id="databinding" class="container tab-pane active"><br>
+        <h3>Interpolation</h3>
+
+        <div class="form-row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <input class="form-control" type="text" [(ngModel)]="title" />
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="form-group">
+              <b>{{ title }}</b>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="inbuiltdirectives" class="container tab-pane fade"><br>
+        <h3>Directives</h3>
+
+        <p class="mb-20">Mostly used inbuilt directives <b>*ngFor, *ngIf, [ngStyle], [ngClass], *ngSwitchCase</b></p>
+
+        <div class="form-row">
+          <div class="col-md-4">
+            <div class="subTopicHeading">
+              List of Users (*ngFor)
+            </div>
+
+            <ul class="list-group">
+              <li class="list-group-item" *ngFor="let user of usersFromApi">
+                {{ user.userName }}
+              </li>
+            </ul>
+
+            <input type="button" class="btn btn-primary" (click)="getUsers()" value="Get Users" />
+            
+          </div>
+
+          <div class="col-md-4">
+            <div class="subTopicHeading">
+              *ngIf
+            </div>
+
+            <div class="text-center">
+                <input type="button" class="btn btn-sm btn-primary" (click)="isShowUserDetails=true" value="Show Details" />
+                |
+                <input type="button" class="btn btn-sm btn-primary" (click)="isShowUserDetails=false" value="Hide Details" />
+            </div>
+
+            <div *ngIf="isShowUserDetails" style="margin-top: 20px; border:1px solid gray; padding:4px; text-align:center;">
+              <p>On the fly show hide with ngIf</p>
+            </div>
+           </div>
+
+
+          <div class="col-md-4">
+            <div class="subTopicHeading">
+                Property Binding
+            </div>
+ 
+            <div style="margin-top: 20px; border:1px solid gray; padding:4px; text-align:center;">
+                <img src="{{ imgUrl }}" class="rounded-circle" alt="Cinque Terre" width="304" height="236"> 
+            </div>
+           </div>
+
+   
+        </div>
+     </div>
+      <div id="eventBinding" class="container tab-pane fade">
+        <h3>Event Binding & Event filtering</h3>
+  
+        <div class="form-row">
+          <div class="col-md-4">
+              <div class="subTopicHeading">
+                  List of Users (*ngFor)
+                </div>
+            <ul class="list-group">
+              <li class="list-group-item" *ngFor="let user of usersFromApi; trackBy:trackById; let i = index; let f = first;">
+                {{i}} {{ user.userName }}
+              </li>
+            </ul>
+            <input type="button" class="btn btn-primary" (click)="getUsers()" value="Get Users" />
+          </div>
+
+          <div class="col-md-4" >
+              <div class="subTopicHeading">
+                  Event Filtering
+                </div>
+                <div>
+                  <form  class="form-group">
+                  <input type="text" 
+                    (keyup)='message = "key up detected"' 
+                    (keyup.enter)='message ="enter detected"'
+                    class="form-control"/>
+                  </form>
+                </div>
+                {{ message }}
+
+                 
+            </div>
+        </div>
+
+
+      </div>
+
+      <div id="twoWayDataBinding" class="container tab-pane fade">
+          <h3>Two way Data Binding</h3>
+     
+          
+  
+      </div>
+
+      <div id="assignment1" class="container tab-pane fade">
+        <br>
+          
+        <div class="form-row">
+          <div class="col-md-4">
+              <h3>To Do App</h3> 
+          </div>
+          <div class="col-md-2">
+              <h3>Like Component</h3>
+            </div>
+            <div class="col-md-6">
+                <h3>Contact Form</h3> 
+              </div>
+        </div>
+
+          <div class="form-row">
+
+              <div class="col-md-4">
+                  
+                  <app-to-do-list></app-to-do-list>
+              </div>
+ 
+            <div class="col-md-2 text-center">
+                
+               <app-favorite></app-favorite>
+            </div>
+ 
+             <div class="col-md-6">
+                  <app-template-driven-form-for-my-app></app-template-driven-form-for-my-app> 
+            </div> 
+ 
+          </div>
+
+  
+      </div>
+     </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+.like{
+    padding: 10px;
+    margin: 10px;
+    color: #FFF;
+    border : 1px solid gray;
+    border-radius: 8px;
+    background-color: green;
+    width : 140px;
+    font-weight: bold;
+
+}
+
+ 
+
+.tw{
+    padding: 10px;
+    margin: 10px;
+    color: #FFF;
+    border : 1px solid gray;
+    border-radius: 8px;
+    background-color: orange;
+    width : 140px;
+    font-weight: bold;
+
+}
+
+
+.fb{
+    padding: 10px;
+    margin: 10px;
+    color: #FFF;
+    border : 1px solid gray;
+    border-radius: 8px;
+    background-color:blue;
+    width : 140px;
+    font-weight: bold;
+
+}

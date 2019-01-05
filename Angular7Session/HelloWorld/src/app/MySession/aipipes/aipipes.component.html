@@ -1,0 +1,74 @@
+<div class="row">
+    <div class="col md 12">
+        <h2>Angular Inbuilt Pipes</h2>
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col-md-4">
+
+        <div class="card bg-light mb-3">
+            <div class="card-header">uppercase</div>
+            <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted"> {{ temUpperCase }} </h6>
+                <p class="card-text"><span class="pipeResult">{{ authorsName | uppercase }}</span></p>
+            </div>
+        </div>
+
+
+        <div class="card bg-light mb-3">
+            <div class="card-header">currency</div>
+            <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted"> {{ temCurrency1 }}</h6>
+                <p class="card-text">
+                    <span class="pipeResult">{{ price | currency:'CAD' }}</span>
+                </p>
+                <h6 class="card-subtitle mb-2 text-muted"> {{ temCurrency2 }}</h6>
+                <p>
+                    <span class="pipeResult"> {{ price | currency:'USD':true: '3.4' }}</span>
+                </p>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="card bg-light mb-3">
+            <div class="card-header">lowercase</div>
+            <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted"> {{ temLowerCase }} </h6>
+                <p class="card-text"><span class="pipeResult">{{ authorsName | lowercase }}</span></p>
+            </div>
+        </div>
+
+
+        <div class="card bg-light mb-3">
+            <div class="card-header">json</div>
+            <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted"> {{ temJsonData }} </h6>
+                <p class="card-text"><span class="pipeResult">{{ jsonData | json }}</span></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card bg-light mb-3">
+            <div class="card-header">date</div>
+            <div class="card-body">
+                <!--<h6 class="card-subtitle mb-2 text-muted"> {{ temLowerCase }} </h6>-->
+
+                <p class="card-text"> <span class="pipeResult"> {{ someDate | date:'medium' }}</span></p>
+                <p class="card-text"><span class="pipeResult"> {{ someDate | date:'fullDate' }}</span></p>
+                <p class="card-text"><span class="pipeResult"> {{ someDate | date:'yy' }}</span></p>
+                <p class="card-text"><span class="pipeResult"> {{ someDate | date:'H:m' }}</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

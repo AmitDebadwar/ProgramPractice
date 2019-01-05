@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-md-12">
+    <h3>Smoke Test Config JSON/XML Generator </h3>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form #form name="form">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="applicationName">Application Name</label>
+          <input type="text" class="form-control" id="applicationName" placeholder="application name">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="applicationUrl">Target Url</label>
+          <input type="url" class="form-control" id="applicationUrl" placeholder="application url">
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-primary">Add Test Suit</button>
+    </form>
+
+    {{ mainModel | json}}
+
+  </div>
+</div>

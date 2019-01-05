@@ -1,0 +1,33 @@
+<input type="button" [ngClass]="config.buttonStyle" 
+  (click)="getAllComments()" value="comments" />
+
+
+<div *ngIf="allComments.length" style="border: 1px solid gray; border-radius: 8px; padding: 18px;margin-top:4%; margin-bottom: 4%;">
+
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let comment of allComments">
+      {{ comment.name }}
+    </li>
+
+
+    <li class="list-group-item" style="margin-top: 10px;">
+      <form>
+        <div class="form-group">
+           <textarea 
+              placeholder="your comment" 
+              class="form-control" 
+              id="exampleFormControlTextarea1" rows="3"
+              [(ngModel)]="newComment"
+              name="newComment"
+             ></textarea>
+        </div>
+        <button type="button" 
+        class="btn btn-primary float-right"
+        (click)="createNewComment()">Post</button>
+        <span class="text-success" *ngIf="isCreatedNewComment"> comment submitted succesfully!</span>
+      </form>
+    </li>
+  </ul>
+  
+
+</div>

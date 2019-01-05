@@ -1,0 +1,36 @@
+<h1>Posts</h1>
+
+<div class="row">
+  <div class="col md-8">
+    <input type="text" class="form-control"/>
+    <input type="button" value="Post" (click)="createPost()"/>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-8">
+    <div class="card" *ngFor="let post of allPosts" style="margin-bottom: 10px;">
+      <div class="card-body">
+        <h5 class="card-title">{{ post.title}} </h5>
+        <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+
+        <p class="card-text">{{ post.body }}</p>
+        <app-favorite></app-favorite>
+        <app-comments [postId]="post.id" [config]="{buttonStyle:'btn btn-link float-right'}"></app-comments>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="col-md-4">
+    <div class="list-group">
+      <a href="#" *ngFor="let user of allUsers" class="list-group-item list-group-item-action">
+        {{ user.name }}
+      </a>
+    </div>
+  </div>
+</div>
+
+<input type="button" (click)="navigateToPostDetails()" value="Home"/>

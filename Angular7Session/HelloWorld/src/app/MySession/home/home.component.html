@@ -1,0 +1,11 @@
+<!--  Unit Testing Stuff Starts here -->
+Total Votes :
+<span class="vote-count" [class.highlighted]="totalVotes > 0">
+     {{ totalVotes }}
+</span>
+
+<input type="button" value="Upvote" class="upVoteClass" (click)="upVote()"/>
+  
+<app-consumer-of-custom-panel>
+    
+</app-consumer-of-custom-panel>

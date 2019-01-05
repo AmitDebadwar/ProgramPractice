@@ -1,0 +1,16 @@
+AMD module -> define and require
+
+ES6 module -> import and export
+
+as import statement is not recognized by the browser because browsesrs does not supports ES6 modules thats why we need
+webpack
+
+to combine those files together in bundle
+
+
+npm install --save-dev webpack 
+
+then "build": "webpack"
+webpack-cli : npm install webpack-cli --save-dev
+
+it will create dist folder and main.js which is the bungle file
