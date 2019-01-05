@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DRest Client</title>
+    <script src="jquery.js"></script>
+    <script src="angular.js"></script>
+
+
+    <script src="./bootstrap/js/bootstrap.js"></script>
+    <script src="ngAnimate.js"></script>
+
+    <script src="MainController.js"></script>
+
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.css" />
+
+    <link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body ng-app="DRestModule" ng-controller="MainController">
+
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="pageHeaderStrip">
+                <span class="headerText">DRest Client</span>
+            </div>
+        </div>
+    </div>
+    <!-- ng-class="{'contentLoading' : isLoading}" -->
+    <div class="row contentArea">
+        <div class="col-sm-3">
+
+
+            <div class="panel panel-success" style="min-height: 250px;">
+                <!-- Default panel contents -->
+                <div class="panel-heading">History <span style="color:gray;" data-toggle="tooltip" title="Latest 20 requests are stored in history"
+                        class="pull-right glyphicon glyphicon-info-sign"></span></div>
+
+                <!-- Table -->
+                <table class="table table-hover">
+                    <thead style="display: table; width: calc(100% - 17px); ">
+                        <tr>
+                            
+                            <th> Request Name</th>
+                        </tr>
+                    </thead>
+                    <tbody style="display: block; overflow-y: auto; max-height: 245px; ">
+                        <tr ng-repeat="hist in history track by $index" class="listItem">
+                           
+                            <td> 
+                                
+                                <a href="#" ng-click="setRequestDetailsOnPage(hist)" class="requestCollection tooltip-url-align"
+                                    data-toggle="tooltip" title="{{hist.url}}" data-container="body" tooltip>
+                                    <span class="label label-primary">{{ hist.methodType}}</span>
+                                    <span>{{ hist.url }} <span> </a> 
+                                        <a herf="" class="pull-right clsShowRemove" ng-click="removeHistoryItem(hist)"><span
+                                        class="glyphicon glyphicon-trash appTrash" style="cursor:pointer;"></span></a></td>
+                        </tr>
+                    </tbody>
+                    <tfoot ng-show="history.length">
+                        <tr>
+                            <td >
+                                <div class="pull-right collectionClearButtons">
+                                    <span ng-click="clearHistoryFromStorage()"> Clear History </span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+
+            </div>
+
+
+
+            <div class="panel panel-success" style="min-height: 250px;">
+                <!-- Default panel contents -->
+                <div class="panel-heading">Collection <span style="color:gray;" data-toggle="tooltip" title="only selected request details are stored unless user explicitely deletes it."
+                        class="pull-right glyphicon glyphicon-info-sign"></span></div>
+
+                <!-- Table -->
+                <table class="table">
+                    <thead style="display: table; width: calc(100% - 17px); ">
+                        <tr>
+                            
+                            <th> Request Name</th>
+                        </tr>
+                    </thead>
+                    <tbody style="display: block; overflow-y: auto; max-height: 245px; ">
+                        <tr ng-repeat="col in allCollections track by $index" class="listItem">
+                            
+                            <td>
+                                <a href="#" ng-click="setRequestDetailsOnPage(col)" class="requestCollection" data-toggle="tooltip" title="{{col.url}}" data-container="body" tooltip>
+                                    <span class="label label-primary">{{ col.methodType}}</span>  {{col.url}}</a>
+
+                                    </a> 
+                                        <a herf="" class="pull-right clsShowRemove" ng-click="removeCollectionItem(col)"><span
+                                        class="glyphicon glyphicon-trash appTrash" style="cursor:pointer;"></span></a></td>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot ng-show="allCollections.length">
+                            <tr>
+                                <td>
+                                    <div class="pull-right collectionClearButtons">
+                                        <span ng-click="clearCollectionFromStorage()"> Clear Collection </span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tfoot>
+
+                </table>
+            </div>
+
+        </div>
+        <div class="col-sm-8">
+
+            <div class="row">
+
+                <div class="panel panel-success">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading"> Request</div>
+
+                    <div class="panel-body">
+
+                        <form name="requestForm" novalidate>
+                            <div class="input-group">
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false"> {{ selectedMethodType }} <span
+                                            class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <li ng-repeat="type in methodTypes"><a href="#" ng-click="selectMethodType(type)">{{
+                                                type }}</a></li>
+                                    </ul>
+                                </div>
+                                <!-- /btn-group -->
+
+                                <div class="form-group" ng-class="{'has-error': requestForm.txtUrl.$invalid && requestForm.txtUrl.$touched, 'has-feedback': requestForm.txtUrl.$invalid && requestForm.txtUrl.$touched}">
+                                    <input type="text" ng-model="requestUrl" required name="txtUrl" class="form-control"
+                                        aria-label="" placeholder="Enter request URL here">
+                                    <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="requestForm.txtUrl.$touched && requestForm.$invalid"
+                                        aria-hidden="true"></span>
+
+                                </div>
+
+                                <div class="input-group-btn">
+                                    <button ng-disabled="requestForm.txtUrl.$invalid && requestForm.txtUrl.$touched || requestForm.$invalid"
+                                        type="button" class="btn btn-primary" value="Call" name="btnSubmit" ng-click="requestForm.$valid && onCall()">
+                                        <span ng-class="{'glyphicon glyphicon-refresh glyphicon-refresh-animate' : isLoading}"></span>
+                                        call
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- /input-group -->
+
+                            <div ng-show="(selectedMethodType === 'POST')" style="margin-top: 18px;">
+                                <div class="form-group">
+                                    <label for="comment">Request Body</label>
+                                    <textarea ng-model="requestBody" class="form-control" rows="5" placeholder="enter json object to post"></textarea>
+                                </div>
+                            </div>
+                        </form>
+
+                        <div class="" style="margin-top:10px;">
+
+                            <p class="text-danger text-center" ng-show="requestForm.txtUrl.$invalid && requestForm.txtUrl.$touched">Url
+                                is the required field. </p>
+
+
+                            <button type="button" data-toggle="tooltip" ng-click="onAddToCollection()" title="Add this request to collection for future use."
+                                class="pull-right btn btn-success success-border-only" aria-label="Left Align">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add To Collection
+                            </button>
+
+                            <button type="button" ng-click="copyRequestWithDetails()" data-toggle="tooltip" title="{{ copyRequestDetailsTT }}"
+                                style="margin-right:15px;" class="pull-right btn btn-success success-border-only"
+                                aria-label="Left Align">
+                                <span class="glyphicon glyphicon-copy" aria-hidden="true"></span> Copy Request Details
+                            </button>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="row jumbotron">
+
+                <div class="col-sm-6">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Header Name</th>
+                                <th>Header Value</th>
+                                <th> </th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr ng-repeat="h in allHeaders" class="listItem">
+                                <td><input type="text" placeholder="key" ng-model="h.key" /></td>
+                                <td><input type="text" placeholder="value" ng-model="h.value" /></td>
+                                <td><span class="glyphicon glyphicon-trash" style="cursor:pointer; color:red;"
+                                        aria-hidden="true" ng-click="onDelHeader(h.id)"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <a href="" ng-click="onAddHeaderClick()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        Add Header</a>
+
+                </div>
+
+                <div class="col-sm-6">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+
+                                <th>Param Name</th>
+                                <th>Param Value</th>
+                                <th> </th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr ng-repeat="p in allParams" class="listItem">
+                                <td><input type="text" placeholder="key" ng-model="p.key" /></td>
+                                <td><input type="text" placeholder="value" ng-model="p.value" /></td>
+                                <td><span class="glyphicon glyphicon-trash" style="cursor:pointer; color:red;"
+                                        aria-hidden="true" ng-click="onDelHeader(p.id)"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <a href="" ng-click="onAddParamClick()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        Add Param</a>
+
+                </div>
+
+            </div>
+
+            <div class="row fade in">
+                <div class="panel panel-default" ng-class="{'panel-danger': isShowErrorIcon, 'panel-success': isShowSuccessIcon}">
+                    <div class="panel-heading">Result</div>
+                    <div class="panel-body">
+
+                        <ul class="nav nav-tabs">
+                            <li role="presentation" class="active"><a href="#requestHeader" data-toggle="tab">Request
+                                    Details</a></li>
+                            <li role="presentation"><a href="#preview" data-toggle="tab">Preview</a></li>
+                            <li role="presentation"><a href="#rawResponse" data-toggle="tab">Raw Response</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div id="requestHeader" class="tab-pane fade in active">
+                                <table class="table table-hover">
+                                    <tbody>
+                                        <tr>
+                                            <td>Url</td>
+                                            <td> {{ responseGeneralInfo.requestUrl }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Method Type</td>
+                                            <td> {{ responseGeneralInfo.method }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Status</td>
+                                            <td>{{ responseGeneralInfo.status }}
+
+                                                <span style="margin-left:7px; color: green; font-size:18px;" ng-show="isShowSuccessIcon"
+                                                    class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+                                                <span style="margin-left:7px; color: red; font-size:18px;" ng-show="isShowErrorIcon"
+                                                    class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>
+
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Headers</td>
+                                            <td>{{ responseGeneralInfo.headers }}</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Request Payload</td>
+                                            <td>
+                                                <div ng-bind-html="formattedRequestBody | to_trusted"></div>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <div id="preview" class="tab-pane fade">
+                                <div>
+                                    <span class="glyphicon glyphicon-copy pull-right" style="padding: 5px; cursor: pointer;"
+                                        ng-show="responseGeneralInfo.formattedData" ng-click="copyPreviewToClipboard()"
+                                        aria-hidden="true">
+                                </div>
+                                <div ng-show="isShowErrorIcon" style="color:red; margin-top:7px; margin-bottom:4px;">
+                                    Error Occured</div>
+                                <div>
+                                    <pre ng-bind-html="responseGeneralInfo.formattedData | to_trusted"> </pre>
+                                </div>
+
+
+
+
+
+                            </div>
+                            <div id="rawResponse" class="tab-pane fade">
+                                <div>
+                                    <span class="glyphicon glyphicon-copy pull-right" style="padding: 5px; cursor: pointer;"
+                                        aria-hidden="true" ng-show="responseGeneralInfo.rawData" ng-click="copyRawResponseToClipboard()"
+                                        data-toggle="tooltip" title="copy raw response to clipboard">
+                                </div>
+
+                                <div ng-show="isShowErrorIcon" style="color:red; margin-top:7px; margin-bottom:4px;">
+                                    Error Occured</div>
+                                <div>
+
+                                    <div>
+                                        <pre id="formattedPre"> {{ responseGeneralInfo.rawData }} </pre>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="row">
+        <div class="col-sm-12 text-center" style="background-color: #232F3E; color:white;">
+            <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Xoriant Team | <span class="glyphicon glyphicon-phone"
+                aria-hidden="true"></span> 9096174175
+        </div>
+    </div>
+
+
+    <div id="copyText"></div>
+
+</body>
+
+</html>

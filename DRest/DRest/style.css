@@ -1,0 +1,142 @@
+html{
+    background-color: white;
+}
+body{
+    margin: 0 20px;
+    min-height: 600px;
+    background-color:#cceaff;   
+ }
+
+.pageHeaderStrip{
+    background-color: black;
+    height: 50px;
+    line-height: 50px;
+    margin-bottom: 15px;
+}
+
+.headerText{
+      color: white;
+      line-height: 50px;
+      padding: 30px;
+      font-size: 30px;
+      font-weight: bold;
+}
+
+.contentArea{
+    margin: 0 5px;
+}
+
+.jumbotron{
+    background-color: #FFFFFF;
+}
+
+.success-border-only{
+    background-color:#FFFFFF;
+    color: gray;
+    font-weight: bold;
+}
+
+.requestName{
+    color: gray;
+    font-weight: bold;
+    margin: 20px; 
+}
+
+.requestCollection{
+    word-break: break-all; color:black;
+}
+
+/* Put your css in here */
+
+.listItem {
+  
+}
+.listItem.ng-enter {
+    opacity: 0;
+    transition: all .5s ease;
+}
+.listItem.ng-enter-active {
+    opacity: 1;
+}
+
+
+pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
+.string { color: green; }
+.number { color: darkorange; }
+.boolean { color: blue; }
+.null { color: magenta; }
+.key { color: red; }
+
+
+
+.fade.ng-hide {
+  opacity: 0;
+}
+
+.fade.ng-hide-remove,
+.fade.ng-hide-add {
+  display: block !important;
+}
+
+.fade.ng-hide-remove {
+  transition: all linear 1000ms;
+}
+
+.fade.ng-hide-add {
+  transition: all linear 500ms;
+}
+ 
+.glyphicon-refresh-animate {
+    -animation: spin .7s infinite linear;
+    -webkit-animation: spin2 .7s infinite linear;
+}
+
+@-webkit-keyframes spin2 {
+    from { -webkit-transform: rotate(0deg);}
+    to { -webkit-transform: rotate(360deg);}
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg);}
+    to { transform: scale(1) rotate(360deg);}
+}
+
+.contentLoading{
+    opacity: 0.3;
+}
+
+.clsShowRemove{
+    color:red;
+}
+
+.collectionClearButtons{
+    content:'e207';
+    padding:15px;
+    color:orange;
+}
+
+.collectionClearButtons:hover{
+    color:darkorange;
+    text-decoration:underline;
+    cursor:pointer;
+}
+
+.appTrash{
+    visibility: hidden;
+}
+
+.appTrash:hover{
+    color:red;
+}
+
+.listItem :hover  .appTrash{
+    visibility: visible;
+}
+
+.tooltip-inner{
+    word-wrap: break-word;
+    white-space: pre-line;
+    font-weight: bold;
+  }
+ 
+
